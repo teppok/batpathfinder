@@ -1,0 +1,18 @@
+# Format of this file is one location per line:
+#
+# x;y;flags;location name;creator[,creatorN];added timestamp;information URL;freeform
+#
+# The entries may be aligned/padded with whitespace, which will be stripped.
+# Empty lines and lines beginning with '#' are ignored. Timestamp uses following
+# format: 'dd.mm.yyyy', zero-padded. Undefined entries should be left empty.
+
+284 ; 285   ; 0     ;calyc;;;;
+429 ; 444   ; 0     ;desodockc;;;;
+277	; 211	; 0C?	;Magerathia;Elwood;;;LQ84 "Inner Sanctium of Magerathia".
+531 ; 474   ; 0     ;desolathya2;;;;
+531 ; 95    ; 0 ;desolathya1;;;;
+237	; 357	; 0	;Harmonyc;;;;
+430 ; 444   ; 0 ;desodock_out;;;;
+420 ; 442   ; 0 ;tenebraec;;;;
+245 ; 72    ; 0 ;gehennac;;;;
+342 ; 336   ; 0 ;xc;;;;

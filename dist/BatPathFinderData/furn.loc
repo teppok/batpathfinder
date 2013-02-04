@@ -1,0 +1,101 @@
+# MapUtils LOC file (version 4.0)
+# Refer to README.loc for more information.
+#
+279	; 214	; 2?	;Temple of Aljerak|Blitzkrieg event|@Aljerak temple;Shinarae;01.04.2010;http://www.bat.org/news/view_post?postid=48496&page=1&group_name=inform;Blitzkrieg event temple, a temporary location.
+197	; 85	; 0c	;Rilynt'tar|New Rilynt'tar;Poet;;http://tnsp.org/maps/rilynttar.html;Main city of Furnachia.
+190	; 81	; 1	;FERRY/Furnachia|@Ril'ynttar harbor;;;;Furnachia ferry dock
+165	; 10	; 0	;@Elven Outpost;@Malar;26.11.2003;;
+189	; 88	; 1	;Ancona Manor|@Manor;Darol;22.02.2006;http://wiz.bat.org/~darol/ancona.html;LQ48 "Successor of province".
+209	; 95	; 1	;Orc Samurai|@Samurai fort;Shinarae;;;LQ62 "Challenge Kurya".
+220	; 95	; 0	;@Domgroth's Mansion;@Fizzl;22.02.2006;;
+187	; 116	; 1	;@Haunted Mansion;Shinarae;09.05.2005;;Hosts two versions of the same AQ "Solo the haunted mansion" and AQ "Haunted mansion".
+289	; 146	; 3	;@Volcano;Dinin;;;LQ38 "Vulcan".
+214	; 155	; 3	;Under Volcano|Fire Golem|@Golem;Elwood,Dragoness;;;
+176	; 161	; 0	;@Darkwood;@Otus;;;
+119	; 168	; 1	;Castle Brantis|@Brantis;@Shades;;;
+272	; 175	; 0	;Perin's|@Perins;@Perin,Shardik;;;LQ28 "Robes of Time" and AQ "Shrouds of darkness".
+301	; 185	; 0	;Rillion's castle|@Mansion;@Rillion,Sai;;;
+200	; 201	; 1	;Nocilis Valley|@Tiamat;Tormac,Durand,Zin;;;AQ "Treasuries of the Nocilis Valley".
+98	; 205	; 1	;@Temple of the Twisted Prophecies;@Namhas;;;
+310	; 220	; 1	;@Orthanc;Saruman,Dice,Souc;;;There is some confusion about origins of this area, some sources state that Saruman was the original coder, but others say it was Dire (and recoded by Raunk).
+131	; 236	; 1	;Kutanakor West|@Kutanakor, west entrance;Ikar;;;
+171	; 236	; 1	;Kutanakor East|@Kutanakor, east entrance;Ikar;;;
+166	; 244	; 0	;Enchanted Forest|@Ikar;@Ikar;;;LQ75 "Enchanted forest".
+130	; 248	; 2	;9th Plane of Hell|@Hell;@Jessey,Ulax,!Shardik;;;
+77	; 269	; 0	;Old Fort|@An old fort;@Malack;26.02.2004;;
+297	; 299	; 0	;Corabandor|@Tower of Corabandor;Shadowjack,@Grimsh;;;AQ "Save Ozymandius".
+397	; 304	; 1	;Steaming Cavern|@Fire giants;Nym,Shadowjack;;;
+168	; 331	; 0	;@Ndoki;@Cyberman;;;LQ81 "Ndoki forest".
+251	; 346	; 0	;Jungle Cave|@Cavemen;@Dice;;;
+68	; 459	; 0	;@Atlantis;Zin;;;
+270	; 135	; 0	;Necromancer's Swamp|@Necromancer;@Nikotemus;;;
+167	; 168	; 0	;@Forest of the Moon;@Madrid;;;AQ "Free Filonious".
+417	; 174	; 0?	;@Castle Firefox;@Firefox;;;
+76	; 108	; 1?	;Rounce|Citadel|@Citadel pit;@Lanfear;;;LQ85 "Flying Citadel". The actual location of the citadel is somewhere around Rilynttar.
+312	; 237	; 1?	;Wanderer maze;Melemkor;;;
+299	; 112	; 1?	;@Abandoned House;Grimsh;;;
+177	; 297	; 0?	;Trilloch Zoo|@Trillazoo;Shinarae;;;
+143	; 305	; 2?	;Zonni Swamp|@Zonni swamps;Shadowjack,Zonni;;;LQ65 "Rescue Lady". Home of the infamous Burglefloogah, supposedly inspired by Lewis Carroll's "Jabberwocky".
+321	; 339	; 2?	;Secret jungle|Savage land|@Savage jungle;Dragoness;;;
+192	; 143	; 0	;@Cartwheel;@Ulath;13.12.2006;;
+327	; 127	; 0?	;@Plakhstan;@Runeaxe;;;
+220	; 107	; 0?	;@Temple of Chaos;Ulath;28.09.2007;;Related to the infamous 'new Lords of Chaos' guild.
+68	; 259	; 1?	;ARE Fortress (west)|@Furnachia fort (west);Shinarae;23.09.2007;;Added in game as result of "Invasion/Defence of Arelium 2007"-event.
+333	; 260	; 0?	;ARE Fortress (east)|@Furnachia fort (east);Shinarae;23.09.2007;;Added in game as result of "Invasion/Defence of Arelium 2007"-event.
+250	; 430	; 3?	;ARE Fortress (south)|@Furnachia fort (south);Shinarae;23.09.2007;;Added in game as result of "Invasion/Defence of Arelium 2007"-event.
+141	; 159	; 1?	;@Abandoned Village;@Mandrake;07.10.2007;;AQ "Help Loretta" and part of AQ "Solve mystery of the abandoned village".
+158	; 205	; 3?	;Black Marble Altar|@Mountain peak;@Mandrake;26.11.2007;;Part of AQ "Solve mystery of the abandoned village"
+135	; 204	; 2?	;Abandoned temple|@Abandoned, ruined temple;Juggelo;;;
+199	; 81	; 0?	;@Drow tower;@Shinarae;;;AQ "Drow tower".
+298	; 336	; 0?	;Priest guild special place;Coren;;;No idea what this is, or if it is even functional.
+
+
+223	; 234	; 1?T	;Monk (furn)|@Martial arts trainer (dwarf);;;;Monk guild trainer.
+204	; 95	; 2?T	;Ranger (furn);;;;Ranger guild trainer.
+200	; 118	; 2?T	;Barb (furn);;;;Barbarian guild trainer.
+
+
+205	; 120	; 0G	;Lord of Chaos|@Lords of chaos;@Ikar;;;This guild is now closed.
+311	; 242	; 2G	;Wanderers|@Wanderer's guild;Melemkor;;;
+405	; 308	; 0G	;Mage (fire)|@Mage fire;Juggelo,Lampsa;;;
+
+277	; 123	; 0?M	;Badlands cavalier;;;;
+
+364	; 62	; 0S	;Draconian;;;;
+43	; 172	; 0S	;Doppelganger;;;;
+325	; 173	; 0S	;Orc;;;;
+333	; 193	; 0S	;Vampire|@The legendary crypt of the prince of darkness;;;;
+221	; 202	; 0S	;Duergar;;;;
+297	; 231	; 1S	;Troll;;;;
+200	; 235	; 2S	;Demon;;;;
+132	; 241	; 3S	;Drow;;;;
+258	; 394	; 0S	;Barsoomian;;;;
+
+
+108	; 38	; 1?F	;@Caer Caunionech;Sirdar,Era;;;
+361	; 65	; 3?F	;@Silverfang Palace;Sirdar,Era;;;
+328	; 97	; 2?F	;Wardamas|@Fortress Wardamas;Sirdar,Era;;;
+266	; 155	; 0?F	;Breyriame|@Fortress Breyriame;Sirdar,Era;;;
+74	; 176	; 3?F	;@Gen Tower;Sirdar,Era;;;
+377	; 194	; 0?F	;Beinathre|@Fortress beinathre;Sirdar,Era;;;
+228	; 195	; 0?F	;@Bundinul's Hold;Sirdar,Era;;;
+360	; 197	; 3?F	;@Citadel of the Fiend Prince;Sirdar,Era;;;
+322	; 216	; 0?F	;@Lurk of Gl'x'abb;Sirdar,Era;;;
+123	; 230	; 1?F	;@Verardwi Keep;Sirdar,Era;;;
+230	; 248	; 0?F	;@Lurk of Anybriel;Sirdar,Era;;;
+206	; 254	; 1?F	;Indifference|@Fortress of indifference;Sirdar,Era;;;
+329	; 269	; 3?F	;Nusamnumf the Awesome|@Fortress of Nusammnumf the Awesome;Sirdar,Era;;;
+314	; 301	; 2?F	;@Chelrogh Lurk;Sirdar,Era;;;
+128	; 313	; 0?F	;@Nardictho Lurk;Sirdar,Era;;;
+173	; 356	; 0?F	;@Azarus's Grove;Sirdar,Era;;;
+253	; 393	; 1?F	;@Abode Isuitzaan;Sirdar,Era;;;
+
+
+288	; 180	; 2%S	;Spider #1|@Spider guild entrance: plains / valley;;;;
+182	; 149	; 1%S	;Spider #2|@Spider guild entrance: forest;;;;
+172	; 300	; 1%S	;Spider #3|@Spider guild: river entrance;;;;
+74	; 94	; 2%S	;Spider #4|@Spider guild entrance: swamp;;;;
+230	; 234	; 0%S	;Spider #5|@Spider guild entrance: mountain;;;;
+49	; 477	; 1%S	;Spider #6|@Spider guild, beach exit;;;;
+98	; 370	; 0%S	;Spider #7|@Spider guild entrance: desert;;;;
+338	; 348	; 3%S	;Spider #8|@Spider guild entrance: jungle;;;;

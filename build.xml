@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project name="BatPathFinder" default="all" basedir=".">
+
+	<property name="build.dir" value="${basedir}/build" />
+	<property name="dist.dir" value="${basedir}/dist" />
+	<property name="lib.dir" value="${basedir}/lib" />
+	<property name="src.dir" value="${basedir}/src" />
+	
+	<target name="init">
+		<tstamp />
+	</target>
+	
+	<path id="build.classpath">
+		<pathelement location="${build.dir}/bin" />
+		<fileset dir="${lib.dir}">
+			<include name="**/*.jar" />
+		</fileset>
+		<fileset dir="${basedir}/..">
+			<include name="bat_interfaces*jar" />
+		</fileset>
+	</path>
+	
+	<target name="compile" depends="init" description="Compiles Java"> 
+			
+		<delete dir="${build.dir}/bin" />
+		
+		<mkdir dir="${build.dir}/bin" />
+				
+		<javac 
+			destdir="${build.dir}/bin" 
+			classpathref="build.classpath" 
+			debug="on" 
+			optimize="false"
+			includeantruntime="false"
+			deprecation="on">
+<!--			
+			target="1.7"
+			source="1.7">
+-->			
+			<src path="${src.dir}" />
+    	</javac>
+	</target>
+	
+	<target name="package" description="Builds jar-files" depends="compile">
+			
+		<delete file="${dist.dir}/BatPathFinder.jar" />
+		<jar jarfile="${dist.dir}/BatPathFinder.jar">			
+			
+			<manifest>
+				<attribute name="Built-By" value="Teppo Kankaanpää"/>
+		        <attribute name="Sealed" value="false"/>
+		      	<attribute name="class-path" value=""/>		      	
+			</manifest>
+			
+			<fileset dir="${build.dir}/bin">
+				<include name="fi/iki/photon/batmud/**/*.class" />
+			</fileset>
+<!--
+			<fileset dir="${basedir}">
+				<include name="edgelist" />
+			</fileset>
+-->
+		</jar>
+	</target>
+
+	<target name="dist" description="Makes distributable zip" depends="package">
+		<delete file="${basedir}/BatPathFinder.zip" />
+		<zip destfile="${basedir}/BatPathFinder.zip"
+			basedir="${basedir}/dist" />
+	
+	</target>
+	
+	<target name="all" depends="dist" />
+	
+</project>

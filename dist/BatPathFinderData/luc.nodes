@@ -1,0 +1,41 @@
+
+# Define all nodes and their closest outworld nodes to be used for approx function
+
+! lucetalli kanemoukec
+! vlady votk
+! lorenchia lorenchia_n
+! hive shrea
+! lucedock lucedockc
+
+kanemoukec lucetalli::7 e 2 n e u
+lucetalli kanemoukec::d w 2 s 7 w
+
+votk vlady::9 s 7 sw s
+vlady votk::n 7 ne 9 n
+
+#vlady vwaterfall::5 e ne e
+#vwaterfall vlady::w sw 5 w
+
+#vlady vtaipei::3 w
+#vtaipei vlady::3 e
+
+#vtaipei vfields::sw 2 s
+#vfields vtaipei::2 n ne
+
+#vtaipei vchardanum::2 s sw se
+#vchardanum vtaipei::nw ne 2 n
+
+#vchardanum vsesmia::sw w nw
+#vsesmia vchardanum::se e ne
+
+#vtower vwaterfall::cave d crack nw sw s w n nw n river
+#vwaterfall vtower::cave tunnel s se s e n ne se crack u out
+
+lorenchia lorenchia_n::13 n
+lorenchia_n lorenchia::13 s
+
+shrea hive::s w w sw w s s e
+hive shrea::w n n e ne e e n
+
+lucedockc lucedock::2 n
+lucedock lucedockc::2 s

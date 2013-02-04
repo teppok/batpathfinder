@@ -1,0 +1,21 @@
+
+# Define all nodes and their closest outworld nodes to be used for approx function
+
+! skeep skeepn2
+! nav nav_out
+! rothdock rothdockc
+
+skeep skeepn2::9 n
+skeepn2 skeep::9 s
+
+nunc nun_w::nw nw nw w nw w w sw sw sw w convent
+nun_w nunc::e se e se se se
+
+skeep skeepw::2 n 14 w
+skeepw skeep::14 e 2 s
+
+nav nav_out::se 3 e se ne 2 n ne 2 e 2 ne 2 e
+nav_out nav::2 w 2 sw 2 w sw 2 s sw nw 3 w nw
+
+rothdock rothdockc::e s
+rothdockc rothdock::n w

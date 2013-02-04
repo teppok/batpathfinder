@@ -1,0 +1,16 @@
+# Format of this file is one location per line:
+#
+# x;y;flags;location name;creator[,creatorN];added timestamp;information URL;freeform
+#
+# The entries may be aligned/padded with whitespace, which will be stripped.
+# Empty lines and lines beginning with '#' are ignored. Timestamp uses following
+# format: 'dd.mm.yyyy', zero-padded. Undefined entries should be left empty.
+
+223 ; 266   ; 0     ;skeepn2;;;;
+352	; 268   ; 0     ;nav_out;;;;
+257 ; 254   ; 0     ;nunc;;;;
+245 ; 253   ; 0     ;nun_w;;;;
+216 ; 270   ; 0     ;skeepw;;;;
+261 ; 427   ; 0     ;rothikgen1;;;;
+264	; 429   ; 0     ;rothdockc;;;;
+263 ; 429   ; 0     ;rothdock_out;;;;

@@ -1,0 +1,198 @@
+# MapUtils LOC file (version 4.0)
+# Refer to README.loc for more information.
+#
+413	; 153	; 2c	;Lorenchia;Entropy,Nym;;http://tnsp.org/maps/lorenchia.html;Main city of Lucentium.
+63	; 148	; 1?	;@Valley of the Kings|VotK;Dino,Femko,Ceewu,Qazar,Darol,Rutaliator;01.11.2004;http://tnsp.org/maps/votk.html;LQ88 "The Valley of the Kings".
+397	; 15	; 1	;FERRY/Lucentium|@Lucentium welcome center;;;;Lucentium ferry dock
+224	; 45	; 0	;@The Lost Pyramid;@Zin;;;
+411	; 50	; 3	;Lands of Lore|@Lands or lore;Nym,Entropy;;;
+263	; 59	; 0	;@Obelisk;@Falkon;;;
+392	; 73	; 3?	;Cornfields|@Cornfield;Sarku,Dragoness;;;
+426	; 81	; 0?	;@Lanzia;@Runeaxe;;;LQ83 "Tides of War".
+219	; 88	; 0?	;@Colosseum;@Superelak;29.05.2002;;Also known as Amphitheatre. LQ45 "Victi vicimus".
+410	; 92	; 1?	;Dah'bec|@Dahbec;@Grimsh;;;
+535	; 92	; 1?	;Jondalar's Castle|@Beanstalk;@Jondalar,Namhas;;;
+113	; 98	; 0?	;@Oasis;@Athlestane;;;
+384	; 99	; 1?	;@Village of Shrea|Hobbit Farmhouse|Alchemist's House;Hablo,Zoso;;;AQ "Alchemist's dilemma". Is actually three areas.
+99	; 114	; 0?	;Great Central Desert|@Nifties;@Nifty;;;
+361	; 116	; 0?	;@Stagira;@Zith;17.03.2003;;LQ46 "Return the chest".
+295	; 126	; 0?	;Astacia|@The Ruins of Astacia;Mardus;09.11.2003;;AQ "Rise of the verminkin".
+412	; 137	; 0?	;@Public Gardens;@Kitsune;25.09.2005;;Each room of the garden always provides same herb, good for alchs.
+656	; 139	; 1?	;Trilloch's tower|Assassin quest|@The Trilloch tower;Shinarae;;;
+342	; 140	; 1?	;@Anthill;Noctur;;;AQ "The ant hill".
+446	; 148	; 0?	;@Paladin Stronghold;Zin;;;Has level limit 42 for most parts. AQ "Paladin stronghold".
+234	; 151	; 0?	;Catfolk tree|@Tree village;Shinarae;14.11.2000;;
+480	; 156	; 0?	;Shipwreck|@Sunken ship;Superelak;;;
+357	; 187	; 2?	;Clouds above Lor|@Giants/rechendak;Nym,Shadowjack;;;AQ "Elementalist".
+131	; 195	; 0?	;@Fraggle village;Runeaxe;02.08.1999;;Level limited to lvl50.
+243	; 195	; 1?	;@Duzelton;@Madrid;;;LQ76 "Save Duzelton". NOTICE! This quest is undoable at the moment.
+412	; 204	; 1?	;@Whirlpool;Kelson,Keill;;;
+431	; 205	; 0?	;Land of Overworld|@Land of the overworld;@Zebell,!Cyberman;10.08.1996;;
+373	; 235	; 0?	;Marble-sanded beach|@Beach;Eredlin;;;
+400	; 248	; 0?	;Door to the Past|@Stifsim;@Marlor,Runeaxe;;;
+441	; 278	; 0?	;@Oystria;@Runeaxe;;;AQ "Find Frex Frox".
+540	; 240	; 3c	;Silver Lake|@Silver lake|Silverlake;Melemkor,Aydjen;;;
+49	; 250	; 1?	;Akira|Kara-Tur|@Karatur;Nym,Shadowjack;;;LQ73 "Liberation".
+87	; 257	; 0?	;Troglodyte Village|@Troglodytes;Malitrius;12.12.2001;http://www.bat.org/community/library?str=709;AQ "The lost troglodyte rod".
+84	; 262	; 3?	;Troglodyte Hut|Troglodytes|@Steves hut, Troglodyte subarea;Malitrius;12.12.2001;http://www.bat.org/community/library?str=709;AQ "The lost troglodyte rod".
+144	; 255	; 0?	;@Mirror Mine;Shinarae;09.05.2005;;AQ "Mirror mine".
+123	; 288	; 1?-	;AQ Tower|@Earthquake event;Malitrius;06.03.2003;;Part of AQ "Four Elements".
+120	; 291	; 2?	;Ice Tower|@Hailstorm event;Malitrius;06.03.2003;;Part of AQ "Four Elements".
+126	; 291	; 0?	;Fire Tower|@Meteor shower event;Malitrius;06.03.2003;;Part of AQ "Four Elements".
+123	; 294	; 3?	;Wind Tower|@Cyclone event tower;Malitrius;06.03.2003;;Part of AQ "Four Elements".
+196	; 305	; 1?	;@Pyran;Haplo,Entropy;;;AQ "Amulet".
+147	; 374	; 0?	;Brotherhood of Sorcery|@Adamantium chain;@Justice,!Natasha,Matte;;;
+285	; 45	; 3?	;Iron gate|@Templar shield quest cave;;;;
+631	; 97	; 0?	;Ship navigators|@Navigators of the sea;Melemkor;;;
+292	; 268	; 1?	;Creepy house|@Old house|@Behind the old house;@Ramjett,&Fizzl;08.03.2007;;
+79	; 138	; 2?	;Harun-al-Mar & Harun-al-Kor|@Village of War;Heidel;05.07.2007;;Part of AQ "Spirits of vengeance".
+91	; 132	; 0?	;Kundar-el-Alam|@Village of Famine;Heidel;05.07.2007;;Part of AQ "Spirits of vengeance".
+95	; 141	; 0?	;Kharim-el-Main|@Village of Pestilence;Heidel;05.07.2007;;Part of AQ "Spirits of vengeance".
+87	; 156	; 3?	;Afkadel-el-Sha|@Village of Death;Heidel;05.07.2007;;Part of AQ "Spirits of vengeance".
+393	; 482	; 0?	;Observatory Foyer|@Clockwork observatory;Zilch;02.08.2007;;Unfinished area, has one room of explore.
+363	; 157	; 1?P	;Kirahvi+|@Kirahvi+ ss;;;;
+
+392	; 148	; 2?G	;Monk|@Monks;Noctur,Blitzer,Shinarae,Delecti;;;
+436	; 151	; 3?G	;Alchemist|@Alchemist guild;Shinarae,Scrounge;;;
+262	; 210	; 1?G	;Tarmalen (autumn)|@Tarmalen autumn guild;Dralith,Shinarae,Dragoness;;;
+266	; 344	; 1%G	;Mage (poison)|@Mage poison;Juggelo,Lampsa;;;
+589	; 398	; 0%G	;Mage (elec)|@Mage guild, electricity;Juggelo,Lampsa;;;
+370	; 182	; 1?G	;Tiger (luc)|@Tiger shrine (luce);;;;
+407	; 181	; 1?G	;LoC: Tzarakk|@Temple of Tzarakk;Ulath;16.10.2007;;New Lords of Chaos temple of Tzarakk.
+
+
+201	; 456	; 0?T	;Monk (luc)|@Martial arts trainer (catfolk);;;;Monk guild trainer.
+411	; 165	; 3?T	;Ranger (luc);;;;Ranger guild trainer.
+382	; 153	; 1?T	;Barb (luc);;;;Barbarian guild trainer.
+250	; 298	; 0?T	;Priest (luc);;;;Evil priest guild trainer.
+
+215	; 294	; 1?M	;Jungle cavalier;;;;
+
+396	; 42	; 1S	;Centaur;;;;
+255	; 101	; 0%S	;Lizardman;;;;
+335	; 130	; 0%S	;Satyr;;;;
+244	; 136	; 1%S	;Catfolk;;;;
+393	; 194	; 0%S	;Thrikhren|@The xorlab kxoh's tomb;;;;
+241	; 227	; 0%S	;Titan;;;;
+316	; 254	; 0%S	;Cromagnon;;;;
+332	; 278	; 0%S	;Cyclops;;;;
+542	; 456	; 0%S	;Merfolk;;;;
+
+
+392	; 20	; 1?F	;@Minas Horienion;Sirdar,Era;;;
+258	; 34	; 0?F	;@Barthuke Castle;Sirdar,Era;;;
+212	; 46	; 2?F	;@Finedict Tower;Sirdar,Era;;;
+364	; 77	; 1?F	;@Minas Lionostulc;Sirdar,Era;;;
+125	; 83	; 0?F	;@Raxc'et'htu Hive;Sirdar,Era;;;
+123	; 87	; 3?F	;@Sshuhssaash Hol;Sirdar,Era;;;
+68	; 88	; 1?F	;@Fanulbar's Hold;Sirdar,Era;;;
+315	; 89	; 0?F	;@Minas Tionechro;Sirdar,Era;;;
+239	; 91	; 2?F	;@Shlooo'zek Hol;Sirdar,Era;;;
+385	; 93	; 1?F	;@Minas Lionaiorno;Sirdar,Era;;;
+184	; 106	; 0?F	;@Ghik'taas-ek Hol;Sirdar,Era;;;
+346	; 121	; 1?F	;@Badane's Delve;Sirdar,Era;;;
+296	; 131	; 1?F	;@Mewillex Tower;Sirdar,Era;;;
+262	; 132	; 1?F	;@Citadel of Vando;Sirdar,Era;;;
+335	; 153	; 1?F	;@Zanulim's Delve;Sirdar,Era;;;
+368	; 157	; 0?F	;@Caer Durenith;Sirdar,Era;;;
+251	; 166	; 0?F	;@Zirine's Delve;Sirdar,Era;;;
+235	; 179	; 1?F	;@Fundu's Deep;Sirdar,Era;;;
+394	; 190	; 1?F	;@Guolx'ar Hive;Sirdar,Era;;;
+227	; 225	; 1?F	;@Olympus;Sirdar,Era;;;
+220	; 239	; 1?F	;@Balabar's Delve;Sirdar,Era;;;
+298	; 267	; 0?F	;@Ophes Keep;Sirdar,Era;;;
+335	; 280	; 3?F	;@Gilukkinb's Hold;Sirdar,Era;;;
+303	; 283	; 1?F	;@Gylentin Castle;Sirdar,Era;;;
+611	; 428	; 0?F	;@Mondamor's Deep;Sirdar,Era;;;
+506	; 441	; 0?F	;@Tumilab's Deep;Sirdar,Era;;;
+518	; 498	; 0?F	;@Tharkunul's Deep;Sirdar,Era;;;
+
+
+655	; 406	; 0C	;Castle-perilous;;;;
+655	; 407	; 0C-	;Castle-perilous;;;;
+
+397	; 24	; 0C-	;Kittencity;;;;
+397	; 25	; 2C	;Kittencity;;;;
+
+411	; 40	; 0C-	;Kanemouke;;;;
+411	; 41	; 3C	;Kanemouke;japan+;;;
+
+402	; 54	; 0C-	;Zithroland;bunny+;;;
+402	; 55	; 2C	;Zithroland;;;;
+
+416	; 63	; 0C-	;Dawnhill;;;;
+417	; 63	; 0C	;Dawnhill;;;;
+
+389	; 87	; 0C	;Iirimameoi;kitten+;;;
+389	; 88	; 0C-	;Iirimameoi;;;;
+
+423	; 90	; 0C-	;Copenhagen;;;;
+424	; 90	; 0C	;Copenhagen;;;;
+
+395	; 97	; 3C	;Twigaland;settlers+,root+,roguelike+,sivari+;;;
+396	; 97	; 0C-	;Twigaland;;;;
+
+416	; 126	; 0C-	;Actium;;;;
+417	; 126	; 0C	;Actium;dice+;;;
+418	; 126	; 0C-	;Actium;;;;
+
+58	; 135	; 0C	;Wildboars;rape+;;;
+59	; 135	; 0C-	;Wildboars;;;;
+
+154	; 327	; 3C	;Stormhold;;;;
+154	; 326	; 0C-	;Stormhold;;;;
+
+337	; 193	; 0C	;Tarkubaz;;;;
+337	; 194	; 0C-	;Tarkubaz;;;;
+338	; 193	; 0C-	;Tarkubaz;;;;
+
+313	; 137	; 0C-	;Ravensflyte;;;;
+314	; 137	; 0C	;Ravensflyte;ninja+;;;
+315	; 137	; 0C-	;Ravensflyte;;;;
+312	; 138	; 0C-	;Ravensflyte;;;;
+313	; 138	; 0C-	;Ravensflyte;;;;
+314	; 138	; 0C-	;Ravensflyte;;;;
+315	; 138	; 0C-	;Ravensflyte;;;;
+316	; 138	; 0C-	;Ravensflyte;;;;
+313	; 139	; 0C-	;Ravensflyte;;;;
+314	; 139	; 0C-	;Ravensflyte;;;;
+315	; 139	; 0C-	;Ravensflyte;;;;
+316	; 137	; 0C-	;Ravensflyte;;;;
+
+217	; 161	; 1C	;Valimar;;;;
+218	; 161	; 0C-	;Valimar;;;;
+217	; 162	; 0C-	;Valimar;;;;
+218	; 162	; 0C-	;Valimar;;;;
+
+233	; 171	; 3C	;Carcassonne;rus+,fall+;;;
+233	; 172	; 0C-	;Carcassonne;;;;
+
+297	; 175	; 0C-	;Conquest;;;;
+298	; 175	; 0C-	;Conquest;;;;
+297	; 176	; 0C-	;Conquest;;;;
+298	; 176	; 0C-	;Conquest;;;;
+297	; 177	; 0C-	;Conquest;;;;
+298	; 177	; 3C	;Conquest;conquest+,dreams+;;;
+
+146	; 203	; 2C	;Illusia;borg+;;;
+146	; 204	; 0C-	;Illusia;;;;
+
+401	; 143	; 1C	;Alliance;alliance+,everdarke+;;;
+401	; 144	; 0C-	;Alliance;;;;
+
+
+409	; 16	; 0C	;Breakwater;legion+;;;
+328	; 65	; 0C	;Clockwork;hoopoe+,clockwork+;;;
+405	; 70	; 0C	;Sumuland;;;;
+242	; 180	; 2C	;Zircus;poro+,bosa+;;;
+144	; 186	; 0C	;Hoven;ho+;;;
+270	; 187	; 0C	;Corfinium;;;;
+254	; 195	; 3C	;Bittercape;;;;
+427	; 154	; 3C	;Downtown;;;;
+78	; 98	; 0C	;Dune;;;;
+417	; 103	; 2C	;Inferno;turha+,sport+;;;
+303	; 117	; 1C	;Arcanum;;;;
+283	; 138	; 3C	;Elanthia;;;;
+428	; 193	; 0C	;Norsunluutorni;;;;
+534	; 475	; 0C	;Dementia;;;;
+342	; 421	; 0C	;Wayrest;;;;

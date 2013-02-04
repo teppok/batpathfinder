@@ -1,0 +1,14 @@
+
+SCRIPT_NAME = "w";
+SCRIPT_DESC = "A wrapper for BatPathFinder";
+SCRIPT_OFF = false;
+
+
+run()
+{
+	String[] cmds = null;
+    if (argument != null && !("".equals(argument)))
+        cmds = argument.split(" ");
+	pluginManager.processPlugin("fi.iki.photon.batmud.BatClientAPI", cmds);
+} 
+

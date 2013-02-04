@@ -1,0 +1,99 @@
+
+# Define all nodes and their closest outworld nodes to be used for approx function
+
+! babylonp babylon
+! city_s sc
+! church sc
+! advguildc sc
+! arenac sc
+! cp sc
+! bankc sc
+! bank sc
+! tince sc
+! lux_ac sc
+! lux_a sc
+! lux_wc sc
+! lux_w sc
+! armouryc sc
+! armoury sc
+! smithyc sc
+! smithy sc
+! hardware sc
+! lottery sc
+! ringshopc sc
+! ringshop sc
+! ocp sc
+! chance harbor
+! orion orionc
+! laedock laedockc
+
+
+
+babylon babylonp::3 w s
+babylonp babylon::n 3 e
+#babylonp church::transport~church
+
+
+
+city_s sc::16 s
+sc city_s::16 n
+church advguildc::27 e
+advguildc church::27 w
+advguildc arenac::11 e
+arenac advguildc::11 w
+city_s arenac::20 w
+arenac city_s::20 e
+
+city_s cp::10 n
+cp city_s::10 s
+cp bankc::7 ne 3 e
+bankc cp::3 w 7 sw
+bankc tince::21 e 9 n
+tince bankc::9 s 21 w
+bankc bank::n
+bank bankc::s
+
+bankc lux_ac::8 e
+lux_ac bankc::8 w
+lux_ac lux_a::n
+lux_a lux_ac::s
+lux_ac lux_wc::s
+lux_wc lux_w::s
+lux_w lux_wc::n
+lux_wc armouryc::2 e 3 se 5 s 4 e
+armouryc lux_wc::4 w 5 n 3 nw 2 w
+armouryc armoury::n
+armoury armouryc::s
+armouryc ringshopc::2 e 2 ne 2 n
+ringshopc ringshop::e
+ringshop ringshopc::w
+armouryc smithyc::sw 14 w
+smithyc armouryc::14 e ne
+smithyc smithy::n
+smithy smithyc::s
+smithyc city_s::4 sw s 2 sw 6 w
+city_s smithyc::6 e 2 ne n 4 ne
+city_s hardware::4 e se s
+hardware city_s::n nw 4 w
+cp lottery::9 nw 2 n w
+lottery cp::e 2 s 9 se
+
+arenac ocp::2 w 2 sw 2 s e n
+ocp arenac::s w 2 n 2 ne 2 e
+
+harbor chance::2 n ne 2 n 2 w sw
+chance harbor::ne 2 e 2 s sw 2 s
+
+orionc orion::4 n
+orion orionc::4 s
+
+laedockc laedock::n n nw n
+laedock laedockc::s se s s
+
+#runemage_w runemage::6 e
+#runemage runemage_w::6 w
+#runemage runemage_e::6 e
+#runemage_e runemage::6 w
+#runemage runemage_s::5 s
+#runemage_s runemage::5 n
+

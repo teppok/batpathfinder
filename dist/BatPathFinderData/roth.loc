@@ -1,0 +1,201 @@
+# MapUtils LOC file (version 4.0)
+# Refer to README.loc for more information.
+#
+224	; 271	; 2c	;Shadowkeep;@Amarth;;;Main city of Rothikgen.
+265	; 430	; 1	;FERRY/Rothikgen|@Shadowkeep annex;;;;Rothikgen ferry dock
+221	; 265	; 0?	;Horn-Durath|@Tower of Horn-Durath;@Amarth;;;
+453	; 31	; 1	;Ice castle|@Frost giants;Shadowjack;;;
+148	; 51	; 0	;@Lonely Mountain;@Dire,Shadowjack;;;AQ "Dragonscale Armour".
+288	; 60	; 0	;Taiga|@Dino's taiga;@Dino,&Orgoh;17.12.2002;;LQ53 "Shamanic deed". Expanded by Orgoh 13.05.2003.
+163	; 69	; 0	;Hell's dojo|@Hells dojo;@Rillion,!Sai;;;LQ67 "Help lady Elberiel". Converted by Sai 07.09.2005.
+222	; 71	; 0	;Rendburg|@Frozen city of Rendburg;Fizbuck;;;AQ "Frozen valley".
+246	; 84	; 3	;@Hill giants;Nym,Shadowjack;;;
+104	; 100	; 0	;@Kalevala|Wainamoinen;@Aarugotti;;http://en.wikipedia.org/wiki/Kalevala;Based on the Finnish epic poem of "The Kalevala" by Elias Lönnrot.
+213	; 124	; 0	;@Abandoned Study;Blasterr;30.01.2006;;
+233	; 128	; 3	;@Cevi village;@Fizzl;;;
+277	; 131	; 0	;Barbarian arena|@Barb guild event area;Runeaxe;;;
+227	; 139	; 0	;@Campsite;@Malitrius;;;
+158	; 147	; 0	;Snow Peaked Mountain|@Snowy peak;@Alannah,Alaron;;;
+220	; 148	; 0	;King Eowyn's Land|@Knights & Dragons;Zin;;;LQ37 "Save the princess Daisy". (Has reputation of being one of the most annoying low level LQs in game.)
+306	; 161	; 0	;@Dark Forest;Cyberman;;;AQ "It's Dog". Very loosely based on Stephen King's book "IT".
+358	; 186	; 1	;@Stonehenge;Malitrius;;http://wiz.bat.org/~malitrius/stonehenge.html;LQ61 "Stonehenge".
+321	; 220	; 0	;@Mirkhold;@Dinin;;;
+385	; 250	; 0	;@Caverns of Chaos;Runeaxe;;;
+218	; 255	; 2	;@Smurville|Shadowkeep, north entrance;Amarth;09.06.1996;;The real name of this area is obviously broken.
+258	; 255	; 3?	;Nun maze (nw)|@Nun guild mountain entrance;;;;
+231	; 261	; 0	;Kath'vael Forest|Katvil forest|@Kathvael forest;@Amarth;25.09.2002;;
+352	; 269	; 1?	;Navigator maze;;;;
+346	; 296	; 2	;Ackbar's quest|@Ackbar's warrior shrine;!Malitrius,@Ackbar;;;
+62	; 315	; 1	;Pauper's Castle|@Paupers castle;Pauper,Ruubio,Shardik;;;
+240	; 330	; 0	;@Old forest;@Kissarobotti;;;
+220	; 345	; 1	;@Amberley mansion;Grimsh;;;LQ71 "The ritual of sacrifice".
+344	; 382	; 0	;@Donaru;Malitrius;;http://wiz.bat.org/~malitrius/logs/donaru.txt;
+295	; 384	; 1	;@Inn of the Four Winds;@Amarth;;;
+319	; 396	; 1	;@Perilous forest;@Xiantha;;;
+28	; 399	; 0	;Giant killers|Doobie's|@Doobies;Coren,Tomba,!Finaldey,@Doobie;;;LQ39 "Enchanted cloak".
+133	; 452	; 0	;@Lighthouse;Hablo,Melemkor;;;
+257	; 245	; 1	;Snow devils|Citadel|@Mountainpass+citadel;@Dice;;;LQ55 "The Mythical Frostblade".
+380	; 203	; 0?	;Horsehead Mountain|@Inra;@Malitrius;;;LQ69 "The Horsehead Mountain".
+420	; 261	; 0?	;Kintril Church|@Dark church, savage coast subarea;@Malitrius;;;
+396	; 255	; 2?	;Harazam tower|@Harazam, savage coast subarea;@Malitrius;;;
+412	; 243	; 1?	;Wormhole|@Wormhole, savage coast subarea;@Malitrius;;;
+398	; 285	; 0?	;Forest in the Valley|@Creepy forest, savage coast subarea;@Malitrius;;;
+166	; 198	; 2?	;@Mushroom hill;@Fizzl;;;
+428	; 213	; 1?	;Ruins of Unta'r Trinit|@Ruins of untar trinit, savage coast subarea;;;;
+425	; 231	; 0?	;@Norse village;@Malitrius;;;
+386	; 184	; 1?	;Norse cave|@Stonetrolls;@Malitrius;18.06.2002;;AQ "The Living Cave".
+392	; 294	; 1?	;Spider cave|@Spider cave, savage coast subarea;@Malitrius;;;
+356	; 269	; 3?	;Drugstore shack|@Old ladys shack, savage coast subarea;@Malitrius;;;
+227	; 260	; 0?P	;swe+|@Swe+ ss;;;;
+
+185	; 306	; 0?	;Castle of Lord Drauron|@Hq1, warzone subarea;Grimsh;;;
+185	; 309	; 1?	;Encampment1|@Camp1, warzone subarea;Grimsh;;;
+186	; 311	; 0?	;Battlefield|@Warzone area;Grimsh;;;
+187	; 313	; 3?	;Encampment2|@Camp2, warzone subarea;Grimsh;;;
+186	; 315	; 3?	;Cavern|@Hq2, warzone subarea;Grimsh;;;
+
+84	; 112	; 2?	;Village of Aldor|@Aldors village;@Deras;01.06.2007;;
+252	; 334	; 3?	;Marble Shrine(?);;;;
+340	; 398	; 3?	;Noran's Attic|@Attic;!Souc,@Noran;;;
+332	; 405	; 3?	;Anaconda Ruins|@Ruins;@Anaconda,!Souc;09.12.2004;;
+200	; 270	; 2?	;Psi quest area;;;;
+286	; 107	; 1?	;@Trader's House;@Mandrake;08.01.2008;;
+353	; 200	; 0?	;@Moongate;;;;
+398	; 340	; 0?	;ROTH-CLOSED #1;;;;
+76	; 158	; 0?	;@Old Copper Mine;@Corto;26.09.2009;;AQ "White Pudding".
+313	; 324	; 0	;@Hack|Moria;@Runeaxe;15.04.2010;;A very old area, that has been open on HCBat and now re-opened here.
+336	; 102	; 3?!	;Plateau of Tsang (CLOSED)|@Plateau of tsang;@Shadowjack;20.02.2009;;This area is not open yet.
+145	; 185	; 0?	;@Beaumont Hamel;@Moss;30.08.2010;;
+
+
+277	; 283	; 3?T	;Monk (roth)|@Martial arts trainer (gnoll);;;;Monk guild trainer.
+218	; 285	; 0?T	;Ranger (roth);;;;Ranger guild trainer.
+170	; 195	; 0?T	;Priest (roth);;;;Evil priest guild trainer.
+
+
+149	; 108	; 2G	;Tarmalen (winter)|@Tarmalen winter guild;Dralith,Shinarae,Dragoness;;;
+128	; 169	; 0G	;Beastmaster|@Beastmaster guild;Shinarae,Elwood;09.10.2003;;
+370	; 244	; 0G	;Barbarian|@Barb guild;Ulath,Runeaxe,Digga,Quadra;;;
+248	; 255	; 0G	;Nun|Convent of White Rose|@Nun guild;Zin,Brock,Dazzt;;;
+340	; 273	; 2G	;Navigator|@Navigator guild;Noctur,Machaon,@Alaron;;;
+168	; 281	; 1G	;Psionicist|@Psionicist guild;Juggelo,Lampsa,Grimsh,Blitzer,Drakken;;;
+297	; 72	; 0G	;Mage (cold)|@Mage cold;Juggelo,Lampsa;;;
+84	; 396	; 0G	;Mage (asphyx)|@Mage asphyxiation;Juggelo,Lampsa;;;
+236	; 348	; 3?G	;Tiger (roth)|@Tiger shrine (roth);;;;
+257	; 233	; 1?G	;LoC: Kharim|@The Hall of One Thousand Voices;@Darol,Ulath,Gore;22.08.2008;;New Lords of Chaos, Legions of Kharim.
+
+
+338	; 71	; 0S	;Penguin;;;;
+331	; 123	; 0S	;Giant;;;;
+137	; 148	; 1S	;Duck;Dragoness;;;
+103	; 201	; 0S	;Wolfman;;;;
+237	; 246	; 2S	;Valar;;;;
+327	; 264	; 0S	;Gnome;;;;
+269	; 314	; 0S	;Moomin;;;;
+77	; 372	; 0S	;Brownie;;;;
+
+
+437	; 219	; 0%M	;Athanel|@Crimson wyrm, savage coast subarea;Malitrius;06.12.2001;http://www.bat.org/community/library?str=702;Extremely dangerous.
+395	; 254	; 1%M	;Bufloogh|@Green wyrm, savage coast subarea;Malitrius;06.12.2001;http://www.bat.org/community/library?str=702;Extremely dangerous. Was originally called "Burgle", probably changed to Bufloogh for obvious reasons.
+423	; 239	; 3%M	;Cyclon|@Blue wyrm, savage coast subarea;Malitrius;06.12.2001;http://www.bat.org/community/library?str=702;Extremely dangerous.
+397	; 236	; 1%M	;Goathead|@Goathead, savage coast subarea;Malitrius;06.12.2001;http://www.bat.org/community/library?str=702;Extremely dangerous.
+399	; 264	; 3%M	;Red Hawk|@Redhawk, savage coast subarea;Malitrius;06.12.2001;http://www.bat.org/community/library?str=702;Extremely dangerous.
+376	; 260	; 2%M	;Silver|@Wyrms, savage coast subarea;Malitrius;06.12.2001;http://www.bat.org/community/library?str=702;Extremely dangerous.
+
+
+134	; 77	; 2?F	;@Martomond's Nest;Sirdar,Era;;;
+250	; 78	; 0?F	;@Giny Tower;Sirdar,Era;;;
+329	; 102	; 1?F	;@Castle Alvin;Sirdar,Era;;;
+325	; 123	; 1?F	;@Tinarder Keep;Sirdar,Era;;;
+82	; 139	; 1?F	;@Inulakg's Nest;Sirdar,Era;;;
+215	; 140	; 1?F	;@Zinbilnin's Hold;Sirdar,Era;;;
+164	; 148	; 3?F	;@Caer Sidhonion;Sirdar,Era;;;
+126	; 150	; 2?F	;@Caer Eryan;Sirdar,Era;;;
+343	; 153	; 0?F	;@Gilesym Keep;Sirdar,Era;;;
+336	; 223	; 3?F	;@Tower of Abus;Sirdar,Era;;;
+233	; 249	; 2?F	;@Tower of God;Sirdar,Era;;;
+307	; 264	; 2?F	;@Mekhor's Grove;Sirdar,Era;;;
+219	; 269	; 1?F	;@Gilesim Castle;Sirdar,Era;;;
+269	; 366	; 0?F	;@Rauld Nest;Sirdar,Era;;;
+71	; 419	; 0?F	;@Daverog Keep;Sirdar,Era;;;
+88	; 357	; 0?F	;@Glanargab's Delve;Sirdar,Era;;;
+
+
+239	; 363	; 0C-	;Kauhajoki;;;;
+240	; 363	; 0C	;Kauhajoki;;;;
+
+175	; 317	; 2C	;Junkyard;kabula+,junk+,bloodlines+;;;
+176	; 317	; 0C-	;Junkyard;;;;
+
+206	; 246	; 1C	;Kelly;;;;
+207	; 246	; 0C-	;Kelly;;;;
+208	; 246	; 0C-	;Kelly;;;;
+206	; 247	; 0C-	;Kelly;;;;
+207	; 247	; 0C-	;Kelly;;;;
+208	; 247	; 0C-	;Kelly;;;;
+
+210	; 287	; 0C-	;Dragonsleap;;;;
+210	; 288	; 1C	;Dragonsleap;sur+;;;
+211	; 288	; 0C-	;Dragonsleap;;;;
+
+287	; 259	; 2C	;Highwood;;;;
+288	; 259	; 0C-	;Highwood;;;;
+287	; 258	; 0C-	;Highwood;;;;
+288	; 258	; 0C-	;Highwood;;;;
+
+74	; 86	; 0C	;Ithilien;dcc+,orchid+,hardware+;;;
+74	; 87	; 0C-	;Ithilien;;;;
+
+235	; 270	; 0C-	;Huntingcamp;;;;
+233	; 271	; 0C-	;Huntingcamp;;;;
+234	; 271	; 0C-	;Huntingcamp;;;;
+234	; 272	; 0C-	;Huntingcamp;;;;
+235	; 272	; 0C-	;Huntingcamp;;;;
+235	; 271	; 0C	;Huntingcamp;fishin+;;;
+
+386	; 268	; 0C	;Compton;;;;
+386	; 269	; 0C-	;Compton;;;;
+
+353	; 258	; 1C	;Rivendell;vsa+,ToagMastDai+,lothlorien+;;;
+353	; 259	; 0C-	;Rivendell;;;;
+
+149	; 249	; 1C	;Crabfroth;gangsta+,wraiths+,shadow+;;;
+149	; 250	; 0C-	;Crabfroth;;;;
+
+236	; 231	; 2C	;Bullerbyn;;;;
+237	; 231	; 0C-	;Bullerbyn;;;;
+238	; 231	; 0C-	;Bullerbyn;;;;
+
+261	; 281	; 1C	;Xanadu;;;;
+260	; 282	; 0C-	;Xanadu;;;;
+261	; 282	; 0C-	;Xanadu;;;;
+
+35	; 372	; 1C	;Castle-ewige;texas+,lonely+;;;
+36	; 372	; 0C-	;Castle-ewige;;;;
+37	; 372	; 0C-	;Castle-ewige;;;;
+35	; 373	; 0C-	;Castle-ewige;;;;
+36	; 373	; 0C-	;Castle-ewige;;;;
+37	; 373	; 0C-	;Castle-ewige;;;;
+
+253	; 438	; 1C	;Nampa;;;;
+201	; 261	; 1C	;Wihneland;;;;
+210	; 265	; 2C	;Teamonetwenty;;;;
+334	; 385	; 3C	;Gomorra;puli+;;;
+304	; 381	; 0C	;Hayhead;;;;
+227	; 317	; 0C	;Loserville;pojat+,neekerit+;;;
+275	; 250	; 0C	;Sepulchre;elden+;;;
+270	; 232	; 3C	;Kostovalikapale;rautavarsi+;;;
+110	; 187	; 1C	;Tortuga;jams+,antiheroes+,saato+;;;
+369	; 55	; 2C	;Pielavesj;;;;
+168	; 290	; 2C	;Otieno;nightlife+;;;
+183	; 293	; 3C	;Dentistador;;;;
+175	; 269	; 1C	;Nieuw-amsterdam;;;;
+201	; 168	; 1C	;Rautasaari;;;;
+219	; 308	; 3C	;Atlantis;bonanza+;;;
+301	; 220	; 1C	;Darkwoods;;;;
+243	; 302	; 0C	;Giza-plateau;;;;
+336	; 250	; 0C	;Revalanneva;;;;
+318	; 384	; 0C	;Destiny;;;;
+371	; 123	; 3C	;Fevre;;;;
+122	; 50	; 0C	;Xian;;;;
+246	; 241	; 1C	;Manadrain;;28.01.2011;;

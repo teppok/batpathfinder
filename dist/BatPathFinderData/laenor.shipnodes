@@ -1,0 +1,46 @@
+#! laenor9 daerwon
+#! laenor-lucentium daerwon
+#! desolathya-lucentium1 windhamkeep
+#! desolathya2 windhamkeep
+
+#daerwon laenor9::laenor9
+#laenor9 daerwon::daerwon
+
+#daerwon laenor-lucentium::laenor-lucentium
+#laenor-lucentium daerwon::daerwon
+
+#laenor-lucentium desolathya-lucentium1::desolathya-lucentium1
+#desolathya-lucentium1 laenor-lucentium::laenor-lucentium
+
+#daerwon desolathya-lucentium1::desolathya-lucentium1
+#desolathya-lucentium1 daerwon::daerwon
+
+laenor9 desolathya2::desolathya-lucentium1 desolathya2
+desolathya2 laenor9::desolathya-lucentium1 laenor9
+
+laenor10 rothikgen1::rothikgen1
+rothikgen1 laenor10::laenor10
+
+laenor6 furnachia1::laenor-furnachia furnachia1
+furnachia1 laenor6::laenor-furnachia laenor6
+
+laenor9 lucentium1::laenor-lucentium lucentium1
+lucentium1 laenor9::laenor-lucentium laenor9
+
+desolathya2 lucentium1::desolathya-lucentium1 desolathya-lucentium2 lucentium1
+lucentium1 desolathya2::desolathya-lucentium2 desolathya-lucentium1 desolathya2
+
+lucedock_out lucedock::1 *s
+lucedock lucedock_out::1 *n
+
+desodock_out desodock::1 *w
+desodock desodock_out::1 *e
+
+laedock_out laedock::1 *se
+laedock laedock_out::1 *nw
+
+rothdock_out rothdock::1 *e
+rothdock rothdock_out::1 *w
+
+furndock_out furndock::1 *e
+furndock furndock_out::1 *w

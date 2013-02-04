@@ -1,0 +1,35 @@
+
+# Define all nodes and their closest outworld nodes to be used for approx function
+
+! caly calyc
+! desodock desodockc
+! harmony harmonyc
+! tenebrae tenebraec
+! gehenna gehennac
+! mc_castle midnightcarnival
+! apollo_in apollo
+! apollo_leader apollo
+! x xc
+
+caly calyc::7 e n 6 e 25 s
+calyc caly::25 n 6 w s 7 w
+
+desodockc desodock::11 e
+desodock desodockc::11 w
+
+harmonyc harmony::3 s
+harmony harmonyc::3 n
+
+tenebraec tenebrae::5 s
+tenebrae tenebraec::5 n
+
+midnightcarnival mc_castle::n n ne ne n n n nw n buy~ticket n e ne n nw w sw s ne w w nw n n w n e n n u u town n n d n e n e n e ne se s s castle
+mc_castle midnightcarnival::out n n nw sw w s w s w s u s s out d d s s w s e s s se e e s s s se s s s sw sw s out
+
+gehennac gehenna::7 w
+gehenna gehennac::7 e
+
+apollo_in apollo_leader::e e se e s s e e ne se ne n nw e d sw e e se sw w w se e ne s e ne
+
+xc x::3 s w
+x xc::3 n
