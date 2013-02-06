@@ -1,0 +1,87 @@
+# Contains tradelane coordinates in Ggr coordinate system, and
+# tradelane links that refer to the node names specified here.
+# These names bear connection to other .loc files.
+# Only nodes that fall on some continent are allowed for specifying links.
+
+5867	2873	rothikgen5
+a	3069	rothikgen4
+5668	3268	rothikgen1
+5428	3028	rothikgen2
+5428	2930	rothikgen3
+4830	4106	laenor10
+4876	4106	laenor4
+4876	4740	laenor5
+4760	4856	laenor6
+4949	4856	laenor-furnachia
+5424	5331	furnachia1
+5494	5331	furnachia2
+4301	4856	laenor7
+4241	4796	laenor8
+4241	4611	laenor9
+4396	4456	daerwon
+4407	4456	arelium1
+4460	4509	arelium2
+4460	4562	arelium3
+3858	4994	laenor-lucentium
+3858	6453	lucentium1
+3935	6453	lucentium2
+3935	6920	lucentium3
+3462	5390	desolathya-lucentium1
+3462	6057	desolathya-lucentium2
+3510	6801	lucentium4
+3417	5390	desolathya2
+3417	5011	desolathya1
+3348	4942	desolathya4
+3103	4942	desolathya5
+2907	5138	desolathya6
+2907	4997	desolathya10
+2907	5333	desolathya7
+2999	5425	desolathya8
+3254	5425	desolathya9
+3318	5361	windhamkeep
+3347	5390	desolathya3
+3501	5011	laenor-desolathya
+4346	4166	laenor2
+4346	4406	laenor1
+4406	4106	laenor3
+3163	5122	desocrater2
+3307	5122	desocrater1
+
+! daerwon laenor1
+! laenor1 laenor2
+! laenor2 laenor3
+! laenor3 laenor10
+! laenor10 laenor4
+! laenor4 laenor5
+! laenor5 laenor6
+! laenor6 laenor7
+! laenor7 laenor8
+! laenor8 laenor9
+! laenor9 daerwon
+! daerwon arelium1
+! arelium1 arelium2
+! arelium2 arelium3
+
+! desolathya1 desolathya2
+! desolathya2 desolathya3
+! desolathya3 windhamkeep
+! windhamkeep desolathya9
+! desolathya1 desolathya4
+! desolathya4 desolathya5
+! desolathya5 desolathya6
+! desolathya6 desolathya10
+! desolathya6 desolathya7
+! desolathya7 desolathya8
+! desolathya8 desolathya9
+! desocrater1 desocrater2
+
+! rothikgen1 rothikgen2
+! rothikgen2 rothikgen3
+! rothikgen1 rothikgen4
+! rothikgen4 rothikgen5
+
+! lucentium1 lucentium2
+! lucentium2 lucentium3
+! lucentium1 lucentium4
+
+! furnachia1 furnachia2

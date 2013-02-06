@@ -1,0 +1,23 @@
+# Contains tradelane coordinates in Ggr coordinate system, and
+# tradelane links that refer to the node names specified here.
+# These names bear connection to other .loc files.
+# Only nodes that fall on some continent are allowed for specifying links.
+
+4500	4500	laenor1
+4600	4500	laenor2
+4600	4600	laenor3
+4500	4600	laenor4
+4400	4600	laenor5
+4400	4500	laenor6
+4400	4400	laenor7
+4500	4400	laenor8
+4600	4400	laenor9
+
+! laenor1 laenor2
+! laenor1 laenor3
+! laenor1 laenor4
+! laenor1 laenor5
+! laenor1 laenor6
+! laenor1 laenor7
+! laenor1 laenor8
+! laenor1 laenor9
