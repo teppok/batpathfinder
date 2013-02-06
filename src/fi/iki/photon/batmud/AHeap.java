@@ -87,9 +87,15 @@ class AHeap {
 		return null;
 	}
 
-	/** Inserts an element in the heap. */
+	/** Inserts an element in the heap.
+	 * Throws an exception if there is already an element with the
+	 * same key in the hash. 
+	 * @param n
+	 * @throws BPFException if the algorithm bugs.
+	 * */
 	
-	void insert(TrueNode n) {
+	void insert(TrueNode n) throws BPFException {
+		if (hash.get(n.getKey()) != null) throw new BPFException("Bug in TrueNode");
 		this.queue.add(n); // O(log n)
 		this.hash.put(n.getKey(), n); // O(1)
 	}

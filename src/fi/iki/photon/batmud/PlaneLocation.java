@@ -61,10 +61,12 @@ class PlaneLocation implements Location {
 	public byte getContinent() { return continent; }
 	/**
 	 * Basic getter for x.
+	 * @return x
 	 */
 	short getX() { return x; }
 	/**
 	 * Basic getter for y.
+	 * @return y
 	 */
 	short getY() { return y; }
 
@@ -101,6 +103,11 @@ class PlaneLocation implements Location {
 		return continent*851*851+y*851+x;
 	}
 	
+	/** Given a string representing a PlaneLocation, parse it and return the result
+	 * as a Location. If parsing fails for any reason, return null.
+	 * @param locStr
+	 * @return Parsed location, or null if failed.
+	 */
 	
 	static Location parseLocation(String locStr) {
 		Location loc = null;

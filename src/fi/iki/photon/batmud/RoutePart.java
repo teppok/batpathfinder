@@ -42,6 +42,7 @@ class RoutePart {
 	 */
 	
 	static String parseRoute(ArrayList<RoutePart> route) {
+		if (route == null) return "";
 		String routeString = "";
 		for (int i = 0; i < route.size(); i++) {
 			RoutePart r = route.get(i);

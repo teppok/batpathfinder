@@ -188,9 +188,10 @@ class Area {
 	 * @param naval
 	 * @param lift
 	 * @return List of TrueNodes containing PlaneLocations.
+	 * @throws BPFException if the algorithm bugs.
 	 */
 	
-	List<TrueNode> getPlaneLocationNeighbors(TrueNode node, PlaneLocation planeEnd, boolean naval, int lift) {
+	List<TrueNode> getPlaneLocationNeighbors(TrueNode node, PlaneLocation planeEnd, boolean naval, int lift) throws BPFException {
 		ArrayList<TrueNode> retVal = new ArrayList<>(20);
 		TrueNode newNode;
 		

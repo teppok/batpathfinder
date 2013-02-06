@@ -22,6 +22,9 @@
 
 package fi.iki.photon.batmud.api;
 
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
+
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
@@ -37,9 +40,11 @@ import fi.iki.photon.batmud.ui.BatPathFinderUI;
  *
  */
 
-public class ShellAPI implements BPFApi {
+public class ShellAPI implements BPFApi, WindowListener {
 
-	BatPathFinderUI bpfui;
+	private BatPathFinderUI bpfui;
+	
+	/** Basic constructor that initializes a bpfui. */
 	
 	ShellAPI() {
 		bpfui = new BatPathFinderUI("C:\\Users\\Teppo\\Batclient", this, true);
@@ -68,11 +73,50 @@ public class ShellAPI implements BPFApi {
 	public void createWindow(JPanel pathPanel) {
 		JFrame jf = new JFrame("BPF");
 		jf.add(pathPanel);
+		jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		jf.addWindowListener(this);
 //		jf.add(new ListPanel(a));
 //		jf.add(new InfoPanel());
 		jf.pack();
 		jf.setVisible(true);
 	}
+
+	@Override
+	public void windowOpened(WindowEvent e) {
+		// Auto-generated method stub
+		
+	}
+
+	@Override
+	public void windowClosing(WindowEvent e) {
+		System.out.println("Closing");
+	}
+
+	@Override
+	public void windowClosed(WindowEvent e) {
+		System.exit(0);
+	}
+
+	@Override
+	public void windowIconified(WindowEvent e) {
+		// Auto-generated method stub
+	}
+
+	@Override
+	public void windowDeiconified(WindowEvent e) {
+		// Auto-generated method stub
+	}
+
+	@Override
+	public void windowActivated(WindowEvent e) {
+		// Auto-generated method stub
+	}
+
+	@Override
+	public void windowDeactivated(WindowEvent e) {
+		// Auto-generated method stub
+	}
+
 
 	/**
 	 * Main testing method.

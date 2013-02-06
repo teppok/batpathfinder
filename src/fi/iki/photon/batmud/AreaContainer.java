@@ -98,7 +98,7 @@ public class AreaContainer {
 		names = new HashMap<>();
 		areas = new Area[5];
 		cityNodes = new HashMap<>();
-		tradeLanes = new Tradelanes();
+		tradeLanes = new Tradelanes(baseDir + "/tradelane.txt", baseDir + "/costs.ship");
 		
 		load();
 		
@@ -120,9 +120,6 @@ public class AreaContainer {
 		load("luc", CONT_LUC, 700, 500);
 		loadExtraEdges(baseDir + "/laenor.shipnodes", true);
 		loadExtraEdges(baseDir + "/laenor.shipnodes.private", true);		
-		
-		tradeLanes.loadTradeLanes(baseDir + "/tradelane.txt");
-		tradeLanes.loadCosts(baseDir + "/costs.ship");
 		
 //		System.out.println(isOnTradeLane(531,95,CONT_DESO));
 //		System.out.println(isOnTradeLane(531,100,CONT_DESO));
@@ -638,9 +635,10 @@ public class AreaContainer {
 	 * @param naval
 	 * @param lift
 	 * @return List of TrueNode-wrapped neighbor Locations.
+	 * @throws BPFException if the algorithm bugs
 	 */
 	
-	List<TrueNode> getNeighbors(TrueNode node, PlaneLocation planeEnd, boolean naval, int lift) {
+	List<TrueNode> getNeighbors(TrueNode node, PlaneLocation planeEnd, boolean naval, int lift) throws BPFException {
 		if (node.getLoc() instanceof PlaneLocation) {
 			List<TrueNode> a = areas[node.getLoc().getContinent()].getPlaneLocationNeighbors(node, planeEnd, naval, lift);
 			a.addAll(getNLNeighborsOfPlaneLocation(node, planeEnd, naval));
@@ -661,7 +659,7 @@ public class AreaContainer {
 	 * @return List of TrueNode-wrapped neighbor Locations.
 	 */
 	
-	private List<TrueNode> getNLNeighborsOfPlaneLocation(TrueNode node, PlaneLocation planeEnd, boolean naval) {
+	private List<TrueNode> getNLNeighborsOfPlaneLocation(TrueNode node, PlaneLocation planeEnd, boolean naval) throws BPFException {
 		ArrayList<TrueNode> retVal = new ArrayList<>(5);
 
 		List<NameLocation> nameList = names.get(node.getLoc());
@@ -682,9 +680,10 @@ public class AreaContainer {
 	 * @param planeEnd Used to calculate the heuristic cost.
 	 * @param naval
 	 * @return List of TrueNode wrapped neighbor locations.
+	 * @throws BPFException if the algorithm bugs.
 	 */
 	
-	static private List<TrueNode> getNameLocationNeighbors(TrueNode n, PlaneLocation planeEnd, boolean naval) {
+	static private List<TrueNode> getNameLocationNeighbors(TrueNode n, PlaneLocation planeEnd, boolean naval) throws BPFException {
 //		System.out.println(n + " " + planeEnd + " " + naval);
 		NameLocation loc = (NameLocation) n.getLoc();
 		ArrayList<TrueNode> v = new ArrayList<>();

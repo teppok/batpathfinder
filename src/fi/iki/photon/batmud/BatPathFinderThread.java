@@ -54,13 +54,17 @@ class BatPathFinderThread extends Thread {
 		 */
 		@Override
 		public void run() {
-			String path = solve();
-			if (doContinue == false) {
-				caller.solved(null, -1);
-			} else {
-				if (caller != null) {
-					caller.solved(path, type);
+			try {
+				String path = solve();
+				if (doContinue == false) {
+					caller.solved(null, -1);
+				} else {
+					if (caller != null) {
+						caller.solved(path, type);
+					}
 				}
+			} catch (BPFException e) {
+				caller.solved(e.toString(), -2);
 			}
 		}
 
@@ -89,7 +93,7 @@ class BatPathFinderThread extends Thread {
 		 * @return A string containing a string of commands from start node to end node.
 		 */
 		
-		private String solve() {
+		private String solve() throws BPFException {
 			TrueNode testNode;
 
 			if (start == null || end == null) return null;
@@ -229,7 +233,7 @@ class BatPathFinderThread extends Thread {
 		 * @param node
 		 */
 		
-		private void pushSuccessors(TrueNode node) {
+		private void pushSuccessors(TrueNode node) throws BPFException {
 
 //			if (DEBUG) System.out.println(node);
 			List<TrueNode> neighbors = areaContainer.getNeighbors(node, approxEndLocation, naval, lift);

@@ -23,9 +23,13 @@ import java.util.HashMap;
 
 class Tradelanes {
 
-	public static final int VERT=0;
-	public static final int HORIZ=1;
-	public static final int UP=2;
+	/** Tradelane is vertical. */
+	static final int VERT=0;
+	/** Tradelane is horizontal. */
+	static final int HORIZ=1;
+	/** Tradelane is diagonally northeast. */
+	static final int UP=2;
+	/** Tradelane is diagonally southeast. */
 	public static final int DOWN=3;
 	
 	/**
@@ -38,43 +42,66 @@ class Tradelanes {
 	 */
 	
 	class TradeLane {
-		final PlaneLocation start, end;
+		/** Tradelane starting point. */
+		final PlaneLocation start;
+		/** Tradelane ending point. */
+		final PlaneLocation end;
+		/** Tradelane direction. */
 		final int direction;
-		
-		TradeLane(PlaneLocation p1, PlaneLocation p2) {
+
+		/**
+		 * Basic constructor for TradeLane.
+		 * Tradelane must be horizontal, vertical, or at exactly 45 degree tilt.
+		 * @param p1
+		 * @param p2
+		 * @throws IOException if planelocations specify a faulty Tradelane.
+		 */
+		TradeLane(PlaneLocation p1, PlaneLocation p2) throws IOException {
 			
-			if (p1.getX() == p2.getX() && p1.getY() < p2.getY()) {
-				start = p1; end = p2;
-				direction = VERT;
+			if (p1 == null || p2 == null) throw new IOException("Malformed tradelane");
+			
+			if (p1.getX() == p2.getX()) {
+				if (p1.getY() <= p2.getY()) {
+					start = p1; end = p2;
+					direction = VERT;
+				} else {
+					start = p2; end = p1;
+					direction = VERT;
+				}
 			}
-			else if (p1.getX() == p2.getX() && p1.getY() > p2.getY()) {
-				start = p2; end = p1;
-				direction = VERT;
+			else if (p1.getY() == p2.getY()) {
+				if (p1.getX() < p2.getX()) {
+					start = p1; end = p2;
+					direction = HORIZ;
+				} else {
+					start = p2; end = p1;
+					direction = HORIZ;
+				}
 			}
-			else if (p1.getX() < p2.getX() && p1.getY() == p2.getY()) {
-				start = p1; end = p2;
-				direction = HORIZ;
+			else if (p1.getX() < p2.getX()) {
+				if (p1.getY() < p2.getY()) {
+					start = p1; end = p2;
+					direction = DOWN;
+				} else {
+					start = p1; end = p2;
+					direction = UP;
+				}
 			}
-			else if (p1.getX() > p2.getX() && p1.getY() == p2.getY()) {
-				start = p2; end = p1;
-				direction = HORIZ;
+			else // Now (p1.getX() > p2.getX()) {
+				if (p1.getY() < p2.getY()) {
+					start = p2; end = p1;
+					direction = UP;
+				} else {
+					start = p2; end = p1; 
+					direction = DOWN;
+				}
+			
+			if (direction == DOWN || direction == UP) {
+				if (Math.abs(end.getX() - start.getX()) != Math.abs(end.getY() - start.getY())) {
+					throw new IOException("Malformed tradelane");
+				}
 			}
-			else if (p1.getX() < p2.getX() && p1.getY() < p2.getY()) {
-				start = p1; end = p2;
-				direction = DOWN;
-			}
-			else if (p1.getX() < p2.getX() && p1.getY() > p2.getY()) {
-				start = p1; end = p2;
-				direction = UP;
-			}
-			else if (p1.getX() > p2.getX() && p1.getY() < p2.getY()) {
-				start = p2; end = p1;
-				direction = UP;
-			}
-			else if (p1.getX() > p2.getX() && p1.getY() > p2.getY()) {
-				start = p2; end = p1; 
-				direction = DOWN;
-			} else { start = null; end = null; direction = -1; }
+
 		}
 	}
 
@@ -83,16 +110,23 @@ class Tradelanes {
 	private final ArrayList<ArrayList<TradeLane>> tradeLaneArray;
 
 	/**
-	 * A basic constructor.
+	 * A basic constructor. Specify files from where to read tradelanes
+	 * and naval costs.
+	 * @param fileName
+	 * @param costsFileName
+	 * @throws IOException if file reading fails due to errors or faulty data.
 	 */
 	
-	Tradelanes() {
+	Tradelanes(String fileName, String costsFileName) throws IOException {
 		tradeLaneArray = new ArrayList<>();
 		tradeLaneArray.add(0, new ArrayList<TradeLane>(5));
 		tradeLaneArray.add(1, new ArrayList<TradeLane>(5));
 		tradeLaneArray.add(2, new ArrayList<TradeLane>(5));
 		tradeLaneArray.add(3, new ArrayList<TradeLane>(5));
 		tradeLaneArray.add(4, new ArrayList<TradeLane>(5));
+		
+		loadTradelanes(fileName);
+		loadCosts(costsFileName);
 	}
 
 	/**
@@ -140,10 +174,8 @@ class Tradelanes {
 		if (continent == AreaContainer.CONT_LUC) {
 			return x - 4097 + 634;
 		}
-		if (continent == AreaContainer.CONT_ROTH) {
-			return x - 4097 - 1311;
-		}
-		return 0;
+		// continent == AreaContainer.CONT_ROTH
+		return x - 4097 - 1311;
 	}
 
 	/**
@@ -169,10 +201,8 @@ class Tradelanes {
 		if (continent == AreaContainer.CONT_LUC) {
 			return y - 4097 - 2345;
 		}
-		if (continent == AreaContainer.CONT_ROTH) {
-			return y - 4097 + 1255;
-		}
-		return 0;
+		// continent == AreaContainer.CONT_ROTH
+		return y - 4097 + 1255;
 	}
 
 	/**
@@ -182,9 +212,9 @@ class Tradelanes {
 	 * @throws IOException
 	 */
 	
-	void loadTradeLanes(String fileName) throws IOException {
+	private void loadTradelanes(String fileName) throws IOException {
 		File f = new File(fileName);
-		if (!f.exists()) return;
+		if (!f.exists()) throw new IOException();
 		
 		HashMap<String, PlaneLocation> markers = new HashMap<>();
 		
@@ -196,21 +226,29 @@ class Tradelanes {
 					if (!"".equals(line) && !line.startsWith("#")) {
 						if (line.startsWith("!")) {
 							String parts[] = line.split(" ");
-							byte cont = Byte.parseByte(parts[1].trim());
-							String name1 = parts[2].trim();
-							String name2 = parts[3].trim();
+							if (parts.length != 3) throw new IOException("Malformed " + fileName);
+							if ("".equals(parts[1])) throw new IOException("Malformed " + fileName);
+							String name1 = parts[1].trim();
+							String name2 = parts[2].trim();
 							PlaneLocation p1 = markers.get(name1);
 							PlaneLocation p2 = markers.get(name2);
 							
 							TradeLane tl = new TradeLane(p1, p2);
+							byte cont = p1.getContinent();
 							
 							ArrayList<TradeLane> tla = tradeLaneArray.get(cont);
 							tla.add(tl);
 						} else {
-							//bp.error(line);
 							String parts[] = line.split("\t");
-							int locX = Integer.parseInt(parts[0].trim());
-							int locY = Integer.parseInt(parts[1].trim());
+							if (parts.length != 3) throw new IOException("Malformed " + fileName);
+							
+							int locX, locY;
+							try {
+								locX = Integer.parseInt(parts[0].trim());
+								locY = Integer.parseInt(parts[1].trim());
+							} catch (NumberFormatException e) {
+								throw new IOException("Malformed " + fileName);
+							}
 							int continent = findContinent(locX, locY);
 							String name = parts[2].trim();
 							
@@ -235,7 +273,7 @@ class Tradelanes {
 	 * @throws IOException
 	 */
 	
-	void loadCosts(String fileName) throws IOException {
+	private void loadCosts(String fileName) throws IOException {
 		navalCosts1 = new short[255];
 		navalCosts2 = new short[255];
 		for (int i=0; i<255; i++) { navalCosts1[i] = -1; navalCosts2[i] = -1; }
@@ -245,9 +283,16 @@ class Tradelanes {
 				String line = reader.readLine();
 				if (line == null) { readMore = false; } else {
 					String parts[] = line.split(" ");
+					if (parts.length != 3) throw new IOException("Malformed " + fileName);
+					
 					char terrain = parts[0].charAt(0);
-					short minCost = Short.parseShort(parts[1]);
-					short maxCost = Short.parseShort(parts[2]);
+					short minCost, maxCost;
+					try {
+						minCost = Short.parseShort(parts[1]);
+						maxCost = Short.parseShort(parts[2]);
+					} catch (NumberFormatException e) {
+						throw new IOException("Malformed " + fileName);
+					}
 					navalCosts1[terrain] = minCost;
 					navalCosts2[terrain] = maxCost;
 				}
@@ -286,12 +331,11 @@ class Tradelanes {
 					if (dx == dy) { return true; }
 				}
 			}
-			else if (tl.direction == UP) {
-				if (tl.start.getX() <= x && x <= tl.end.getX()) {
-					int dx = x - tl.start.getX();
-					int dy = - y + tl.start.getY();
-					if (dx == dy) { return true; }
-				}
+			// direction == UP
+			if (tl.start.getX() <= x && x <= tl.end.getX()) {
+				int dx = x - tl.start.getX();
+				int dy = - y + tl.start.getY();
+				if (dx == dy) { return true; }
 			}
 		}
 		return false;

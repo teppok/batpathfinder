@@ -96,7 +96,9 @@ class NameLocation implements Location {
 	}
 	
 	/**
-	 * Returns true if this location is reachable by the movement mode nav.
+	 * Returns true if this location is immediately reachable by the movement mode nav.
+	 * Adjacent nodes can always be accessed, but if it's inside the NameLocation network,
+	 * we can immediately say it's not reachable if there are no links to it in the queried mode.
 	 */
 	@Override
 	public boolean isReachable(boolean nav) {

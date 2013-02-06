@@ -42,41 +42,41 @@
 3163	5122	desocrater2
 3307	5122	desocrater1
 
-! 0 daerwon laenor1
-! 0 laenor1 laenor2
-! 0 laenor2 laenor3
-! 0 laenor3 laenor10
-! 0 laenor10 laenor4
-! 0 laenor4 laenor5
-! 0 laenor5 laenor6
-! 0 laenor6 laenor7
-! 0 laenor7 laenor8
-! 0 laenor8 laenor9
-! 0 laenor9 daerwon
-! 0 daerwon arelium1
-! 0 arelium1 arelium2
-! 0 arelium2 arelium3
+! daerwon laenor1
+! laenor1 laenor2
+! laenor2 laenor3
+! laenor3 laenor10
+! laenor10 laenor4
+! laenor4 laenor5
+! laenor5 laenor6
+! laenor6 laenor7
+! laenor7 laenor8
+! laenor8 laenor9
+! laenor9 daerwon
+! daerwon arelium1
+! arelium1 arelium2
+! arelium2 arelium3
 
-! 1 desolathya1 desolathya2
-! 1 desolathya2 desolathya3
-! 1 desolathya3 windhamkeep
-! 1 windhamkeep desolathya9
-! 1 desolathya1 desolathya4
-! 1 desolathya4 desolathya5
-! 1 desolathya5 desolathya6
-! 1 desolathya6 desolathya10
-! 1 desolathya6 desolathya7
-! 1 desolathya7 desolathya8
-! 1 desolathya8 desolathya9
-! 1 desocrater1 desocrater2
+! desolathya1 desolathya2
+! desolathya2 desolathya3
+! desolathya3 windhamkeep
+! windhamkeep desolathya9
+! desolathya1 desolathya4
+! desolathya4 desolathya5
+! desolathya5 desolathya6
+! desolathya6 desolathya10
+! desolathya6 desolathya7
+! desolathya7 desolathya8
+! desolathya8 desolathya9
+! desocrater1 desocrater2
 
-! 2 rothikgen1 rothikgen2
-! 2 rothikgen2 rothikgen3
-! 2 rothikgen1 rothikgen4
-! 2 rothikgen4 rothikgen5
+! rothikgen1 rothikgen2
+! rothikgen2 rothikgen3
+! rothikgen1 rothikgen4
+! rothikgen4 rothikgen5
 
-! 3 lucentium1 lucentium2
-! 3 lucentium2 lucentium3
-! 3 lucentium1 lucentium4
+! lucentium1 lucentium2
+! lucentium2 lucentium3
+! lucentium1 lucentium4
 
-! 4 furnachia1 furnachia2
+! furnachia1 furnachia2

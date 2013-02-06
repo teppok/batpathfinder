@@ -37,9 +37,13 @@ import java.util.Arrays;
  */
 
 public class ListPanel extends JPanel {
-	static final long serialVersionUID = 0;
-	AreaContainer area;
+	private static final long serialVersionUID = 0;
+	private AreaContainer area;
 	
+	/**
+	 * A basic constructor.
+	 * @param a
+	 */
 	ListPanel(AreaContainer a) {
 		area = a;
 		JTextArea areaNames = new JTextArea(3, 50);

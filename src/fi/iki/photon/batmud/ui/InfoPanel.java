@@ -32,7 +32,8 @@ import java.awt.Dimension;
  */
 
 public class InfoPanel extends JPanel {
-	static final long serialVersionUID = 0;
+	private static final long serialVersionUID = 0;
+	/** Basic constructor. */
 	InfoPanel() {
 		JTextArea text = new JTextArea(
 				"This utility finds paths from place to place. " +

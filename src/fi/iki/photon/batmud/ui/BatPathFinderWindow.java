@@ -146,6 +146,7 @@ public class BatPathFinderWindow extends JPanel implements ActionListener {
 	}
 	/**
 	 * A standard setter for status of go button.
+	 * @param b
 	 */
 
 	void setGoEnabled(boolean b) {
@@ -171,6 +172,7 @@ public class BatPathFinderWindow extends JPanel implements ActionListener {
 	
 	/**
 	 * A standard setter for the from field.
+	 * @param text
 	 */
 	void setFrom(String text) {
 		from.setText(text);
@@ -178,6 +180,7 @@ public class BatPathFinderWindow extends JPanel implements ActionListener {
 
 	/**
 	 * A standard setter for the to field.
+	 * @param text
 	 */
 	void setTo(String text) {
 		to.setText(text);
@@ -185,6 +188,7 @@ public class BatPathFinderWindow extends JPanel implements ActionListener {
 
 	/**
 	 * Returns the type of travel that is selected: walk=1, mounted=2, naval=3, interContinental=4, esiris=5.
+	 * @return Travel type
 	 */
 	
 	int getTravel() {

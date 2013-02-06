@@ -38,15 +38,17 @@ class Link {
 	/**
 	 * A standard constructor with a forced cost.
 	 * 
-	 * @param d
-	 * @param l
-	 * @param c
-	 * @param n
+	 * @param destination
+	 * @param linkString
+	 * @param cost
+	 * @param naval
+	 * @throws BPFException if destination or linkstring is null.
 	 */
 	
-	Link(NameLocation d, String l, int c, boolean n) {
-		this.dest = d; this.linkString = l; this.cost = c;
-		this.naval = n;
+	Link(NameLocation destination, String linkString, int cost, boolean naval) throws BPFException {
+		if (linkString == null || destination == null) throw new BPFException("Bug in Link");
+		this.dest = destination; this.linkString = linkString; this.cost = cost;
+		this.naval = naval;
 	}
 
 	/**
@@ -56,12 +58,11 @@ class Link {
 	 * @param d
 	 * @param l
 	 * @param n
+	 * @throws BPFException if 
 	 */
 	
-	Link(NameLocation d, String l, boolean n) {
-		this.dest = d; this.linkString = l; this.cost = getLength(l);
-		this.naval = n;
-		//System.out.println(l + " c: " + cost);
+	Link(NameLocation d, String l, boolean n) throws BPFException {
+		this(d, l, getLength(l), n);
 	}
 
 	/**

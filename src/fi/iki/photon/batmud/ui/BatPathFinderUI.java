@@ -55,6 +55,8 @@ public class BatPathFinderUI implements SolvedListener {
 	private final BPFApi plugin;
 	private final BatPathFinderWindow window;
 	
+	private boolean initialized = false;
+	
 	private boolean openWindow = false;
 	
 	
@@ -97,9 +99,10 @@ public class BatPathFinderUI implements SolvedListener {
 	private void loadArea() {
 		try {
 			area = new AreaContainer(baseDir + "/BatPathFinderData");
+			initialized = true;
 		} catch (Exception e) {
 			plugin.output(e.toString() + "\n");			
-		} 		
+		}
 	}
 	
 
@@ -115,6 +118,7 @@ public class BatPathFinderUI implements SolvedListener {
 	 */
 	
 	private String walk(String path, int limit, boolean strictLimit, boolean ship) {
+		if (! initialized) return "";
 		if (path == null || "".equals(path) || " ".equals(path)) return "";
 		String[] parts = path.split(" ");
 		int i = 0;
@@ -241,6 +245,8 @@ public class BatPathFinderUI implements SolvedListener {
 	 */
 
 	void doGo(boolean turbo) {
+		if (! initialized) return;
+		
 		if (window.isGoEnabled()) {
 			window.setFrom("");
 			int travel = window.getTravel();
@@ -276,6 +282,8 @@ public class BatPathFinderUI implements SolvedListener {
 	 */
 	
 	void doSearch() {
+		if (! initialized) return;
+		
 			if ("".equals(window.getFrom()) || "".equals(window.getTo())) return;
 			//		try {
 				walkString = "";
@@ -391,6 +399,8 @@ public class BatPathFinderUI implements SolvedListener {
 	 */
 	
 	private void abort() {
+		if (! initialized) return;
+
 		area.abort();
 		solving = false;
 	}
@@ -409,6 +419,8 @@ public class BatPathFinderUI implements SolvedListener {
 	 */
 	
 	public boolean trigger(String strippedraw) {
+		if (! initialized) return false;
+		
 		try{
 /*
 			if (stripped.endsWith("tells you 'Done sailin!'")) {
@@ -494,6 +506,7 @@ public class BatPathFinderUI implements SolvedListener {
 	 */
 	
 	public void process(Object o) {
+		if (! initialized) return;
 		if (! (o instanceof String[])) return;
 		String[] cmds = (String[]) o;
 		if (cmds.length == 0) return;

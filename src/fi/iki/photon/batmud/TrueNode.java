@@ -41,17 +41,19 @@ class TrueNode implements Comparable<TrueNode> {
 
 	/**
 	 * A basic constructor. 
-	 * @param l
-	 * @param p
-	 * @param c
-	 * @param h
+	 * @param location
+	 * @param parent
+	 * @param cost
+	 * @param heuristic
+	 * @throws BPFException if location is null
 	 */
 	
-	TrueNode(Location l, TrueNode p, int c, int h) {
-		this.loc = l;
-		this.parent = p;
-		this.cost = c;
-		this.heuristic = c + h;
+	TrueNode(Location location, TrueNode parent, int cost, int heuristic) throws BPFException {
+		if (location == null) throw new BPFException("Bug in TrueNode");
+		this.loc = location;
+		this.parent = parent;
+		this.cost = cost;
+		this.heuristic = cost + heuristic;
 	}
 
 	/**
@@ -111,6 +113,10 @@ class TrueNode implements Comparable<TrueNode> {
 	public int getDirection() {
 		if (parent == null) return -1;
 		if (!(parent.loc instanceof PlaneLocation) || ! (loc instanceof PlaneLocation)) return -1;
+		int oldcont = ((PlaneLocation) parent.loc).getContinent();
+		int newcont = ((PlaneLocation) loc).getContinent();
+		if (oldcont != newcont) return -1;
+		
 		int oldx = ((PlaneLocation) parent.loc).getX();
 		int newx = ((PlaneLocation) loc).getX();
 		int oldy = ((PlaneLocation) parent.loc).getY();
