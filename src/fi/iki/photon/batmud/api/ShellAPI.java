@@ -127,15 +127,16 @@ public class ShellAPI implements BPFApi, WindowListener {
 	
 	public static void main(String[] args) throws Exception {
 
-//		try {
+		try {
 //			Registry registry = LocateRegistry.getRegistry();
 //			registry.unbind("BPF");
 			
 			ShellAPI shell = new ShellAPI();
 
-			shell.process(new String[] { "mode", "ic" });
-			shell.process(new String[] { "map", "deso" });
-			shell.process(new String[] { "laenor9", "ancient_temple_of_gods" });
+//			shell.process(new String[] { "mode", "ic" });
+//			shell.process(new String[] { "laenor9", "ancient_temple_of_gods" });
+			shell.process(new String[] { "mode", "walk" });
+			shell.process(new String[] { "sc", "mithilstonedown" });
 //			BatPathFinderUI test = new BatPathFinderUI("C:\\Documents and Settings\\Teppo\\Batclient", null);
 //			BPF stub = (BPF) UnicastRemoteObject.exportObject(test, 0); 
 //			System.err.println("1");
@@ -185,6 +186,9 @@ public class ShellAPI implements BPFApi, WindowListener {
 //		String result = solve(a, a.getNameLocation("daerwon"), a.getPlaneLocation(376,295,0), true);
 //		System.out.println(result);
 	//	a.print(0);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
-
 }

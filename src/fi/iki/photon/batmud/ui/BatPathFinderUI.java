@@ -101,6 +101,7 @@ public class BatPathFinderUI implements SolvedListener {
 			area = new AreaContainer(baseDir + "/BatPathFinderData");
 			initialized = true;
 		} catch (Exception e) {
+			e.printStackTrace();
 			plugin.output(e.toString() + "\n");			
 		}
 	}

@@ -109,8 +109,7 @@ class PlaneLocation implements Location {
 	 * @return Parsed location, or null if failed.
 	 */
 	
-	static Location parseLocation(String locStr) {
-		Location loc = null;
+	static PlaneLocation parseLocation(String locStr) {
 		if (locStr.startsWith("L ")) {
 			String[] parts = locStr.split(" ");
 			if (parts.length != 4) {
@@ -122,9 +121,9 @@ class PlaneLocation implements Location {
 			if (x < 0 || x >= 850 || y < 0 || y >= 850 || cont < 0 || cont >= 5) {
 				return null;
 			}
-			loc = new PlaneLocation(x, y, cont);
+			return new PlaneLocation(x, y, cont);
 		}
-		return loc;
+		return null;
 	}
 
 }
