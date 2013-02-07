@@ -1,0 +1,9 @@
+# Contains tradelane coordinates in Ggr coordinate system, and
+# tradelane links that refer to the node names specified here.
+# These names bear connection to other .loc files.
+# Only nodes that fall on some continent are allowed for specifying links.
+
+3	3	node1
+5	5	node2
+
+! node1 node2
