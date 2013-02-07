@@ -105,28 +105,33 @@ class Tradelanes {
 		}
 	}
 
-	private short[] navalCosts1;
-	private short[] navalCosts2;
-	private final ArrayList<ArrayList<TradeLane>> tradeLaneArray;
+//	private final ArrayList<ArrayList<TradeLane>> tradeLaneArray;
 
+	private final ArrayList<TradeLane> tradeLanes;
+	
 	/**
 	 * A basic constructor. Specify files from where to read tradelanes
 	 * and naval costs.
 	 * @param fileName
-	 * @param costsFileName
+	 * @param minx 
+	 * @param maxx 
+	 * @param miny 
+	 * @param maxy 
+	 * @param fixx 
+	 * @param fixy 
 	 * @throws IOException if file reading fails due to errors or faulty data.
 	 */
 	
-	Tradelanes(String fileName, String costsFileName) throws IOException {
-		tradeLaneArray = new ArrayList<>();
+	Tradelanes(String fileName, int minx, int maxx, int miny, int maxy, int fixx, int fixy) throws IOException {
+		tradeLanes = new ArrayList<>(5);
+/*
 		tradeLaneArray.add(0, new ArrayList<TradeLane>(5));
 		tradeLaneArray.add(1, new ArrayList<TradeLane>(5));
 		tradeLaneArray.add(2, new ArrayList<TradeLane>(5));
 		tradeLaneArray.add(3, new ArrayList<TradeLane>(5));
 		tradeLaneArray.add(4, new ArrayList<TradeLane>(5));
-		
-		loadTradelanes(fileName);
-		loadCosts(costsFileName);
+*/		
+		loadTradelanes(fileName, minx, maxx, miny, maxy, fixx, fixy);
 	}
 
 	/**
@@ -137,7 +142,7 @@ class Tradelanes {
 	 * @param y
 	 * @return continent number like AreaContainer.CONT_LAENOR
 	 */
-	
+/*	
 	static private int findContinent(int x, int y) {
 		
 		if (x > 4000 && x < 5000 && y > 4000 && y < 5000) return AreaContainer.CONT_LAENOR;
@@ -152,7 +157,7 @@ class Tradelanes {
 
 		return -1;
 	}
-
+*/
 	/**
 	 * Given x in the Ggr tradelane format, and a continent,
 	 * returns the x value inside that continent.
@@ -160,7 +165,7 @@ class Tradelanes {
 	 * @param x
 	 * @return fixed x
 	 */
-	
+/*	
 	static private int fixX(int continent, int x) {
 		if (continent == AreaContainer.CONT_LAENOR) {
 			return x - 4097;
@@ -177,7 +182,7 @@ class Tradelanes {
 		// continent == AreaContainer.CONT_ROTH
 		return x - 4097 - 1311;
 	}
-
+*/
 	/**
 	 * Given y in the Ggr tradelane format, and a continent,
 	 * returns the y value inside that continent.
@@ -187,7 +192,7 @@ class Tradelanes {
 	 */
 	
 
-	
+	/*
 	static private int fixY(int continent, int y) {
 		if (continent == AreaContainer.CONT_LAENOR) {
 			return y - 4097;
@@ -204,7 +209,7 @@ class Tradelanes {
 		// continent == AreaContainer.CONT_ROTH
 		return y - 4097 + 1255;
 	}
-
+*/
 	/**
 	 * Load tradelanes from the file into memory.
 	 * 
@@ -212,7 +217,7 @@ class Tradelanes {
 	 * @throws IOException
 	 */
 	
-	private void loadTradelanes(String fileName) throws IOException {
+	private void loadTradelanes(String fileName, int minx, int maxx, int miny, int maxy, int fixx, int fixy) throws IOException {
 		File f = new File(fileName);
 		if (!f.exists()) throw new IOException();
 		
@@ -233,11 +238,10 @@ class Tradelanes {
 							PlaneLocation p1 = markers.get(name1);
 							PlaneLocation p2 = markers.get(name2);
 							
-							TradeLane tl = new TradeLane(p1, p2);
-							byte cont = p1.getContinent();
-							
-							ArrayList<TradeLane> tla = tradeLaneArray.get(cont);
-							tla.add(tl);
+							if (p1 != null && p2 != null) {
+								TradeLane tl = new TradeLane(p1, p2);
+								tradeLanes.add(tl);
+							}
 						} else {
 							String parts[] = line.split("\t");
 							if (parts.length != 3) throw new IOException("Malformed " + fileName);
@@ -249,14 +253,17 @@ class Tradelanes {
 							} catch (NumberFormatException e) {
 								throw new IOException("Malformed " + fileName);
 							}
-							int continent = findContinent(locX, locY);
-							String name = parts[2].trim();
+							if (locX >= minx && locX < maxx && locY >= miny && locY < maxy) {
+//							int continent = findContinent(locX, locY);
+								String name = parts[2].trim();
 							
-							if (continent >= 0) {
-								locX = fixX(continent, locX);
-								locY = fixY(continent, locY);
+//							if (continent >= 0) {
+								locX += fixx;
+								locY += fixy;
+//								locX = fixX(continent, locX);
+//								locY = fixY(continent, locY);
 						
-								PlaneLocation pl = new PlaneLocation(locX, locY, continent);
+								PlaneLocation pl = new PlaneLocation(locX, locY, 0);
 								markers.put(name,pl);
 							}
 						}
@@ -267,52 +274,18 @@ class Tradelanes {
 	}
 
 	/**
-	 * Load the naval costs.
-	 * 
-	 * @param fileName
-	 * @throws IOException
-	 */
-	
-	private void loadCosts(String fileName) throws IOException {
-		navalCosts1 = new short[255];
-		navalCosts2 = new short[255];
-		for (int i=0; i<255; i++) { navalCosts1[i] = -1; navalCosts2[i] = -1; }
-		try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
-			boolean readMore = true;
-			while (readMore) {
-				String line = reader.readLine();
-				if (line == null) { readMore = false; } else {
-					String parts[] = line.split(" ");
-					if (parts.length != 3) throw new IOException("Malformed " + fileName);
-					
-					char terrain = parts[0].charAt(0);
-					short minCost, maxCost;
-					try {
-						minCost = Short.parseShort(parts[1]);
-						maxCost = Short.parseShort(parts[2]);
-					} catch (NumberFormatException e) {
-						throw new IOException("Malformed " + fileName);
-					}
-					navalCosts1[terrain] = minCost;
-					navalCosts2[terrain] = maxCost;
-				}
-			}
-		}
-	}
-
-	/**
 	 * Returns true if the specified point is on a tradelane.
 	 * 
 	 * @param x
 	 * @param y
-	 * @param cont
 	 * @return true if x,y,cont is on a trade lane
 	 */
 	
-	boolean isOnTradeLane(int x, int y, int cont) {
-		ArrayList<TradeLane> tla = tradeLaneArray.get(cont);
-		for (int i=0; i < tla.size(); i++) {
-			TradeLane tl = tla.get(i);
+	boolean isOnTradeLane(int x, int y) {
+		
+//		ArrayList<TradeLane> tla = tradeLaneArray.get(cont);
+		for (int i=0; i < tradeLanes.size(); i++) {
+			TradeLane tl = tradeLanes.get(i);
 			//bp.error(tl.start + ".." + tl.end + "-" + tl.direction);
 			if (tl.direction == VERT) {
 				if ( tl.start.getX() == x && tl.start.getY() <= y &&  y <= tl.end.getY()) {
@@ -341,29 +314,5 @@ class Tradelanes {
 		return false;
 	}
 	
-
-	/**
-	 * Returns the minimum lift where movement is possible on terrain c.
-	 * @param c
-	 * @return minimum possible lift
-	 */
-	
-	short getMinLift(char c) {
-		short w = navalCosts1[c];
-		if (w < 0) return 10000;
-		return w;
-	}
-	/**
-	 * Returns the lift where movement is unhindered on terrain c.
-	 * @param c
-	 * @return minimum unhindered lift
-	 */
-	
-	short getMaxLift(char c) {
-		short w = navalCosts2[c];
-		if (w < 0) return 10000;
-		return w;
-	}
-
 
 }

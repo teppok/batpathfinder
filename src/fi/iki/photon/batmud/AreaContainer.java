@@ -73,7 +73,7 @@ public class AreaContainer {
 	private String baseDir;
 
 	private final Area[] areas;
-	private final Tradelanes tradeLanes;
+//	private final Tradelanes tradeLanes;
 	
 //	String[][] continentChange;
 	
@@ -98,7 +98,7 @@ public class AreaContainer {
 		names = new HashMap<>();
 		areas = new Area[5];
 		cityNodes = new HashMap<>();
-		tradeLanes = new Tradelanes(baseDir + "/tradelane.txt", baseDir + "/costs.ship");
+//		tradeLanes = new Tradelanes(baseDir + "/tradelane.txt", baseDir + "/costs.ship");
 		
 		load();
 		
@@ -112,12 +112,18 @@ public class AreaContainer {
 	 */
 	
 	private void load() throws IOException, BPFException {
-			
-		load("laenor", CONT_LAENOR, 827, 781);
-		load("roth", CONT_ROTH, 480, 480);
-		load("furn", CONT_FURN, 440, 480);
-		load("deso", CONT_DESO, 540, 530);
-		load("luc", CONT_LUC, 700, 500);
+		Costs c = new Costs(baseDir + "/costs", baseDir + "/costs.ship");
+		Tradelanes tl1 = new Tradelanes(baseDir + "/tradelane.txt", 4000, 5000, 4000, 5000, -4097, -4097);
+		load("laenor", CONT_LAENOR, tl1, c, 827, 781);
+		Tradelanes tl2 = new Tradelanes(baseDir + "/tradelane.txt", 2900, 3600, 4900, 5500, -4097+1211, -4097-819);
+		load("deso", CONT_DESO, tl2, c, 540, 530);
+		Tradelanes tl3 = new Tradelanes(baseDir + "/tradelane.txt", 3400, 4500, 6400, 7000, -4097-1211, -4097-1155);
+		load("furn", CONT_FURN, tl3, c, 440, 480);
+		Tradelanes tl4 = new Tradelanes(baseDir + "/tradelane.txt", 5300, 5600, 5000, 6000, -4097+634, -4097-2345);
+		load("luc", CONT_LUC, tl4, c, 700, 500);
+		Tradelanes tl5 = new Tradelanes(baseDir + "/tradelane.txt", 5300, 6000, 2800, 3300, -4097-1311, -4097+1255);
+		load("roth", CONT_ROTH, tl5, c, 480, 480);
+		
 		loadExtraEdges(baseDir + "/laenor.shipnodes", true);
 		loadExtraEdges(baseDir + "/laenor.shipnodes.private", true);		
 		
@@ -238,8 +244,10 @@ public class AreaContainer {
 			if (nl_orig != null) {
 				throw new BPFException("Location " + name + " already exists.");
 			}
-			
-			PlaneLocation pl = areas[cont].getPlaneLocation(locX, locY);
+			if (! areas[cont].isValidLocation(locX, locY)) {
+				return;
+			}
+			PlaneLocation pl = new PlaneLocation(locX, locY, cont);
 			NameLocation nl = new NameLocation(name, pl, true);
 			
 			List<NameLocation> namesList = names.get(pl);
@@ -400,8 +408,8 @@ public class AreaContainer {
 	 * @throws BPFException
 	 */
 	
-	private void load(String continent, int contNum, int sx, int sy) throws IOException, BPFException {
-		areas[contNum] = new Area(contNum, tradeLanes, sx, sy, baseDir + "/" + continent + ".map", baseDir + "/costs");
+	private void load(String continent, int contNum, Tradelanes tl, Costs c, int sx, int sy) throws IOException, BPFException {
+		areas[contNum] = new Area(tl, c, sx, sy, baseDir + "/" + continent + ".map");
 		
 		loadLocations(baseDir + "/" + continent + ".loc", contNum, true);
 		loadLocations(baseDir + "/" + continent + ".loc.extra", contNum, false);
@@ -596,13 +604,15 @@ public class AreaContainer {
 	 */
 	
 	public Location parseLocation(String s) {
-		Location retVal = PlaneLocation.parseLocation(s);
+		PlaneLocation retVal = PlaneLocation.parseLocation(s);
 		if (retVal != null) {
-			if (! areas[((PlaneLocation) retVal).getContinent()].validLocation((PlaneLocation) retVal)) { return null; }
-		} else {
-			retVal = getNameLocation(s);
+			int continent = retVal.getContinent();
+			if (! areas[continent].isValidLocation(retVal.getX(), retVal.getY())) {
+				return null;
+			}
+			return retVal;
 		}
-		return retVal;
+		return getNameLocation(s);
 	}
 	
 	
