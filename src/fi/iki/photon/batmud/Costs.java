@@ -1,8 +1,7 @@
 package fi.iki.photon.batmud;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
 import java.io.IOException;
+import java.util.List;
 
 /**
  * A class that will tell the costs of movement in the terrain.
@@ -42,18 +41,16 @@ public class Costs {
 	 */
 	private void loadCosts(String fileName) throws IOException {
 		for (int i=0; i<255; i++) { costs[i] = -1; }
-		try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
-			boolean readMore = true;
-			while (readMore) {
-				String line = reader.readLine();
-				if (line == null) { readMore = false; } else {
-					String parts[] = line.split(" ");
-					if (parts.length != 2) throw new IOException("Malformed " + fileName);
-					char terrain = parts[0].charAt(0);
-					short terrainCost = Short.parseShort(parts[1]);
-					costs[terrain] = terrainCost;
-				}
-			}
+		
+		List<String> contents = InputLoader.loadInput(fileName, false);
+		if (contents == null) throw new IOException("Missing " + fileName);
+
+		for (String line : contents) {
+			String parts[] = line.split(" ");
+			if (parts.length != 2) throw new IOException("Malformed " + fileName);
+			char terrain = parts[0].charAt(0);
+			short terrainCost = Short.parseShort(parts[1]);
+			costs[terrain] = terrainCost;
 		}
 	}
 
@@ -66,26 +63,24 @@ public class Costs {
 	
 	private void loadNavalCosts(String fileName) throws IOException {
 		for (int i=0; i<255; i++) { navalCosts1[i] = -1; navalCosts2[i] = -1; }
-		try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
-			boolean readMore = true;
-			while (readMore) {
-				String line = reader.readLine();
-				if (line == null) { readMore = false; } else {
-					String parts[] = line.split(" ");
-					if (parts.length != 3) throw new IOException("Malformed " + fileName);
-					
-					char terrain = parts[0].charAt(0);
-					short minCost, maxCost;
-					try {
-						minCost = Short.parseShort(parts[1]);
-						maxCost = Short.parseShort(parts[2]);
-					} catch (NumberFormatException e) {
-						throw new IOException("Malformed " + fileName);
-					}
-					navalCosts1[terrain] = minCost;
-					navalCosts2[terrain] = maxCost;
-				}
+		
+		List<String> contents = InputLoader.loadInput(fileName, false);
+		if (contents == null) throw new IOException("Missing " + fileName);
+
+		for (String line : contents) {
+			String parts[] = line.split(" ");
+			if (parts.length != 3) throw new IOException("Malformed " + fileName);
+			
+			char terrain = parts[0].charAt(0);
+			short minCost, maxCost;
+			try {
+				minCost = Short.parseShort(parts[1]);
+				maxCost = Short.parseShort(parts[2]);
+			} catch (NumberFormatException e) {
+				throw new IOException("Malformed " + fileName);
 			}
+			navalCosts1[terrain] = minCost;
+			navalCosts2[terrain] = maxCost;
 		}
 	}
 

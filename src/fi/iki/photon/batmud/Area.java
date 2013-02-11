@@ -176,10 +176,10 @@ class Area {
 				case 6: newx = x; newy = y + 1; break;
 				case 7: newx = x + 1; newy = y + 1; break;
 			}
-			int newCost = getCost(newx, newy, naval, lift);
-
+			
 			if (isValidLocation(newx, newy)) {
-
+				int newCost = getCost(newx, newy, naval, lift);
+				
 				if (naval) {
 					// Prevent naval movement from water squares to bridges (you'll end up under the bridge).
 					if (data[newx][newy] == '=' && (

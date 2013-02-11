@@ -1,11 +1,9 @@
 package fi.iki.photon.batmud;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 /**
  * A class that contains the logic pertaining to tradelanes and naval travel.
@@ -218,56 +216,48 @@ class Tradelanes {
 	 */
 	
 	private void loadTradelanes(String fileName, int minx, int maxx, int miny, int maxy, int fixx, int fixy) throws IOException {
-		File f = new File(fileName);
-		if (!f.exists()) throw new IOException();
-		
+		List<String> contents = InputLoader.loadInput(fileName, true);
+		if (contents == null) return;
+
 		HashMap<String, PlaneLocation> markers = new HashMap<>();
 		
-		try (BufferedReader reader = new BufferedReader(new FileReader(f))) {
-			boolean readMore = true;
-			while (readMore) {
-				String line = reader.readLine();
-				if (line == null) { readMore = false; } else {
-					if (!"".equals(line) && !line.startsWith("#")) {
-						if (line.startsWith("!")) {
-							String parts[] = line.split(" ");
-							if (parts.length != 3) throw new IOException("Malformed " + fileName);
-							if ("".equals(parts[1])) throw new IOException("Malformed " + fileName);
-							String name1 = parts[1].trim();
-							String name2 = parts[2].trim();
-							PlaneLocation p1 = markers.get(name1);
-							PlaneLocation p2 = markers.get(name2);
-							
-							if (p1 != null && p2 != null) {
-								TradeLane tl = new TradeLane(p1, p2);
-								tradeLanes.add(tl);
-							}
-						} else {
-							String parts[] = line.split("\t");
-							if (parts.length != 3) throw new IOException("Malformed " + fileName);
-							
-							int locX, locY;
-							try {
-								locX = Integer.parseInt(parts[0].trim());
-								locY = Integer.parseInt(parts[1].trim());
-							} catch (NumberFormatException e) {
-								throw new IOException("Malformed " + fileName);
-							}
-							if (locX >= minx && locX < maxx && locY >= miny && locY < maxy) {
+		for (String line : contents) {
+			if (line.startsWith("!")) {
+				String parts[] = line.split(" ");
+				if (parts.length != 3) throw new IOException("Malformed " + fileName);
+				if ("".equals(parts[1])) throw new IOException("Malformed " + fileName);
+				String name1 = parts[1].trim();
+				String name2 = parts[2].trim();
+				PlaneLocation p1 = markers.get(name1);
+				PlaneLocation p2 = markers.get(name2);
+				
+				if (p1 != null && p2 != null) {
+					TradeLane tl = new TradeLane(p1, p2);
+					tradeLanes.add(tl);
+				}
+			} else {
+				String parts[] = line.split("\t");
+				if (parts.length != 3) throw new IOException("Malformed " + fileName);
+				
+				int locX, locY;
+				try {
+					locX = Integer.parseInt(parts[0].trim());
+					locY = Integer.parseInt(parts[1].trim());
+				} catch (NumberFormatException e) {
+					throw new IOException("Malformed " + fileName);
+				}
+				if (locX >= minx && locX < maxx && locY >= miny && locY < maxy) {
 //							int continent = findContinent(locX, locY);
-								String name = parts[2].trim();
-							
+					String name = parts[2].trim();
+				
 //							if (continent >= 0) {
-								locX += fixx;
-								locY += fixy;
+					locX += fixx;
+					locY += fixy;
 //								locX = fixX(continent, locX);
 //								locY = fixY(continent, locY);
-						
-								PlaneLocation pl = new PlaneLocation(locX, locY, 0);
-								markers.put(name,pl);
-							}
-						}
-					}
+			
+					PlaneLocation pl = new PlaneLocation(locX, locY, 0);
+					markers.put(name,pl);
 				}
 			}		
 		}

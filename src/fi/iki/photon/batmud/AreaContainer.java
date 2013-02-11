@@ -20,9 +20,7 @@
 */
 package fi.iki.photon.batmud;
 
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileReader;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -66,10 +64,10 @@ public class AreaContainer {
 	public static final int CONT_FURN=4;
 	
 	// Mapping from strings to the NameLocations they represent.
-	private final HashMap<String, NameLocation> cityNodes;
+	private final HashMap<String, NameLocation> allNames;
 	
 	// Mapping from PlaneLocations to their adjacent NameLocations.
-	private final HashMap<PlaneLocation, List<NameLocation>> names;
+	private final HashMap<PlaneLocation, List<NameLocation>> plAdjacentNames;
 	private String baseDir;
 
 	private final Area[] areas;
@@ -95,13 +93,17 @@ public class AreaContainer {
 		exitNodes = new NameLocation[5][5];
 		esirisContinentChange = new String[5][5];
 		esirisExitNodes = new NameLocation[5];
-		names = new HashMap<>();
+		plAdjacentNames = new HashMap<>();
 		areas = new Area[5];
-		cityNodes = new HashMap<>();
+		allNames = new HashMap<>();
 //		tradeLanes = new Tradelanes(baseDir + "/tradelane.txt", baseDir + "/costs.ship");
 		
-		load();
+		loadContinents();
 		
+		initValues();
+		
+		loadExtraEdges(baseDir + "/shipnodes", true);
+		loadExtraEdges(baseDir + "/shipnodes.private", true);		
 	}
 
 	/**
@@ -111,8 +113,34 @@ public class AreaContainer {
 	 * @throws BPFException
 	 */
 	
-	private void load() throws IOException, BPFException {
+	private void loadContinents() throws IOException, BPFException {
 		Costs c = new Costs(baseDir + "/costs", baseDir + "/costs.ship");
+		int i = 0;
+		List<String> contents = InputLoader.loadInput(baseDir + "/contdata.txt", true);
+		if (contents == null) throw new IOException("No contdata.txt");
+
+		if (contents.size() != 5) throw new IOException("Malformed contdata.txt");
+		
+		for (String line : contents) {
+			String parts[] = line.split("\\s+");
+			String contname = parts[0];
+			if (parts.length != 9) throw new IOException("Malformed contdata.txt");
+			int sizex = Integer.parseInt(parts[1].trim());
+			int sizey = Integer.parseInt(parts[2].trim());
+			int tradelaneminx = Integer.parseInt(parts[3].trim());
+			int tradelanemaxx = Integer.parseInt(parts[4].trim());
+			int tradelaneminy = Integer.parseInt(parts[5].trim());
+			int tradelanemaxy = Integer.parseInt(parts[6].trim());
+			int tradelanefixx = Integer.parseInt(parts[7].trim());
+			int tradelanefixy = Integer.parseInt(parts[8].trim());
+
+			
+			Tradelanes tl = new Tradelanes(baseDir + "/tradelane.txt", tradelaneminx, tradelanemaxx,
+					tradelaneminy, tradelanemaxy, tradelanefixx, tradelanefixy);
+			loadContinent(contname, i, tl, c, sizex, sizey);
+			i++;
+
+/*		
 		Tradelanes tl1 = new Tradelanes(baseDir + "/tradelane.txt", 4000, 5000, 4000, 5000, -4097, -4097);
 		load("laenor", CONT_LAENOR, tl1, c, 827, 781);
 		Tradelanes tl2 = new Tradelanes(baseDir + "/tradelane.txt", 2900, 3600, 4900, 5500, -4097+1211, -4097-819);
@@ -123,19 +151,33 @@ public class AreaContainer {
 		load("luc", CONT_LUC, tl4, c, 700, 500);
 		Tradelanes tl5 = new Tradelanes(baseDir + "/tradelane.txt", 5300, 6000, 2800, 3300, -4097-1311, -4097+1255);
 		load("roth", CONT_ROTH, tl5, c, 480, 480);
+*/
+
+		}
+
+
+	}
+
+	/**
+	 * Loads a continent named "continent" into the areas array, and loads the locations and
+	 * namelocation network edges from the files.
+	 * 
+	 * @param continent
+	 * @param contNum
+	 * @param sx
+	 * @param sy
+	 * @throws IOException
+	 * @throws BPFException
+	 */
+	
+	private void loadContinent(String continent, int contNum, Tradelanes tl, Costs c, int sx, int sy) throws IOException, BPFException {
+		areas[contNum] = new Area(tl, c, sx, sy, baseDir + "/" + continent + ".map");
 		
-		loadExtraEdges(baseDir + "/laenor.shipnodes", true);
-		loadExtraEdges(baseDir + "/laenor.shipnodes.private", true);		
-		
-//		System.out.println(isOnTradeLane(531,95,CONT_DESO));
-//		System.out.println(isOnTradeLane(531,100,CONT_DESO));
-		
-//		PlaneLocation pl = new PlaneLocation(433, 446, 1);
-//		bp.error(isOnTradeLane(pl));
-//		pl = new PlaneLocation(250, 308, 0);
-//		bp.error(isOnTradeLane(pl));
-		initValues();
-			
+		loadLocations(baseDir + "/" + continent + ".loc", contNum, true);
+		loadLocations(baseDir + "/" + continent + ".loc.extra", contNum, false);
+		loadLocations(baseDir + "/" + continent + ".loc.private", contNum, false);
+		loadExtraEdges(baseDir + "/" + continent + ".nodes", false);
+		loadExtraEdges(baseDir + "/" + continent + ".nodes.private", false);
 	}
 
 	/**
@@ -150,84 +192,77 @@ public class AreaContainer {
 	 */
 	
 	private void loadLocations(String fileName, int cont, boolean fix) throws IOException, BPFException {
-			File f = new File(fileName);
-			if (!f.exists()) return;
+		List<String> contents = InputLoader.loadInput(fileName, true);
+		if (contents == null) return;
 	
-			try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
-				boolean readMore = true;
-				while (readMore) {
-					String line = reader.readLine();
-					if (line == null) { readMore = false; } else {
-						line = line.replaceAll("@", "");
-						if (!line.equals("") && !line.startsWith("#")) {
-							String parts[] = line.split(";");
-							int locX = Integer.parseInt(parts[0].trim());
-							int locY = Integer.parseInt(parts[1].trim());
-							// Have to fix locations from Ggr repository, but not from local locations.
-							if (fix) {
-								locX = locX - 1;
-								locY = locY - 1;
-							}
-							String flags = parts[2].trim();
-		//					bp.error(locX + "--" + locY);
-							if (flags.contains("c")) {
-		//						length() >= 2 && ( flags.(1) == 'c' ||
-		//					}
-		//							flags.charAt(1) == 'C' )) {
-								// clear city locations
-		//						data[cont][locX][locY] = 0;
-		//						if (flags.charAt(1) == 'c') { data[cont][locX][locY] = 'c'; }
-		//						if (flags.charAt(1) == 'C') { data[cont][locX][locY] = 'C'; }
-		//						data[cont][locX][locY] = 'c';
-							} else if (flags.contains("C")) {
-		//						data[cont][locX][locY] = 'C';
-							} else {
-		/*
-								if (flags.contains("F")) {
-										data[cont][locX][locY] = '?';
-								}
-								if (flags.contains("G")) {
-									data[cont][locX][locY] = '?';
-								}
-								if (flags.contains("S")) {
-									data[cont][locX][locY] = '%';
-								}
-								if (flags.contains("?")) {
-									data[cont][locX][locY] = '?';
-								}
-								if (flags.contains("%")) {
-									data[cont][locX][locY] = '%';
-								}
-		*/
-								
-								if (areas[cont].getData(locX, locY) == 0) {
-								//	if (plane[cont][locX-4][locY] != null) System.out.print(plane[cont][locX-4][locY].data);
-								//	if (plane[cont][locX-3][locY] != null) System.out.print(plane[cont][locX-3][locY].data);
-								//	if (plane[cont][locX-2][locY] != null) System.out.print(plane[cont][locX-2][locY].data);
-								//	if (plane[cont][locX-1][locY] != null) bp.error(plane[cont][locX-1][locY].data);
-								//	if (plane[cont][locX+1][locY] != null) bp.error(plane[cont][locX+1][locY].data);
-									throw new IOException("Strange coordinates " + locX + " " + locY);
-								}
-								
-								String nameTmp = parts[3].trim();
-								String name = nameTmp;
-								if (nameTmp.contains("|")) {
-									String nameTmp2[] = nameTmp.split("\\|");
-									name = nameTmp2[0];
-								}
-								if ("".equals(name) || " ".equals(name)) { System.err.println("x"+name+"x"); }
-								addLocation(locX, locY, cont, name);
-								if (name.contains(" ")) {
-									addLocation(locX, locY, cont, name.replace(" ",""));
-									addLocation(locX, locY, cont, name.replace(" ","_"));
-								}
-							}
-						}	
-					}
+		for (String line : contents) {
+			line = line.replaceAll("@", "");
+			String parts[] = line.split(";");
+			int locX = Integer.parseInt(parts[0].trim());
+			int locY = Integer.parseInt(parts[1].trim());
+			// Have to fix locations from Ggr repository, but not from local locations.
+			if (fix) {
+				locX = locX - 1;
+				locY = locY - 1;
+			}
+			String flags = parts[2].trim();
+//					bp.error(locX + "--" + locY);
+			if (flags.contains("c")) {
+//						length() >= 2 && ( flags.(1) == 'c' ||
+//					}
+//							flags.charAt(1) == 'C' )) {
+				// clear city locations
+//						data[cont][locX][locY] = 0;
+//						if (flags.charAt(1) == 'c') { data[cont][locX][locY] = 'c'; }
+//						if (flags.charAt(1) == 'C') { data[cont][locX][locY] = 'C'; }
+//						data[cont][locX][locY] = 'c';
+			} else if (flags.contains("C")) {
+//						data[cont][locX][locY] = 'C';
+			} else {
+/*
+						if (flags.contains("F")) {
+								data[cont][locX][locY] = '?';
+						}
+						if (flags.contains("G")) {
+							data[cont][locX][locY] = '?';
+						}
+						if (flags.contains("S")) {
+							data[cont][locX][locY] = '%';
+						}
+						if (flags.contains("?")) {
+							data[cont][locX][locY] = '?';
+						}
+						if (flags.contains("%")) {
+							data[cont][locX][locY] = '%';
+						}
+*/
+				
+				if (areas[cont].getData(locX, locY) == 0) {
+				//	if (plane[cont][locX-4][locY] != null) System.out.print(plane[cont][locX-4][locY].data);
+				//	if (plane[cont][locX-3][locY] != null) System.out.print(plane[cont][locX-3][locY].data);
+				//	if (plane[cont][locX-2][locY] != null) System.out.print(plane[cont][locX-2][locY].data);
+				//	if (plane[cont][locX-1][locY] != null) bp.error(plane[cont][locX-1][locY].data);
+				//	if (plane[cont][locX+1][locY] != null) bp.error(plane[cont][locX+1][locY].data);
+					throw new IOException("Strange coordinates " + locX + " " + locY);
+				}
+				
+				String nameTmp = parts[3].trim();
+				String name = nameTmp;
+				if (nameTmp.contains("|")) {
+					String nameTmp2[] = nameTmp.split("\\|");
+					name = nameTmp2[0];
+				}
+				if ("".equals(name) || " ".equals(name)) { System.err.println("x"+name+"x"); }
+				addLocation(locX, locY, cont, name);
+				if (name.contains(" ")) {
+					addLocation(locX, locY, cont, name.replace(" ",""));
+					addLocation(locX, locY, cont, name.replace(" ","_"));
 				}
 			}
 		}
+	}
 
+	
 	/**
 	 * Add a named location to the list of all NameLocations and mark it as
 	 * adjacent to the location locx, locy.
@@ -240,7 +275,7 @@ public class AreaContainer {
 	 */
 	
 	private void addLocation(int locX, int locY, int cont, String name) throws BPFException {
-			NameLocation nl_orig = cityNodes.get(name.toLowerCase());
+			NameLocation nl_orig = allNames.get(name.toLowerCase());
 			if (nl_orig != null) {
 				throw new BPFException("Location " + name + " already exists.");
 			}
@@ -250,20 +285,13 @@ public class AreaContainer {
 			PlaneLocation pl = new PlaneLocation(locX, locY, cont);
 			NameLocation nl = new NameLocation(name, pl, true);
 			
-			List<NameLocation> namesList = names.get(pl);
+			List<NameLocation> namesList = plAdjacentNames.get(pl);
 			if (namesList == null) {
 				namesList = new ArrayList<>(2);
-				names.put(pl, namesList);
+				plAdjacentNames.put(pl, namesList);
 			}
 			namesList.add(nl);
-	//		plane[cont][locX][locY].addName(nl);
-	/*
-			Link l = new Link(pl, "", false);
-			nl.addNeighbor(l);
-			l = new Link(pl, "", true);
-			nl.addNeighbor(l);
-	*/
-			cityNodes.put(name.toLowerCase(), nl);
+			allNames.put(name.toLowerCase(), nl);
 	}
 
 	/**
@@ -281,64 +309,55 @@ public class AreaContainer {
 	 */
 	
 	private void loadExtraEdges(String fileName, boolean nav) throws IOException, BPFException {
-			File f = new File(fileName);
-			if (!f.exists()) return;
-	
-			try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
-	
-				boolean readMore = true;
-				while (readMore) {
-					String line = reader.readLine();
-					if (line == null) { readMore = false; } else {
-						if (!line.equals("") && !line.startsWith("#")) {
-							if (line.startsWith("!")) {
-								String parts[] = line.split(" ");
-								NameLocation node = cityNodes.get(parts[1]);
-								NameLocation planeNode = cityNodes.get(parts[2]);
-								
-		//						int newCont = cont;
-		//						if (parts.length > 2 && parts[3] != null) {
-		//							newCont = Integer.parseInt(parts[3]);
-		//						}
-		//						bp.error(parts[1] + " " + parts[2]);
-								if (node != null) {
-									throw new BPFException("Error, redefined node " + parts[1] + ", " + node);
-								}
-								if (planeNode == null) {
-									throw new BPFException("Error, unknown plane node " + parts[2]);
-								}
-								if (planeNode.getPlaneLocation() == null) {
-									throw new BPFException("Error, supposed plane node not on a plane, " + node + " " + planeNode);
-								}
-								
-								node = new NameLocation(parts[1], planeNode.getPlaneLocation(), false);
-								cityNodes.put(parts[1].toLowerCase(), node);
-							} else {
-								String leftright[] = line.split("::");
-								String left[] = leftright[0].split(" ");
-		//						bp.error(left[0] + "--" + left[1]);
-		//						if (leftright.length > 1) { bp.error("--"+leftright[1]); }
-								NameLocation startCity = cityNodes.get(left[0]);
-								NameLocation endCity = cityNodes.get(left[1]);
-								if (startCity == null) {
-									throw new BPFException("Malformed input, " + left[0] + " not found.");
-								}
-								if (endCity == null) {
-									throw new BPFException("Malformed input, " + left[1] + " not found.");
-								}
-								if (leftright.length == 1) {
-									startCity.addNeighbor(new Link(endCity, "", 5, nav));
-								}
-								if (leftright.length == 2) {
+		List<String> contents = InputLoader.loadInput(fileName, true);
+		if (contents == null) return;
+		
+		for (String line : contents) {
+			if (line.startsWith("!")) {
+				String[] parts = line.split(" ");
+				NameLocation node = allNames.get(parts[1]);
+				NameLocation planeNode = allNames.get(parts[2]);
+				
+	//						int newCont = cont;
+	//						if (parts.length > 2 && parts[3] != null) {
+	//							newCont = Integer.parseInt(parts[3]);
+	//						}
+	//						bp.error(parts[1] + " " + parts[2]);
+				if (node != null) {
+					throw new BPFException("Error, redefined node " + parts[1] + ", " + node);
+				}
+				if (planeNode == null) {
+					throw new BPFException("Error, unknown plane node " + parts[2]);
+				}
+				if (planeNode.getPlaneLocation() == null) {
+					throw new BPFException("Error, supposed plane node not on a plane, " + node + " " + planeNode);
+				}
+				
+				node = new NameLocation(parts[1], planeNode.getPlaneLocation(), false);
+				allNames.put(parts[1].toLowerCase(), node);
+			} else {
+				String leftright[] = line.split("::");
+				String left[] = leftright[0].split(" ");
+	//						bp.error(left[0] + "--" + left[1]);
+	//						if (leftright.length > 1) { bp.error("--"+leftright[1]); }
+				NameLocation startCity = allNames.get(left[0]);
+				NameLocation endCity = allNames.get(left[1]);
+				if (startCity == null) {
+					throw new BPFException("Malformed input, " + left[0] + " not found.");
+				}
+				if (endCity == null) {
+					throw new BPFException("Malformed input, " + left[1] + " not found.");
+				}
+				if (leftright.length == 1) {
+					startCity.addNeighbor(new Link(endCity, "", 5, nav));
+				}
+				if (leftright.length == 2) {
 	//								System.out.println("Added link from " + startCity + " to " + endCity + " " + leftright[1]);
-									startCity.addNeighbor(new Link(endCity, leftright[1], nav));
-								}
-							}
-						}	
-					}
+					startCity.addNeighbor(new Link(endCity, leftright[1], nav));
 				}
 			}
 		}
+	}
 
 	/**
 	 * Initializes the exitNodes, esiris exit nodes and content change strings for esiris.
@@ -396,45 +415,9 @@ public class AreaContainer {
 			esirisContinentChange[AreaContainer.CONT_FURN][AreaContainer.CONT_LUC] = "portal~esiris 24 w 15 s enter~portal";
 		}
 
-	/**
-	 * Loads a continent named "continent" into the areas array, and loads the locations and
-	 * namelocation network edges from the files.
-	 * 
-	 * @param continent
-	 * @param contNum
-	 * @param sx
-	 * @param sy
-	 * @throws IOException
-	 * @throws BPFException
-	 */
+
+	/************* GETTERS *****************/
 	
-	private void load(String continent, int contNum, Tradelanes tl, Costs c, int sx, int sy) throws IOException, BPFException {
-		areas[contNum] = new Area(tl, c, sx, sy, baseDir + "/" + continent + ".map");
-		
-		loadLocations(baseDir + "/" + continent + ".loc", contNum, true);
-		loadLocations(baseDir + "/" + continent + ".loc.extra", contNum, false);
-		loadLocations(baseDir + "/" + continent + ".loc.private", contNum, false);
-		loadExtraEdges(baseDir + "/" + continent + ".nodes", false);
-		loadExtraEdges(baseDir + "/" + continent + ".nodes.private", false);
-	}
-
-	/**
-	 * Given a NameLocation, returns an adjacent PlaneLocation.
-	 * @param n
-	 * @return PlaneLocation, or null if not adjacent to any.
-	 */
-/*
-	private PlaneLocation getAdjacentPlaneLocation(NameLocation n) {
-		if (n == null) return null;
-		for (Link l : n.getNeighbors()) {
-			if (l.getDest() instanceof PlaneLocation) {
-				return (PlaneLocation) l.getDest();
-			}
-		}
-		return null;
-	}
-	*/
-
 	/**
 	 * Given a string, returns a NameLocation with that name.
 	 * @param name
@@ -442,7 +425,7 @@ public class AreaContainer {
 	 */
 	
 	private NameLocation getNameLocation(String name) {
-		return cityNodes.get(name.toLowerCase());
+		return allNames.get(name.toLowerCase());
 	}
 
 	/**
@@ -451,7 +434,7 @@ public class AreaContainer {
 	 */
 	
 	public Set<String> getCityNodes() {
-		return cityNodes.keySet();
+		return allNames.keySet();
 	}
 
 	/**
@@ -564,7 +547,7 @@ public class AreaContainer {
 		if (pl != null) {
 			addLocationToFile(pl, name);
 		} else {
-			throw new BPFException("Location not on outside map.");
+			throw new BPFException("Location not on map.");
 		}
 	}
 
@@ -672,7 +655,7 @@ public class AreaContainer {
 	private List<TrueNode> getNLNeighborsOfPlaneLocation(TrueNode node, PlaneLocation planeEnd, boolean naval) throws BPFException {
 		ArrayList<TrueNode> retVal = new ArrayList<>(5);
 
-		List<NameLocation> nameList = names.get(node.getLoc());
+		List<NameLocation> nameList = plAdjacentNames.get(node.getLoc());
 	
 		if (nameList != null) {
 			for (NameLocation l : nameList) {

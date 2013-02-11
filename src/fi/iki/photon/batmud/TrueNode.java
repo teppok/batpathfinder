@@ -35,7 +35,7 @@ package fi.iki.photon.batmud;
 class TrueNode implements Comparable<TrueNode> {
 
 	private final TrueNode parent;
-	private final int heuristic;
+	private final int totalCost;
 	private final int cost;
 	private final Location loc;
 
@@ -53,7 +53,7 @@ class TrueNode implements Comparable<TrueNode> {
 		this.loc = location;
 		this.parent = parent;
 		this.cost = cost;
-		this.heuristic = cost + heuristic;
+		this.totalCost = cost + heuristic;
 	}
 
 	/**
@@ -64,7 +64,16 @@ class TrueNode implements Comparable<TrueNode> {
 	int getCost() { 
 		return cost; 
 	}
+
+	/**
+	 * A basic getter for heuristic total cost.
+	 * @return totalCost
+	 */
 	
+	int getTotalCost() { 
+		return totalCost; 
+	}
+
 	/**
 	 * A basic getter for parent.
 	 * @return parent
@@ -139,7 +148,7 @@ class TrueNode implements Comparable<TrueNode> {
 //	}
 
 	@Override
-	public String toString() { return this.loc.toString() + " " + this.heuristic + " " + this.cost; }
+	public String toString() { return this.loc.toString() + " " + this.totalCost + " " + this.cost; }
 
 	/**
 	 * Gets a hash code for the location to be used in the hashmaps.
@@ -157,8 +166,8 @@ class TrueNode implements Comparable<TrueNode> {
 
 	@Override
 	public int compareTo(TrueNode n) {
-		if (this.heuristic < n.heuristic) return -1;
-		if (this.heuristic == n.heuristic) return 0;
+		if (this.totalCost < n.totalCost) return -1;
+		if (this.totalCost == n.totalCost) return 0;
 		return 1;
 	}
 }
