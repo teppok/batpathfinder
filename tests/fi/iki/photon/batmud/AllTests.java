@@ -5,7 +5,7 @@ import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
 
 @RunWith(Suite.class)
-@SuiteClasses({ AHeapTest.class, AreaTest.class, 
+@SuiteClasses({ AHeapTest.class, AreaContainerTest.class, AreaTest.class, 
 	BPFExceptionTest.class, CostsTest.class, 
 	LinkTest.class,
 	NameLocationTest.class,

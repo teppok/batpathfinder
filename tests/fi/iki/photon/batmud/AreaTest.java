@@ -177,21 +177,70 @@ public class AreaTest {
 	@Test
 	public void testGetPlaneLocationNeighbors() {
 		try {
-			Tradelanes tl = new Tradelanes("testdata/tradelane.test.txt", 0, 10, 0, 11, 0, 0);
+			Tradelanes tl = new Tradelanes("testdata/tradelane.empty.txt", 0, 10, 0, 11, 0, 0);
 			Costs c = new Costs("testdata/costs", "testdata/costs.ship");
 			Area a = new Area(tl, c, 10, 11, "testdata/test.map");
 			
 			PlaneLocation p1 = new PlaneLocation(2, 2, 0);
 			PlaneLocation p2 = new PlaneLocation(4, 4, 0);
 			TrueNode n = new TrueNode(p1, null, 0, 0);
-			
 			List<TrueNode> list = a.getPlaneLocationNeighbors(n, p2, false, 0);
 			assertEquals(list.size(), 7);
 			assertEquals(list.get(0).getPlaneLocation().getX(), 1);
 			assertEquals(list.get(0).getPlaneLocation().getY(), 1);
 			assertEquals(list.get(0).getCost(), 131);
+			assertEquals(list.get(0).getTotalCost(), 131 + 3 * 9);
+			assertEquals(list.get(4).getPlaneLocation().getX(), 3);
+			assertEquals(list.get(4).getPlaneLocation().getY(), 2);
+			assertEquals(list.get(4).getCost(), 200);
+			assertEquals(list.get(4).getTotalCost(), 200 + 2 * 9);
+			assertEquals(list.get(5).getPlaneLocation().getX(), 2);
+			assertEquals(list.get(5).getPlaneLocation().getY(), 3);
+			assertEquals(list.get(5).getCost(), 200);
+			assertEquals(list.get(5).getTotalCost(), 200 + 2 * 9);
+			assertEquals(list.get(6).getPlaneLocation().getX(), 3);
+			assertEquals(list.get(6).getPlaneLocation().getY(), 3);
+			assertEquals(list.get(6).getCost(), 200);
+			assertEquals(list.get(6).getTotalCost(), 200 + 1 * 9);
+
+			p1 = new PlaneLocation(9, 0, 0);
+			p2 = new PlaneLocation(4, 4, 0);
+			n = new TrueNode(p1, null, 0, 0);
+			list = a.getPlaneLocationNeighbors(n, p2, false, 0);
+			assertEquals(list.size(), 3);
+			assertEquals(list.get(0).getPlaneLocation().getX(), 8);
+			assertEquals(list.get(0).getPlaneLocation().getY(), 0);
+			assertEquals(list.get(1).getPlaneLocation().getX(), 8);
+			assertEquals(list.get(1).getPlaneLocation().getY(), 1);
+			assertEquals(list.get(2).getPlaneLocation().getX(), 9);
+			assertEquals(list.get(2).getPlaneLocation().getY(), 1);
+
+			
+			p1 = new PlaneLocation(4, 4, 0);
+			p2 = new PlaneLocation(5, 5, 0);
+			PlaneLocation p3 = new PlaneLocation(6, 6, 0);
+			n = new TrueNode(p1, null, 0, 0);
+			TrueNode n2 = new TrueNode(p2, n, 10, 0);
+			list = a.getPlaneLocationNeighbors(n2, p3, true, 30);
+			assertEquals(list.size(), 7);
+			assertEquals(list.get(0).getPlaneLocation().getX(), 4);
+			assertEquals(list.get(0).getPlaneLocation().getY(), 4);
+			assertEquals(list.get(0).getCost(), 10 + 50 + 30);
+			assertEquals(list.get(0).getTotalCost(), 10 + 50 + 30 + 2 * 5);
+			assertEquals(list.get(1).getPlaneLocation().getX(), 5);
+			assertEquals(list.get(1).getPlaneLocation().getY(), 4);
+			assertEquals(list.get(1).getCost(), 10 + 50 + 30);
+			assertEquals(list.get(1).getTotalCost(), 10 + 50 + 30 + 2 * 5);
+			// No direction change and lower movement cost on road
+			assertEquals(list.get(6).getPlaneLocation().getX(), 6);
+			assertEquals(list.get(6).getPlaneLocation().getY(), 6);
+			assertEquals(list.get(6).getCost(), 10 + 10);
+			assertEquals(list.get(6).getTotalCost(), 10 + 10 + 0 * 5);
+
+			
 			
 		} catch (Exception e) {
+			e.printStackTrace();
 			fail("Exception");
 		}
 			

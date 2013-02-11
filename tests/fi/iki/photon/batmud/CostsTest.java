@@ -39,8 +39,9 @@ public class CostsTest {
 		ex = 0;
 		try {
 			Costs c = new Costs("testdata/costs-doesntexist", "testdata/costs.ship");
+			ex = 1;
 		} catch (IOException e) {
-			if (e instanceof FileNotFoundException) {
+			if (e.toString().equals("java.io.IOException: Missing testdata/costs-doesntexist")) {
 				ex = 1;
 			}
 		}
@@ -50,7 +51,7 @@ public class CostsTest {
 		try {
 			Costs c = new Costs("testdata/costs", "testdata/costs.ship-doesntexist");
 		} catch (IOException e) {
-			if (e instanceof FileNotFoundException) {
+			if (e.toString().equals("java.io.IOException: Missing testdata/costs.ship-doesntexist")) {
 				ex = 1;
 			}
 		}
