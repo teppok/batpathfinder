@@ -71,9 +71,6 @@ public class AreaContainer {
 	private String baseDir;
 
 	private final Area[] areas;
-//	private final Tradelanes tradeLanes;
-	
-//	String[][] continentChange;
 	
 	private final NameLocation exitNodes[][];
 
@@ -139,20 +136,6 @@ public class AreaContainer {
 					tradelaneminy, tradelanemaxy, tradelanefixx, tradelanefixy);
 			loadContinent(contname, i, tl, c, sizex, sizey);
 			i++;
-
-/*		
-		Tradelanes tl1 = new Tradelanes(baseDir + "/tradelane.txt", 4000, 5000, 4000, 5000, -4097, -4097);
-		load("laenor", CONT_LAENOR, tl1, c, 827, 781);
-		Tradelanes tl2 = new Tradelanes(baseDir + "/tradelane.txt", 2900, 3600, 4900, 5500, -4097+1211, -4097-819);
-		load("deso", CONT_DESO, tl2, c, 540, 530);
-		Tradelanes tl3 = new Tradelanes(baseDir + "/tradelane.txt", 3400, 4500, 6400, 7000, -4097-1211, -4097-1155);
-		load("furn", CONT_FURN, tl3, c, 440, 480);
-		Tradelanes tl4 = new Tradelanes(baseDir + "/tradelane.txt", 5300, 5600, 5000, 6000, -4097+634, -4097-2345);
-		load("luc", CONT_LUC, tl4, c, 700, 500);
-		Tradelanes tl5 = new Tradelanes(baseDir + "/tradelane.txt", 5300, 6000, 2800, 3300, -4097-1311, -4097+1255);
-		load("roth", CONT_ROTH, tl5, c, 480, 480);
-*/
-
 		}
 
 
@@ -206,60 +189,23 @@ public class AreaContainer {
 				locY = locY - 1;
 			}
 			String flags = parts[2].trim();
-//					bp.error(locX + "--" + locY);
-			if (flags.contains("c")) {
-//						length() >= 2 && ( flags.(1) == 'c' ||
-//					}
-//							flags.charAt(1) == 'C' )) {
-				// clear city locations
-//						data[cont][locX][locY] = 0;
-//						if (flags.charAt(1) == 'c') { data[cont][locX][locY] = 'c'; }
-//						if (flags.charAt(1) == 'C') { data[cont][locX][locY] = 'C'; }
-//						data[cont][locX][locY] = 'c';
-			} else if (flags.contains("C")) {
-//						data[cont][locX][locY] = 'C';
-			} else {
-/*
-						if (flags.contains("F")) {
-								data[cont][locX][locY] = '?';
-						}
-						if (flags.contains("G")) {
-							data[cont][locX][locY] = '?';
-						}
-						if (flags.contains("S")) {
-							data[cont][locX][locY] = '%';
-						}
-						if (flags.contains("?")) {
-							data[cont][locX][locY] = '?';
-						}
-						if (flags.contains("%")) {
-							data[cont][locX][locY] = '%';
-						}
-*/
-				
-				if (areas[cont].getData(locX, locY) == 0) {
-				//	if (plane[cont][locX-4][locY] != null) System.out.print(plane[cont][locX-4][locY].data);
-				//	if (plane[cont][locX-3][locY] != null) System.out.print(plane[cont][locX-3][locY].data);
-				//	if (plane[cont][locX-2][locY] != null) System.out.print(plane[cont][locX-2][locY].data);
-				//	if (plane[cont][locX-1][locY] != null) bp.error(plane[cont][locX-1][locY].data);
-				//	if (plane[cont][locX+1][locY] != null) bp.error(plane[cont][locX+1][locY].data);
-					throw new IOException("Strange coordinates " + locX + " " + locY);
-				}
-				
-				String nameTmp = parts[3].trim();
-				String name = nameTmp;
-				if (nameTmp.contains("|")) {
-					String nameTmp2[] = nameTmp.split("\\|");
-					name = nameTmp2[0];
-				}
-				if ("".equals(name) || " ".equals(name)) { System.err.println("x"+name+"x"); }
-				addLocation(locX, locY, cont, name);
-				if (name.contains(" ")) {
-					addLocation(locX, locY, cont, name.replace(" ",""));
-					addLocation(locX, locY, cont, name.replace(" ","_"));
-				}
-			}
-		}
+                        if (areas[cont].getData(locX, locY) == 0) {
+                                throw new IOException("Strange coordinates " + locX + " " + locY);
+                        }
+
+                        String nameTmp = parts[3].trim();
+                        String name = nameTmp;
+                        if (nameTmp.contains("|")) {
+                                String nameTmp2[] = nameTmp.split("\\|");
+                                name = nameTmp2[0];
+                        }
+                        if ("".equals(name) || " ".equals(name)) { System.err.println("x"+name+"x"); }
+                        addLocation(locX, locY, cont, name);
+                        if (name.contains(" ")) {
+                                addLocation(locX, locY, cont, name.replace(" ",""));
+                                addLocation(locX, locY, cont, name.replace(" ","_"));
+                        }
+                }
 	}
 
 	
@@ -317,12 +263,6 @@ public class AreaContainer {
 				String[] parts = line.split(" ");
 				NameLocation node = allNames.get(parts[1]);
 				NameLocation planeNode = allNames.get(parts[2]);
-				
-	//						int newCont = cont;
-	//						if (parts.length > 2 && parts[3] != null) {
-	//							newCont = Integer.parseInt(parts[3]);
-	//						}
-	//						bp.error(parts[1] + " " + parts[2]);
 				if (node != null) {
 					throw new BPFException("Error, redefined node " + parts[1] + ", " + node);
 				}
@@ -338,8 +278,6 @@ public class AreaContainer {
 			} else {
 				String leftright[] = line.split("::");
 				String left[] = leftright[0].split(" ");
-	//						bp.error(left[0] + "--" + left[1]);
-	//						if (leftright.length > 1) { bp.error("--"+leftright[1]); }
 				NameLocation startCity = allNames.get(left[0]);
 				NameLocation endCity = allNames.get(left[1]);
 				if (startCity == null) {
@@ -352,7 +290,6 @@ public class AreaContainer {
 					startCity.addNeighbor(new Link(endCity, "", 5, nav));
 				}
 				if (leftright.length == 2) {
-	//								System.out.println("Added link from " + startCity + " to " + endCity + " " + leftright[1]);
 					startCity.addNeighbor(new Link(endCity, leftright[1], nav));
 				}
 			}
