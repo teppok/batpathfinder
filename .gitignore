@@ -3,3 +3,5 @@
 ext
 nbproject
 /build/
+lib
+/dist/plugins
