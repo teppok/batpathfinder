@@ -65,8 +65,8 @@
 	</target>
 
 	<target name="dist" description="Makes distributable zip" depends="package">
-		<delete file="${basedir}/plugins/BatPathFinder.zip" />
-		<zip destfile="${basedir}/plugins/BatPathFinder.zip"
+		<delete file="${basedir}/BatPathFinder.zip" />
+		<zip destfile="${basedir}/BatPathFinder.zip"
 			basedir="${basedir}/dist" />
 	
 	</target>
