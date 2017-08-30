@@ -32,12 +32,12 @@ class Area {
 	 * @param fileName File name containing the map data as a character array.
 	 * @throws IOException When file loading fails.
 	 */
-	Area(Tradelanes tl, Costs costs, int sx, int sy, String fileName) throws IOException {
+	Area(Tradelanes tl, Costs costs, int sx, int sy, String fileName) throws BPFException, IOException  {
 		
-		if (tl == null) throw new IOException("Null tradelanes");
-		if (costs == null) throw new IOException("Null costs");
-		if (fileName == null) throw new IOException("Null filename");
-		if (sx < 0 || sy < 0) throw new IOException("Bad parameters");
+		if (tl == null) throw new BPFException("Null tradelanes");
+		if (costs == null) throw new BPFException("Null costs");
+		if (fileName == null) throw new BPFException("Null filename");
+		if (sx < 0 || sy < 0) throw new BPFException("Bad parameters");
 		
 		tradeLanes = tl;
 		sizex = sx;

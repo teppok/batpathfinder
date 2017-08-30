@@ -156,9 +156,9 @@ public class AreaContainer {
 	private void loadContinent(String continent, int contNum, Tradelanes tl, Costs c, int sx, int sy) throws IOException, BPFException {
 		areas[contNum] = new Area(tl, c, sx, sy, baseDir + "/" + continent + ".map");
 		
-		loadLocations(baseDir + "/" + continent + ".loc", contNum, true);
-		loadLocations(baseDir + "/" + continent + ".loc.extra", contNum, false);
-		loadLocations(baseDir + "/" + continent + ".loc.private", contNum, false);
+		loadLocations(baseDir + "/" + continent + ".loc", contNum);
+		loadLocations(baseDir + "/" + continent + ".loc.extra", contNum);
+		loadLocations(baseDir + "/" + continent + ".loc.private", contNum);
 		loadExtraEdges(baseDir + "/" + continent + ".nodes", false);
 		loadExtraEdges(baseDir + "/" + continent + ".nodes.private", false);
 	}
@@ -174,38 +174,16 @@ public class AreaContainer {
 	 * @throws BPFException
 	 */
 	
-	private void loadLocations(String fileName, int cont, boolean fix) throws IOException, BPFException {
-		List<String> contents = InputLoader.loadInput(fileName, true);
-		if (contents == null) return;
-	
-		for (String line : contents) {
-			line = line.replaceAll("@", "");
-			String parts[] = line.split(";");
-			int locX = Integer.parseInt(parts[0].trim());
-			int locY = Integer.parseInt(parts[1].trim());
-			// Have to fix locations from Ggr repository, but not from local locations.
-			if (fix) {
-				locX = locX - 1;
-				locY = locY - 1;
-			}
-			String flags = parts[2].trim();
-                        if (areas[cont].getData(locX, locY) == 0) {
-                                throw new IOException("Strange coordinates " + locX + " " + locY);
-                        }
-
-                        String nameTmp = parts[3].trim();
-                        String name = nameTmp;
-                        if (nameTmp.contains("|")) {
-                                String nameTmp2[] = nameTmp.split("\\|");
-                                name = nameTmp2[0];
-                        }
-                        if ("".equals(name) || " ".equals(name)) { System.err.println("x"+name+"x"); }
-                        addLocation(locX, locY, cont, name);
-                        if (name.contains(" ")) {
-                                addLocation(locX, locY, cont, name.replace(" ",""));
-                                addLocation(locX, locY, cont, name.replace(" ","_"));
-                        }
+	private void loadLocations(String fileName, int cont) throws IOException, BPFException {
+            LocFile lf = new LocFile(fileName);
+            lf.load();
+            
+            for(LocFile.LocFileRecord r : lf.getRecords()) {
+                if (areas[cont].getData(r.getX(), r.getY()) == 0) {
+                    throw new BPFException("Strange coordinates " + r.getX() + " " + r.getY());
                 }
+                addLocation(r.getX(), r.getY(), cont, r.getPrettyname());
+            }
 	}
 
 	

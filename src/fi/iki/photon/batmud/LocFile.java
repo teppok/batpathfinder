@@ -37,6 +37,15 @@ import java.util.List;
 public final class LocFile {
     private File file;
     private List<String> lines;
+    private List<LocFileRecord> records;
+
+    public List<LocFileRecord> getRecords() {
+        return records;
+    }
+
+    public void setRecords(List<LocFileRecord> records) {
+        this.records = records;
+    }
     
     public LocFile() {
         lines = new ArrayList<>();
@@ -58,7 +67,7 @@ public final class LocFile {
             throw new IOException("Can not read .loc-file");
         }
     }
-    public void load() throws IOException, BatPathFinderException {
+    public void load() throws IOException, BPFException {
         InputStream is = new FileInputStream(this.file);
         InputStreamReader isReader =  new InputStreamReader(is, "ISO-8859-1");
         BufferedReader reader = new BufferedReader(isReader);
@@ -84,12 +93,12 @@ public final class LocFile {
             continues = line.endsWith("\\");
             
             if(!continues) {
-                this.compile(currentLine);
+                this.records.add(this.compile(currentLine));
             }
         }
     }
     
-    public LocFileRecord compile(String line) throws BatPathFinderException {
+    public LocFileRecord compile(String line) throws BPFException {
         LocFileRecord ret = new LocFileRecord();
         StringBuilder currentComponent = new StringBuilder();
         List<String> components = new ArrayList<>();
@@ -113,7 +122,7 @@ public final class LocFile {
             currentComponent.append(c);
         }
         if(components.size() != 8) {
-            throw new BatPathFinderException("LocFile. Line corrupted. "+line);
+            throw new BPFException("LocFile. Line corrupted. "+line);
         }
         ret.setX(Integer.parseInt(components.get(0)));
         ret.setY(Integer.parseInt(components.get(1)));
@@ -132,7 +141,20 @@ public final class LocFile {
      */
     public class LocFileRecord {
         private int x,y;
-        private String flags,timestamp,url,freeform;
+        private String flags,timestamp,url,freeform,prettyname;
+
+        private String sanitizeName(String name) {
+            String ret = name.toLowerCase();
+            ret = ret.replaceAll("[^a-z0-9]", "");
+            return ret;
+        }
+        public String getPrettyname() {
+            return prettyname;
+        }
+
+        public void setPrettyname(String prettyname) {
+            this.prettyname = prettyname;
+        }
         private String[] names, creators;
 
         public int getX() {
@@ -188,10 +210,13 @@ public final class LocFile {
         }
 
         public void setNames(String names) {
-            this.names = names.split("|");
+            setNames(names.split("|"));
         }
 
         public void setNames(String[] names) {
+            if(names.length > 0) {
+                this.setPrettyname(this.sanitizeName(names[0]));
+            }
             this.names = names;
         }
 
@@ -203,7 +228,7 @@ public final class LocFile {
             this.creators = creators;
         }
         public void setCreators(String creators) {
-            this.creators = creators.split(creators);
+            setCreators(creators.split(creators));
         }
         
     }
