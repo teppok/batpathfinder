@@ -186,10 +186,18 @@ public class AreaContainer {
                 if (areas[cont].getData(r.getX(), r.getY()) == 0) {
                     throw new BPFException("Strange coordinates " + r.getX() + " " + r.getY());
                 }
-                addLocation(r.getX(), r.getY(), cont, r.getPrettyname());
-                for(String name : r.getNames()) {
-                    String finalName = name.toLowerCase();
-                    addLocation(r.getX(), r.getY(), cont, finalName);
+                if(r.getFlags().contains("C")) {
+                    areas[cont].setRoom(r.getX(), r.getY(), 'C');
+                }
+                else if(r.getFlags().contains("c")) {
+                    areas[cont].setRoom(r.getX(), r.getY(), 'c');
+                }
+                else {
+                    addLocation(r.getX(), r.getY(), cont, r.getPrettyname());
+                    for(String name : r.getNames()) {
+                        String finalName = name.toLowerCase();
+                        addLocation(r.getX(), r.getY(), cont, finalName);
+                    }
                 }
             }
 	}
@@ -223,7 +231,7 @@ public class AreaContainer {
             }
             namesList.add(nl);
             allNames.put(name.toLowerCase(), nl);
-	}
+        }
 
 	/**
 	 * Load a list of extra nodes and edges that will be used to construct

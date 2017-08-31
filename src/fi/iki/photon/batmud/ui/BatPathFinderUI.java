@@ -25,6 +25,8 @@ import fi.iki.photon.batmud.BPFException;
 import fi.iki.photon.batmud.Location;
 import fi.iki.photon.batmud.SolvedListener;
 import fi.iki.photon.batmud.api.BPFApi;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * Bottom half of the UI for the AreaContainer / BatPathFinder.
@@ -444,58 +446,26 @@ public class BatPathFinderUI implements SolvedListener {
         if (!initialized) {
             return false;
         }
-
+        // Whereami
         try {
-            String stripped = strippedraw.trim();
-            if (stripped.startsWith("You glance around.")
-                    || stripped.startsWith("Being up in the crow's nest, you get an especially good view.")) {
-                readMap = -1;
-            } else {
-                if (readMap == -1 && !"".equals(stripped)) {
-
-                    mapW = stripped.length();
-                    mapH = mapW - 8; //(mapW - 1) / 2
-                    rawMap = new char[mapH][];
-                    readMap = mapH;
-                }
-            }
-
-            if (readMap > 0) {
-                String t2 = stripped;
-                char[] chars = t2.toCharArray();
-                rawMap[mapH - readMap] = chars;
-
-                readMap--;
-
-                if (readMap == 0) {
-                    for (int i = 0; i < mapH; i++) {
-                        for (int j = 0; j < mapW; j++) {
-                            if (rawMap[i][j] == '*') {
-                                rawMap[i][j] = 0;
-                            }
-                        }
-                    }
-                    int currCont = window.getContinent();
-
-                    int[] results = area.findOnMap(currCont, rawMap);
-                    if (results[0] == 0 && results[1] == 0) {
-                        report("Not found on current map.\n");
-                        window.setFrom("");
-                    } else if (results[0] == -1) {
-                        report("Ambiguous location.\n");
-                        window.setFrom("");
-                    } else {
-                        int x = results[0] + (mapW - 1) / 2;
-                        int y = results[1] + (mapH - 1) / 2;
-                        window.setFrom("L " + currCont + " " + x + " " + y);
-                        report("Location " + window.getFrom() + " found.");
-                        doSearch();
-                    }
-                }
+            Pattern whereAmIPattern = Pattern.compile("^You are in \\'(.*)\\', which is on the continent of (.*)\\. \\(Coordinates: (\\d+)x, (\\d+)y; Global: (\\d+)x, (\\d+)y\\)");
+            Matcher m = whereAmIPattern.matcher(strippedraw.trim());
+            if (m.find()) {
+                String location = m.group(1);
+                String continen = m.group(2);
+                int x = Integer.parseInt(m.group(3));
+                int y = Integer.parseInt(m.group(4));
+                int gx = Integer.parseInt(m.group(5));
+                int gy = Integer.parseInt(m.group(6));
+                int currCont = window.getContinent();
+                window.setFrom("L " + currCont + " " + x + " " + y);
+                report("Location " + window.getFrom() + " found.");
+                doSearch();
                 return true;
             }
         } catch (Exception e) {
             report(e.toString());
+            return false;
         }
         return false;
     }
@@ -652,7 +622,7 @@ public class BatPathFinderUI implements SolvedListener {
      * compile them together and do a walk on them.
      */
     @Override
-    public void solved(String solvedPath, int type) {
+        public void solved(String solvedPath, int type) {
 //		report("Called "+ type + " " + solvedPath + " " + 
 //				solveStart + " " + solveEnd);
         if (type == -1) {

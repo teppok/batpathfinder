@@ -297,4 +297,7 @@ class Area {
 		return diff2;
 	}
 
+        void setRoom(int x, int y, char type) {
+            this.data[x][y] = type;
+        }
 }
