@@ -42,7 +42,7 @@ class Area {
 		tradeLanes = tl;
 		sizex = sx;
 		sizey = sy;
-		data = new char[sizex][sizey];
+		data = new char[sizex+1][sizey+1];
 		this.costs = costs;
 
 		loadContinent(fileName);
@@ -97,7 +97,7 @@ class Area {
 					} catch (IndexOutOfBoundsException e) {
 						throw new IOException("Premature end of file.");
 					}
-					data[j][i] = c;
+					data[j+1][i+1] = c;
 				}
 			}
 		}
