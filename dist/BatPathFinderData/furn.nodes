@@ -1,19 +1,9 @@
 
 # Define all nodes and their closest outworld nodes to be used for approx function
 
-! rilynttar rilynttar_w
 ! drowtower_in rilynttar_s
 ! furndock furndockc
 
-rilynttar rilynttar_w::5 n 13 w
-rilynttar_w rilynttar::13 e 5 s
-
-rilynttar_s drowtower_in::e se d 2 nw 3 w 3 nw 5 ne 4 se 3 e 2 n
-drowtower_in rilynttar_s::2 s 3 w 4 nw 5 sw 3 se 3 e 2 se u nw w
-
 furndock furndockc::e s
 furndockc furndock::n w
-
-#kutanakor_e kutanakor::enter n w nw w w nw n n pull~statue w w nw nw w w nw w out
-#kutanakor kutanakor_e::enter e se e e se se e e pull~torch s s se e e se e s out
 

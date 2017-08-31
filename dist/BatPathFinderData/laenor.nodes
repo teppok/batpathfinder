@@ -24,7 +24,6 @@
 ! ringshop sc
 ! ocp sc
 ! chance harbor
-! orion orionc
 ! laedock laedockc
 
 
@@ -83,9 +82,6 @@ ocp arenac::s w 2 n 2 ne 2 e
 
 harbor chance::2 n ne 2 n 2 w sw
 chance harbor::ne 2 e 2 s sw 2 s
-
-orionc orion::4 n
-orion orionc::4 s
 
 laedockc laedock::n n nw n
 laedock laedockc::s se s s
