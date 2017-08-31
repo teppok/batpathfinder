@@ -452,11 +452,12 @@ public class BatPathFinderUI implements SolvedListener {
             Matcher m = whereAmIPattern.matcher(strippedraw.trim());
             if (m.find()) {
                 String location = m.group(1);
-                String continen = m.group(2);
+                String continent = m.group(2);
                 int x = Integer.parseInt(m.group(3));
                 int y = Integer.parseInt(m.group(4));
                 int gx = Integer.parseInt(m.group(5));
                 int gy = Integer.parseInt(m.group(6));
+                window.setContinent(continent);
                 int currCont = window.getContinent();
                 window.setFrom("L " + currCont + " " + x + " " + y);
                 report("Location " + window.getFrom() + " found.");
