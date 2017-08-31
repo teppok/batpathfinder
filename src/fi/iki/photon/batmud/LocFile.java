@@ -25,6 +25,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -49,6 +50,7 @@ public final class LocFile {
     
     public LocFile() {
         lines = new ArrayList<>();
+        records = new ArrayList<>();
     }
     public LocFile(String filename) throws IOException {
         this();
@@ -64,7 +66,7 @@ public final class LocFile {
     public void open(File file) throws IOException {
         this.file = file;
         if (!this.file.canRead()) {
-            throw new IOException("Can not read .loc-file");
+            throw new IOException("Can not read .loc-file "+file.getAbsolutePath());
         }
     }
     public void load() throws IOException, BPFException {
@@ -106,7 +108,6 @@ public final class LocFile {
         
         for(char c : line.toCharArray()) {
             if(escaping) {
-                currentComponent.append(c);
                 escaping = false;
                 continue;
             }
@@ -114,13 +115,14 @@ public final class LocFile {
                 escaping = true;
                 continue;
             }
-            if(c == ';' || c == '\n') {
+            if(c == ';') {
                 components.add(currentComponent.toString().trim());
                 currentComponent = new StringBuilder();
                 continue;
             }
             currentComponent.append(c);
         }
+        components.add(currentComponent.toString().trim());
         if(components.size() != 8) {
             throw new BPFException("LocFile. Line corrupted. "+line);
         }
@@ -142,10 +144,11 @@ public final class LocFile {
     public class LocFileRecord {
         private int x,y;
         private String flags,timestamp,url,freeform,prettyname;
+        private String[] names, creators;
 
         private String sanitizeName(String name) {
-            String ret = name.toLowerCase();
-            ret = ret.replaceAll("[^a-z0-9]", "");
+            String ret = name.toLowerCase().replace(" ", "_").replace("/", "_");
+            ret = ret.replaceAll("[^a-z^_]", "");
             return ret;
         }
         public String getPrettyname() {
@@ -155,7 +158,6 @@ public final class LocFile {
         public void setPrettyname(String prettyname) {
             this.prettyname = prettyname;
         }
-        private String[] names, creators;
 
         public int getX() {
             return x;
@@ -210,7 +212,7 @@ public final class LocFile {
         }
 
         public void setNames(String names) {
-            setNames(names.split("|"));
+            setNames(names.split("\\|"));
         }
 
         public void setNames(String[] names) {
@@ -228,7 +230,19 @@ public final class LocFile {
             this.creators = creators;
         }
         public void setCreators(String creators) {
-            setCreators(creators.split(creators));
+            setCreators(creators.split("\\|"));
+        }
+        @Override
+        public String toString() {
+            StringBuilder b = new StringBuilder();
+            b.append(this.getPrettyname()).append("\n");
+            b.append(Arrays.toString(this.getNames())).append("\n");
+            b.append(Arrays.toString(this.getCreators())).append("\n");
+            b.append(this.getFlags()).append("\n");
+            b.append(this.getTimestamp()).append("\n");
+            b.append(this.getFreeform()).append("\n");
+            b.append(this.getUrl()).append("\n");
+            return b.toString();
         }
         
     }

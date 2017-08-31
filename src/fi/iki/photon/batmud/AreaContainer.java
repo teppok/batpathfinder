@@ -175,7 +175,11 @@ public class AreaContainer {
 	 */
 	
 	private void loadLocations(String fileName, int cont) throws IOException, BPFException {
-            LocFile lf = new LocFile(fileName);
+            File f = new File(fileName);
+            if(!f.exists()) {
+                return;
+            }
+            LocFile lf = new LocFile(f);
             lf.load();
             
             for(LocFile.LocFileRecord r : lf.getRecords()) {
@@ -183,6 +187,10 @@ public class AreaContainer {
                     throw new BPFException("Strange coordinates " + r.getX() + " " + r.getY());
                 }
                 addLocation(r.getX(), r.getY(), cont, r.getPrettyname());
+                for(String name : r.getNames()) {
+                    String finalName = name.toLowerCase();
+                    addLocation(r.getX(), r.getY(), cont, finalName);
+                }
             }
 	}
 
@@ -199,23 +207,22 @@ public class AreaContainer {
 	 */
 	
 	private void addLocation(int locX, int locY, int cont, String name) throws BPFException {
-			NameLocation nl_orig = allNames.get(name.toLowerCase());
-			if (nl_orig != null) {
-				throw new BPFException("Location " + name + " already exists.");
-			}
-			if (! areas[cont].isValidLocation(locX, locY)) {
-				return;
-			}
-			PlaneLocation pl = new PlaneLocation(locX, locY, cont);
-			NameLocation nl = new NameLocation(name, pl, true);
-			
-			List<NameLocation> namesList = plAdjacentNames.get(pl);
-			if (namesList == null) {
-				namesList = new ArrayList<>(2);
-				plAdjacentNames.put(pl, namesList);
-			}
-			namesList.add(nl);
-			allNames.put(name.toLowerCase(), nl);
+            if(name == null || name.equals("")) {
+                return;
+            }
+            if (! areas[cont].isValidLocation(locX, locY)) {
+                    return;
+            }
+            PlaneLocation pl = new PlaneLocation(locX, locY, cont);
+            NameLocation nl = new NameLocation(name, pl, true);
+
+            List<NameLocation> namesList = plAdjacentNames.get(pl);
+            if (namesList == null) {
+                    namesList = new ArrayList<>(2);
+                    plAdjacentNames.put(pl, namesList);
+            }
+            namesList.add(nl);
+            allNames.put(name.toLowerCase(), nl);
 	}
 
 	/**
@@ -233,45 +240,45 @@ public class AreaContainer {
 	 */
 	
 	private void loadExtraEdges(String fileName, boolean nav) throws IOException, BPFException {
-		List<String> contents = InputLoader.loadInput(fileName, true);
-		if (contents == null) return;
-		
-		for (String line : contents) {
-			if (line.startsWith("!")) {
-				String[] parts = line.split(" ");
-				NameLocation node = allNames.get(parts[1]);
-				NameLocation planeNode = allNames.get(parts[2]);
-				if (node != null) {
-					throw new BPFException("Error, redefined node " + parts[1] + ", " + node);
-				}
-				if (planeNode == null) {
-					throw new BPFException("Error, unknown plane node " + parts[2]);
-				}
-				if (planeNode.getPlaneLocation() == null) {
-					throw new BPFException("Error, supposed plane node not on a plane, " + node + " " + planeNode);
-				}
-				
-				node = new NameLocation(parts[1], planeNode.getPlaneLocation(), false);
-				allNames.put(parts[1].toLowerCase(), node);
-			} else {
-				String leftright[] = line.split("::");
-				String left[] = leftright[0].split(" ");
-				NameLocation startCity = allNames.get(left[0]);
-				NameLocation endCity = allNames.get(left[1]);
-				if (startCity == null) {
-					throw new BPFException("Malformed input, " + left[0] + " not found.");
-				}
-				if (endCity == null) {
-					throw new BPFException("Malformed input, " + left[1] + " not found.");
-				}
-				if (leftright.length == 1) {
-					startCity.addNeighbor(new Link(endCity, "", 5, nav));
-				}
-				if (leftright.length == 2) {
-					startCity.addNeighbor(new Link(endCity, leftright[1], nav));
-				}
-			}
-		}
+            List<String> contents = InputLoader.loadInput(fileName, true);
+            if (contents == null) return;
+
+            for (String line : contents) {
+                if (line.startsWith("!")) {
+                    String[] parts = line.split(" ");
+                    NameLocation node = allNames.get(parts[1]);
+                    NameLocation planeNode = allNames.get(parts[2]);
+                    if (node != null) {
+                        throw new BPFException("Error, redefined node " + parts[1] + ", " + node);
+                    }
+                    if (planeNode == null) {
+                        throw new BPFException("Error, unknown plane node " + parts[2]);
+                    }
+                    if (planeNode.getPlaneLocation() == null) {
+                        throw new BPFException("Error, supposed plane node not on a plane, " + node + " " + planeNode);
+                    }
+
+                    node = new NameLocation(parts[1], planeNode.getPlaneLocation(), false);
+                    allNames.put(parts[1].toLowerCase(), node);
+                } else {
+                    String leftright[] = line.split("::");
+                    String left[] = leftright[0].split(" ");
+                    NameLocation startCity = allNames.get(left[0]);
+                    NameLocation endCity = allNames.get(left[1]);
+                    if (startCity == null) {
+                            throw new BPFException("Malformed input, " + left[0] + " not found.");
+                    }
+                    if (endCity == null) {
+                            throw new BPFException("Malformed input, " + left[1] + " not found.");
+                    }
+                    if (leftright.length == 1) {
+                            startCity.addNeighbor(new Link(endCity, "", 5, nav));
+                    }
+                    if (leftright.length == 2) {
+                            startCity.addNeighbor(new Link(endCity, leftright[1], nav));
+                    }
+                }
+            }
 	}
 
 	/**

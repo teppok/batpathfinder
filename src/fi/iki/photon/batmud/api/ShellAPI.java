@@ -47,7 +47,7 @@ public class ShellAPI implements BPFApi, WindowListener {
 	/** Basic constructor that initializes a bpfui. */
 	
 	ShellAPI() {
-		bpfui = new BatPathFinderUI("C:\\Users\\Teppo\\Batclient", this, true);
+		bpfui = new BatPathFinderUI("C:\\Users\\Fizzl\\Batclient", this, true);
 	}
 	
 	@Override
