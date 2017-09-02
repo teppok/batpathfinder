@@ -432,6 +432,8 @@ public class BatPathFinderUI implements SolvedListener {
         solving = false;
     }
 
+    Pattern whereAmIPattern = Pattern.compile("^You are in '(.*)', which is on the continent of (.*)\\. \\(Coordinates: (\\d+)x, (\\d+)y; Global: (\\d+)x, (\\d+)y\\)");
+    Pattern whereAmIPattern2 = Pattern.compile("^You are in '(.*)' in .* \\(ship\\) on the continent of (.*)\\. \\(Coordinates: (\\d+)x, (\\d+)y; Global: (\\d+)x, (\\d+)y\\)");
     /**
      * Process the terminal input. If we see a trigger message, we start
      * recording a map. After the map has been recorded, call area.findOnMap to
@@ -448,8 +450,9 @@ public class BatPathFinderUI implements SolvedListener {
         }
         // Whereami
         try {
-            Pattern whereAmIPattern = Pattern.compile("^You are in \\'(.*)\\', which is on the continent of (.*)\\. \\(Coordinates: (\\d+)x, (\\d+)y; Global: (\\d+)x, (\\d+)y\\)");
+            
             Matcher m = whereAmIPattern.matcher(strippedraw.trim());
+            Matcher m2 = whereAmIPattern2.matcher(strippedraw.trim());
             if (m.find()) {
                 String location = m.group(1);
                 String continent = m.group(2);
@@ -463,7 +466,21 @@ public class BatPathFinderUI implements SolvedListener {
                 report("Location " + window.getFrom() + " found.");
                 doSearch();
                 return true;
-            }
+            } 
+            else if (m2.find()) {
+                String location = m2.group(1);
+                String continent = m2.group(2);
+                int x = Integer.parseInt(m2.group(3));
+                int y = Integer.parseInt(m2.group(4));
+                int gx = Integer.parseInt(m2.group(5));
+                int gy = Integer.parseInt(m2.group(6));
+                window.setContinent(continent);
+                int currCont = window.getContinent();
+                window.setFrom("L " + currCont + " " + x + " " + y);
+                report("Location " + window.getFrom() + " found.");
+                doSearch();
+                return true;
+            } 
         } catch (Exception e) {
             report(e.toString());
             return false;
