@@ -1,0 +1,19 @@
+SCRIPT_NAME = "w";
+SCRIPT_DESC = "A wrapper for BatPathFinder";
+SCRIPT_OFF = false;
+import com.mythicscape.batclient.interfaces.BatClientPlugin;
+
+run() {
+    String[] cmds = null;
+    if (argument != null && !("".equals(argument)))
+        cmds = argument.split(" ");
+    for(BatClientPlugin plugin : pluginManager.getPlugins("BatPathfinder")){
+		plugin.process(cmds);
+    }
+}
+
+bootup() {
+    for(BatClientPlugin plugin : pluginManager.getPlugins("BatPathfinder")){
+		plugin.loadPlugin();
+    }
+}

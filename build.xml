@@ -44,11 +44,11 @@
 	
 	<target name="package" description="Builds jar-files" depends="compile">
 			
-		<delete file="${dist.dir}/BatPathFinder.jar" />
-		<jar jarfile="${dist.dir}/BatPathFinder.jar">			
+		<delete file="${dist.dir}/plugins/BatPathFinder.jar" />
+		<jar jarfile="${dist.dir}/plugins/BatPathFinder.jar">			
 			
 			<manifest>
-				<attribute name="Built-By" value="Teppo Kankaanpää"/>
+				<attribute name="Built-By" value="${user.name}"/>
 		        <attribute name="Sealed" value="false"/>
 		      	<attribute name="class-path" value=""/>		      	
 			</manifest>

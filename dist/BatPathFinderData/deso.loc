@@ -6,22 +6,21 @@
 278	; 35	; 0	;@Seashore Tower;@Kissarobotti;;;
 282	; 45	; 0	;@Dunamor|Berul Village;@Gront;;;LQ30 "Rescue Dorian".
 309	; 49	; 0	;Pier|@West wharf;Melemkor;;;
-243	; 51	; 0	;@Sunderland;Alaron,Dragoness,@Rock;21.07.1996;;
+243	; 51	; 0	;@Sunderland;!Alaron,!Dragoness,@Rock;21.07.1996;;AQ "The Lost Staff".
 202	; 60	; 1	;Midnight Carnival|@The Last Unicorn;Natasha,Hablo;28.04.2002;http://en.wikipedia.org/wiki/The_Last_Unicorn;Based on the book "The Last Unicorn" by Peter S. Beagle.
 458	; 72	; 0	;@Teywaer Graveyard;@Zith;28.10.2003;;
 403	; 77	; 0	;@Teywaer Tunnel;@Zith;28.10.2003;;
 478	; 79	; 0	;Nanagich Village|@Teywaer village;@Zith;28.10.2003;;
 480	; 92	; 0?	;Small Well|@Teywaer well;@Zith;;;
 388	; 112	; 0	;@Celestial Caverns;@Jaina;;;
-517	; 120	; 2?	;Jurkajef's Tower|@Goblin citadel;Zoso,Malitrius;;http://www.bat.org/community/library?str=701;
+517	; 120	; 3?	;Jurkajef's Tower|@Goblin citadel;Zoso,Malitrius;;http://www.bat.org/community/library?str=701;
 238	; 113	; 0	;@Well;@Blitzer;;;
 229	; 153	; 0	;Dalesmen|@Twisted tower;Sirdar;;;
 132	; 192	; 1	;Unholy Cathedral|@Cathedral;@Bj;14.07.1996;;
-444	; 215	; 0?-	;DESO-CLOSED #1;;;;
 175	; 221	; 1	;@Ruins of El Deagnoh;@Grimsh;;;
 258	; 230	; 0	;@Halls of the Dead;@Pring;;;
-308	; 279	; 3	;D'hregal Mine|@Kobold mines;Alaron,Rock;21.07.1996;;LQ9 "Kobold staff".
-304	; 305	; 0	;Tiburcio's Tower|@Tiburico;Cyberman;;;
+308	; 279	; 3	;D'hregal mines|@Kobold mines;!Alaron,@Rock;21.07.1996;;LQ18 "Kobold staff".
+304	; 305	; 0	;Tiburcio's Tower|@Tiburico;@Marley,!Cyberman;;;A very old area, originally by Marley, removed and then converted by Cyberman in 1996.
 368	; 312	; 3	;@Castle of Toxic;@Toxic,!Cyberman;11.08.1996;;
 328	; 328	; 0	;@Seabird Inn;@Grimsh;;;
 332	; 351	; 0	;Ranger quest area|@51 daughters;Runeaxe;;;
@@ -36,27 +35,33 @@
 292	; 388	; 0	;@Hairikko Forest;@Kissarobotti,Yagol;;;Level limited to 20.
 228	; 294	; 1	;Followers of Vanion|@The Temple of Pandion Knights;@Fizbuck;;;
 264	; 275	; 1	;Burning Village|@Villager under attack;Dragoness;;;
-278	; 307	; 2	;@Ochimo;@Kip,!Shadowjack;;;LQ8 "Statue"
+278	; 307	; 2	;@Ochimo;@Kip,!Shadowjack;;;LQ16 "Statue"
 27	; 77	; 0	;Red Tides village|@Red Tides;@Pahvi;;;AQ "Sweet dreams".
 302	; 94	; 0	;@Caves of Orac;Elwood;;;AQ "Caves of Orac".
 220	; 231	; 1	;Temple of All Gods|@Ruins of a Temple of All Gods;;;;
-163	; 275	; 0	;DESO-CLOSED #2;;;;
+163	; 275	; 0!	;DESO-UNKNOWN #1;;;;
 338	; 368	; 1	;@Goblin Farm;@Runeaxe;;;
 248	; 385	; 2	;@Mythical Valley;@Ilendir,!Cyberman;;;LQ29 "King".
-196	; 369	; 0?-	;@Millie's Nightmare;@Noctur;29.12.2006;;Part of AQ "Millie's nightmare".
-188	; 387	; 0	;@Buckthorn Valley;@Noctur;29.12.2006;;Part of AQ "Millie's nightmare".
+194	; 368	; 0?	;@Millie's Nightmare;@Noctur;29.12.2006;;Part of AQ "Millie's nightmare".
+188	; 387	; 0?	;@Buckthorn Valley;@Noctur;29.12.2006;;Part of AQ "Millie's nightmare".
 127	; 284	; 1?	;Apollo|@The Lands of Apollo;Nym,Panner;;;
 278	; 211	; 0?	;Magerathia;@Elwood;;;LQ84 "Inner Sanctium of Magerathia".
 404	; 420	; 0?	;@Tinmen Monastery;@Jaina;;;
 194	; 334	; 3?	;@Abandoned barn;@Malar;10.01.2008;;
-473	; 191	; 0?	;@Snotling farm;@Malitrius;09.01.2005;http://www.bat.org/community/library?str=837;Mapper's comment: PUUH.
+473	; 191	; 0?	;@Snotling farm;@Malitrius;09.01.2005;http://www.bat.org/community/library?str=837;Ggr's comment: PUUH.
+133	; 266	; 1?	;@Zorn;@Ens;09.04.2013;;
+309	; 54	; 2?	;@Feldspar conglomerate;@Shinarae;05.04.2017;;
 
-328	; 414	; 0G-	;@Animist;@Heidel;28.11.2010;;
+508	; 118	; 1?	;BF Castle|@Broken Forest - Castle;@Briano,Tarken;20.11.2011;;
+507	; 119	; 1?	;BF Barracks|@Broken Forest - Barracks;@Briano,Tarken;20.11.2011;;
+510	; 120	; 2?	;BF Seacrest|@Broken Forest - Seacrest;@Briano,Tarken;20.11.2011;;
+511	; 118	; 0?	;BF Prison|@Broken Forest - Prison;@Briano,Tarken;20.11.2011;;
 
 
 296	; 288	; 2?T	;Ranger (deso);;;;Ranger guild trainer.
 313	; 292	; 0?T	;Barb (deso);;;;Barbarian guild trainer.
 262	; 379	; 1?T	;Priest (deso);;;;Evil priest guild trainer.
+102	; 371	; 1?M	;Midnight cavalier;;;;
 
 
 48	; 97	; 0G	;Mage (acid)|@Mage acid;Juggelo,Lampsa;;;
@@ -67,6 +72,8 @@
 201	; 153	; 1?G	;Tiger (deso)|@Tiger shrine (deso);;;;
 341	; 467	; 1?G	;LoC: Aelena|@Aelena temple;Qazar,Hackop;16.02.2008;;New Lords of Chaos temple of Aelena.
 238	; 87	; 3?G	;Ghost Liberators|The Order of Ghost Liberator Paladins|@Ghost liberator mansion;Heidel;06.11.2009;;
+328	; 414	; 0?G	;Animist|@Animist guild;@Heidel;28.11.2010;;
+79	; 433	; 0?G	;Tree Navigators|@The Navigators of the Tree|Treenavs;@Zin;05.04.2013;;Old guild, recoded and opened by Zin.
 
 
 341	; 106	; 0S	;Shadow|@Twisting shadows of the void;;;;
@@ -78,32 +85,6 @@
 179	; 360	; 0S	;Ogre;;;;
 32	; 44	; 3S	;Leech;;;;
 85	; 464	; 3S	;Lich;;;;
-
-
-19	; 43	; 0?F	;@Pit of Damm;Sirdar,Era;;;
-341	; 48	; 0?F	;Kalithym the Poisonous|@Fortress of Kalithym the poisonous;Sirdar,Era;;;
-48	; 59	; 0?F	;@Pit of Grnook;Sirdar,Era;;;
-360	; 78	; 2?F	;@Thalabilg's Hold;Sirdar,Era;;;
-240	; 98	; 0?F	;@Berterog Castle;Sirdar,Era;;;
-351	; 116	; 3?F	;@Wailing Tower;Sirdar,Era;;;
-263	; 176	; 0?F	;Gabryand Keep|@Gabryand's keep;Sirdar,Era;;;
-474	; 232	; 1?F	;@Maethron Batch;Sirdar,Era;;;
-157	; 239	; 2?F	;Taronion|@Fortress taronion;Sirdar,Era;;;
-127	; 281	; 0?F	;@Tarisig's Hold;Sirdar,Era;;;
-408	; 291	; 3?F	;@Holexand Keep;Sirdar,Era;;;
-314	; 312	; 2?F	;@Esymon Castle;Sirdar,Era;;;
-170	; 333	; 1?F	;@Fort Balandaug;Sirdar,Era;;;
-92	; 354	; 0?F	;@Tilakgun's Hold;Sirdar,Era;;;
-238	; 357	; 1?F	;@Haeliver Keep;Sirdar,Era;;;
-146	; 370	; 3?F	;@Rardamatt Keep;Sirdar,Era;;;
-97	; 402	; 1?F	;@Arad's Delve;Sirdar,Era;;;
-198	; 423	; 0?F	;@Fanarin's Deep;Sirdar,Era;;;
-307	; 428	; 0?F	;@Waltacol Tower;Sirdar,Era;;;
-230	; 431	; 0?F	;@Rind Castle;Sirdar,Era;;;
-136	; 442	; 3?F	;@Hamondam Castle;Sirdar,Era;;;
-205	; 448	; 2?F	;@Tower of the Gargoyle Baron;Sirdar,Era;;;
-82	; 463	; 1?F	;@Castle of Qurp;Sirdar,Era;;;Obvious reference to legendary BatMUD player Qurp, who died in Nov 2007.
-153	; 471	; 1?F	;@Chest of the Abomination;Sirdar,Era;;;
 
 
 416	; 433	; 0C	;Camelot;camelot+,hippi+;;;
@@ -123,6 +104,7 @@
 345	; 339	; 0C-	;X;;;;
 
 243	; 73	; 1C	;Gehenna;rise+;;;
+243	; 72	; 0C-	;Gehenna;;;;
 244	; 73	; 0C-	;Gehenna;;;;
 245	; 73	; 0C-	;Gehenna;;;;
 243	; 74	; 0C-	;Gehenna;;;;
@@ -151,3 +133,10 @@
 253	; 204	; 2C	;Isis;;;;
 253	; 298	; 3C	;Paradise;;;;
 421	; 444	; 1C	;Tenebrae;;;;
+200	; 209	; 1C	;Luostari;;04.05.2012;;
+230	; 144	; 0C	;Daleshop;;15.04.2013;;
+78	; 449	; 3C	;Mausoleum;;;;
+336	; 97	; 1C	;Shadowspire;;29.10.2014;;
+295	; 64	; 0C	;Perilous;;20.06.2015;;
+27	; 367	; 3C	;Shire;;10.12.2015;;
+237	; 280	; 0C	;Vendigroth;;10.06.2017;;

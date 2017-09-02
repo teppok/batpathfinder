@@ -1,49 +1,48 @@
 # MapUtils LOC file (version 4.0)
 # Refer to README.loc for more information.
 #
-365	; 471	; 0c	;Arelium;Elwood,Tedra,Blasterr,Goretongue,Firefox,Badger;;http://tnsp.org/maps/arelium.html;Main city of Laenor. LQ2 "Quest Room", LQ4 "City Tour", LQ5 "Visit", LQ7 "View Artwork", LQ13 "Kitty", LQ19 "Sewer ring", LQ20 "Register", LQ21 "Rules 101", LQ25 "Roulette", LQ31 "Gong", LQ47 "Master Hunter" and AQ "Robbery in Moonlight".
-301	; 361	; 1?	;FERRY/Laenor/Daerwon|@Laenor fort;Melemkor;;;Laenor ferry dock.
-618	; 98	; 0	;Urvile Tree|@Woodhelven;@Seance,Entropy;;;
-608	; 99	; 1	;@Revelstone;@Seance,Entropy;;;
-614	; 100	; 0	;Kevin's watch|@Seance's platform;@Seance,Entropy;;;
-605	; 101	; 2	;Guard's Gap|@Guards gap;@Seance,Entropy;;;
-613	; 102	; 0	;Mithil Stonedown|@Mithil;@Seance,Entropy;;;
+365	; 471	; 0c	;@Arelium;Elwood,Tedra,Blasterr,Gore,Firefox,Badger;;http://tnsp.org/maps/arelium.html;Main city of Laenor. AQ "Quest Room", AQ "City Tour", AQ "Visit", AQ "View Artwork", AQ "Kitty", LQ19 "Sewer ring", LQ20 "Register", LQ21 "Rules 101", LQ25 "Roulette", LQ31 "Gong", LQ47 "Master Hunter" and AQ "Robbery in Moonlight".
+580	; 379	; 1?	;@Dortlewall;@Heidel,Darol;08.03.2014;;The starting area of new players.
+339	; 494	; 2c	;Pleasantville|@Newbie Village;Pahvi,Shardik,Dralith;04.02.2003;;
+594	; 367	; 0?	;@Mountaineer cottage;@Darol;29.03.2014;;
+301	; 361	; 1?	;FERRY/Laenor/Daerwon|@Laenor fort;Melemkor;;;Laenor ferry dock. AQ "Ferry".
+618	; 98	; 0	;Urvile Tree|@Woodhelven;@Seance,!Eredlin,!Entropy;;;
+608	; 99	; 1	;@Revelstone;@Seance,!Eredlin,!Entropy;;;
+614	; 100	; 0	;Kevin's watch|@Seance's platform;@Seance,!Eredlin,!Entropy;;;
+605	; 101	; 2	;Guard's Gap|@Guards gap;@Seance,!Eredlin,!Entropy;;;
+613	; 102	; 0	;Mithil Stonedown|@Mithil;@Seance,!Eredlin,!Entropy;;;
 621	; 103	; 3	;Foul's Creche|@Fouls creche;@Seance,Entropy,!Mardus;;;LQ40 "Sacrifice staff".
 727	; 135	; 0	;@Elven village;Eredlin;;;LQ52 "Return the amulet".
-538	; 167	; 0	;Dunedain's Mansion|Dunedain's Dark Mansion|@Dunedains dark mansion;@Dunedain,Alaron;;;
+538	; 167	; 0	;Dunedain's Mansion|Dunedain's Dark Mansion|@Dunedains dark mansion;@Dunedain,!Alaron;;;
 580	; 185	; 0	;Blackteeth Mountains|@The Slopes of the Blackteeth Mountains;@Hablo;;;LQ57 "Rescue patrol".
 447	; 241	; 0	;Simon's Hut|@Elements;;;;
 350	; 242	; 1	;@Gauntlet event;;;;Location where the gauntlet event occurs.
 532	; 263	; 0	;@Forest of Legolas;@Legolas,Shardik;;;AQ "The Quest of Legolas".
 462	; 292	; 0	;@Abandoned Valley;@Fizzl;;;AQ "Help Atriel".
-365	; 294	; 1	;Plura's Castle|@Pluras castle;@Plura,Alaron;03.08.1996;;
+365	; 294	; 1	;Plura's Castle|@Pluras castle;@Plura,!Alaron;03.08.1996;;
 309	; 335	; 0	;Ancient ruins|Tiger guild shrine|@Shrine;;;;Tiger guild shrine and maze.
 508	; 347	; 0	;Ivory Tower|@White marble tower;Dice;;;
 652	; 358	; 3	;@Temple of Sarku;@Sarku,Alaron;31.08.1996;;
-473	; 365	; 1?	;LAE-CLOSED #1;;;;
-311	; 404	; 0	;Arthur|@Monthy Python, Quest for the Holy Grail;Malar,Sciurine,!Natasha,@Dranthrax;20.08.1996;http://www.imdb.com/title/tt0071853/;LQ44 "Holy grail", modelled after the Monty Python movie.
+311	; 404	; 0	;Arthur|@Monthy Python, Quest for the Holy Grail;Malar,!Sciurine,&Natasha,@Dranthrax;20.08.1996;http://www.imdb.com/title/tt0071853/;LQ44 "Holy grail", modelled after the Monty Python movie.
 690	; 408	; 0	;Goddess Garden|@Castle of Goddess;@Yagol,!Mardus;;;
-613	; 410	; 0	;LAE-CLOSED #2;;;;
-613	; 414	; 0	;LAE-CLOSED #3;;;;
 590	; 428	; 1?	;Temple of the Winds|@Temple to the Winds;Melemkor;;;
 528	; 429	; 0	;Bigeaul|@Chateau de le Bigeaul|Monastery of Beldarus;@Kimvais,&Hablo;;;LQ35 "Help the Baron" and AQ "Restless dead". Monastery of Beldarus added 31.01.2005.
 288	; 433	; 1?	;@Oakvale;@Heidel;23.09.2005;;
-312	; 460	; 1	;@Circus;@Nalle;18.03.2003;;AQ "A day at the circus".
-594	; 467	; 1	;Hugoville|@Hugoville and von Huber;Seance,Eredlin,Entropy;;;LQ18 "Manhunt" and LQ50 "Machine".
+312	; 460	; 1	;@Circus;@Nalle,!Ggr;18.03.2003;;AQ "A day at the circus". Recoded by Ggr in January 2013.
+594	; 467	; 1	;Hugoville|@Hugoville and von Huber;@Seance,!Eredlin,!Entropy;;;LQ18 "Manhunt" and LQ50 "Machine".
 339	; 468	; 1	;Orc scouts|@Orc scouts treehouse;@Shadowjack;;;
-490	; 469	; 0	;@Drawbridge;;;;
+490	; 469	; 0	;@Drawbridge|Castle of Faux Couer;@Dice;;;
 238	; 470	; 0	;@Newbie Forest;@Nightbld;;;
-289	; 474	; 0	;Digga's Domain|Raven, newbie mountain, trolls etc.|@Raven, newbie mountain, trolls etc;@Digga,Alaron;21.08.1996;;LQ17 "Platter", LQ51 "Magic tower" and LQ70 "Silver battlesuit".
-368	; 476	; 0	;Pleasantville|@Newbie Village;Pahvi,Shardik,Dralith;04.02.2003;;The starting area of new players.
-281	; 479	; 0	;@Newbie Mountain;@Wane;;;
+289	; 474	; 0	;Digga's Domain|Raven, newbie mountain, trolls etc.|@Raven, newbie mountain, trolls etc;@Digga,!Alaron,!Ggr;21.08.1996;;LQ17 "Platter", LQ51 "Magic tower" and LQ70 "Silver battlesuit". Recoded by Ggr in February 2014.
+281	; 479	; 0	;@Newbie Mountain|Tall Mountain;@Wane;;;
 351	; 479	; 1?	;Wibble Village|@Wibble;Malar,Ruffneck;01.08.1991;;
 357	; 482	; 0	;@Petting Zoo|Newbie Zoo;@Zamphyr,!Namhas;07.06.1997;;
-363	; 485	; 0?	;Dungeon|@Arelium dungeons;;;;
-306	; 486	; 0?	;@Newbie Mines;!Shadowjack,@Tonze;30.06.1996;;LQ16 "Black butterfly". Level limit 30.
+363	; 485	; 0?	;Dungeon|@Arelium dungeons;@Jarnis,!Shadowjack;;;Originally called "BatCity Dungeons", of course.
+306	; 486	; 0?	;@Newbie Mines|Mines;!Shadowjack,@Tonze;30.06.1996;;LQ16 "Black butterfly" and LQ17 "Rob vault". Level limit 30.
 368	; 491	; 1	;Newberry Park|@Newbie park;Dragoness;;;
 302	; 497	; 2	;Old convent|@Damned convent;@Zin;;;
 354	; 497	; 0	;Apple Orchard|Bob and Thelma's farm/grove|@Bob and thelmas farm/grove;Haplo;;;
-340	; 498	; 2	;Newbie taskmaster|@Newbie playgrounds;@Hackop;22.11.2003;;LQ26 "Jarear's assignments".
+340	; 498	; 2	;Newbie taskmaster|@Newbie playgrounds;@Hackop;22.11.2003;;LQ26 "Jarear's assignments" and LQ23 "Liberate newbies".
 341	; 489	; 1?	;100 Acre Forest|@Nasu area;@Arakorni;;;
 518	; 508	; 1	;Rainbow Cloak|Colours|@The Riddle of the Colours;Scrounge,Scrambler;;;LQ27 "Colours".
 388	; 511	; 0	;@Newbie Playground;Hackop,Favorit;;;
@@ -59,7 +58,7 @@
 517	; 593	; 1	;@Chessboard;@Scarlet,!Cyberman;;;
 406	; 596	; 0	;Gnome Airship|@Gnomish flying machine;@Merri;24.04.2004;;
 456	; 616	; 0	;Crescent Tower|@Tower of the accursed;@Aarugotti;;;
-525	; 627	; 0	;LAE-CLOSED #4;;;;
+525	; 627	; 0!	;LAE-UNKNOWN #1;;;;
 516	; 632	; 1	;@Zoy's Inn;@Zoy,!Hablo;;;LQ24 "Zoy's Inn".
 546	; 632	; 0	;Temple of Las|@Nun Temple;@Zin;;;Nun guild training location.
 577	; 681	; 0	;@Secladin;Melemkor;;;LQ25 "Save Secladin village".
@@ -74,40 +73,48 @@
 385	; 518	; 1?	;@Small Meadow;@Kyo;07.03.2007;;
 363	; 133	; 0%	;Ix'ixixiblat;Amarth;;;The only 18-man monster in game.
 542	; 509	; 0?	;@Kender Mansion;Zhaman;;;
-459	; 533	; 0?	;@School of Lumine;@Heidel;05.12.2007;;AQ "Rescue Hannah's parents". Soft level-limited by a blocking monster.
-319	; 462	; 2?	;@Old Oak Forest;@Malar;02.01.2008;;LQ15 "Help the hobbit".
-228	; 476	; 2?	;@Conifer Forest;@Neth;07.01.2008;;Level limited to lvl50. LQ14 "Acquire Documents".
+459	; 533	; 0?	;@School of Lumine;@Heidel;05.12.2007;;AQ "Rescue Hannah's parents". Soft level-limited to lvl55 by a blocking monster.
+319	; 462	; 2?	;@Old Oak Forest;@Malar;02.01.2008;;LQ21 "Help the hobbit".
+228	; 476	; 2?	;@Conifer Forest;@Neth;07.01.2008;;Level limited to lvl50. LQ19 "Acquire Documents".
 524	; 606	; 2?	;@Beastlands;@Malar;06.06.2003;;LQ23 "Help Liezeb".
 516	; 585	; 2?	;Village of Stouby|@Stouby;@Heidel;09.08.2008;;Level limited to lvl50. LQ32 "Wicked Witch".
 489	; 303	; 2?P	;wihne+|@Wihne+ ss;;;;
-596	; 412	; 2?	;@Tyr Farwyn;@Heidel,Gurth;29.01.2009;http://tnsp.org/maps/tyr_farwyn.html;AQ "Moonlight Murders", AQ "Competing architects".
-
-264	; 408	; 1?	;Wrecked ship hull|@Landfall;Melemkor;07.12.2006;;Starting location of Age of Exiles.
-317	; 466	; 2?	;@Granny's house;@Dino;;;
-410	; 533	; 0?	;@Wrebie forest;@Saruman,!Grizzt;21.09.2010;;Old area, reopened now.
-559	; 412	; 0?	;@Bunny valley;@Heidel;16.10.2010;;Soft level-limited, similarly to School of Lumine area.
+596	; 411	; 2?	;@Tyr Farwyn;@Heidel,Gurth;29.01.2009;http://tnsp.org/maps/tyr_farwyn.html;AQ "Moonlight Murders", AQ "Competing architects".
+264	; 408	; 2?	;Wrecked ship hull|@Landfall;Melemkor;07.12.2006;;Starting location of Age of Exiles.
+317	; 466	; 2?	;@Granny's house;@Dino;01.08.2008;;
+410	; 533	; 0?	;@Wrebie forest|Wrebie castle;@Saruman,!Grizzt;21.09.2010;;Old area, reopened now. The area seems to be divided to "separate" parts - forest and castle.
+559	; 412	; 0?	;@Bunny valley;@Heidel;16.10.2010;;Soft level-limited to lvl55, similarly to School of Lumine area.
+519	; 553	; 1?	;@Lonely Inn;@Grediah;13.04.2011;;AQ "The lost love"
+439	; 278	; 1?	;@Butterfly farm;@Heidel;26.01.2012;;Soft level-limited to lvl55, similarly to School of Lumine area.
+298	; 122	; 0?	;@Mesme|Mesme forest;@Damut;18.11.2012;;
+571	; 484	; 3?	;@Forest of Moonrind;@Heidel;09.07.2013;;
+613	; 410	; 0?	;@Iron mine|Mines of Tyr Farwyn|Mountain passage tunnel;@Ggr;20.02.2012;;Contains AQ "Rescue the bunny".
+613	; 414	; 0-	;Iron mine (south entrance);;23.02.2012;;
+614	; 634	; 0	;@Sewers of Silverfang|Norgak;@Sirdar;03.05.2015;;
+273	; 406	; 1c	;@Vendace Shore;@Heidel;16.10.2015;;AQ "Vendace Shore"
 
 
 404	; 242	; 0G	;Runemage (south)|@Runemages guild northern entrance.;@Nalle,Shardik;23.11.2003;;
 642	; 415	; 0G	;Runemage (west)|@Runemages guild, the eastern entrance.;@Nalle,Shardik;23.11.2003;;
 295	; 608	; 0G	;Runemage (east)|@Runemages guild, western entrance.;@Nalle,Shardik;23.11.2003;;
-572	; 403	; 0G	;Tarmalen (summer)|@Tarmalen summer guild;Dralith,Shinarae,Dragoness;;;
+572	; 403	; 1G	;Tarmalen (summer)|@Tarmalen summer guild;Dralith,Shinarae,Dragoness;;;
 335	; 460	; 0G	;Squire&Cavalier|@Squire guild;Shinarae,Elwood;;;
 352	; 468	; 0G	;Sailor|Harbour|@Shipyard;Melemkor,Alaron;;;
 505	; 483	; 3G	;Channeller|@Channelers;Shinarae;;;
 465	; 504	; 2G	;Knight|@Knight guild;Shinarae,Elwood;13.07.2004;;
-340	; 554	; 0G	;Ranger|@Ranger guild;Duke;;;
-453	; 559	; 0G	;Druid|@Druids;Lanfear;;;
+340	; 554	; 0G	;Ranger|@Ranger guild;@Duke;;;
+453	; 559	; 0G	;Druid|@Druids;@Lanfear;;;
 699	; 701	; 0G	;Mage (magical)|@Mage magical;Juggelo,Lampsa;;;
 490	; 299	; 0?G	;Crimson;Era,Ulath,Franco,Mokti,Quadra;;;
-310	; 381	; 3?G	;Explorer|@Bruce's shack;Ulath;20.04.2007;;
+310	; 381	; 3?G	;Explorer|@Bruce's shack;@Ulath;20.04.2007;;
 391	; 292	; 0?G	;Archer;Shinarae,Grizzt;16.02.2008;;
+405	; 294	; 3?G	;Monk special (lae)|@Martial arts trainer (kobold);;;;Monk guild martial arts training, Pzakh Trebilisz.
 
 
-405	; 294	; 3?T	;Monk (lae)|@Martial arts trainer (kobold);;;;Monk guild trainer.
 297	; 513	; 1?T	;Barb (lae);;;;Barbarian guild trainer.
 670	; 90	; 0?T	;Priest (lae);;;;Evil priest guild trainer.
-
+295	; 408	; 3%S 	;Animist totem (lae);;;;Animist guild totem pole for Laenor.
+517	; 647	; 1?M	;River cavalier;;;;
 
 613	; 116	; 2S	;Sprite;;;;
 561	; 303	; 0S	;Dwarf;;;;
@@ -118,26 +125,6 @@
 405	; 550	; 0S	;Elf;;;;
 398	; 570	; 0S	;Hobbit;;;;
 256	; 585	; 0S	;Leprechaun|@A small, but nice and comfortable hut;;;;
-
-
-395	; 91	; 0?F	;@Elesym Castle;Sirdar,Era;;;
-634	; 91	; 0?F	;Bertomatt|@Fortress Bertomatt;Sirdar,Era;;;
-709	; 96	; 0?F	;Rogauwalt|@Fortress Rogauwalt;Sirdar,Era;;;
-615	; 114	; 0?F	;@Treehome;Sirdar,Era;;;
-551	; 136	; 0?F	;Rukh|@Fortress Rukh;Sirdar,Era;;;
-488	; 196	; 0?F	;@Barad Anion;Sirdar,Era;;;
-536	; 204	; 0?F	;@Antheniel Tower;Sirdar,Era;;;
-380	; 297	; 2?F	;@Rardamund Keep;Sirdar,Era;;;
-562	; 309	; 0?F	;@Sigabar's Hold;Sirdar,Era;;;
-498	; 316	; 0?F	;@Establishment Primus;Sirdar,Era;;;
-378	; 317	; 1?F	;@Outpost Klx;Sirdar,Era;;;
-652	; 428	; 0?F	;@Alfolke Grove;Sirdar,Era;;;
-359	; 472	; 1?F	;@Amarter Tower;Sirdar,Era;;;
-463	; 501	; 1?F	;@Omaris Tower;Sirdar,Era;;;
-251	; 579	; 0?F	;@Caer Baranon;Sirdar,Era;;;
-435	; 585	; 2?F	;@Gilishal's Deep;Sirdar,Era;;;
-584	; 673	; 0?F	;@Tower of Aegis;Sirdar,Era;;;
-263	; 690	; 0?F	;@Anelela's Delve;Sirdar,Era;;;
 
 
 376	; 501	; 0C	;Babylon;uk+,keke+,turku+;;;
@@ -196,7 +183,7 @@
 326	; 460	; 0C-	;Redwall;;;;
 325	; 459	; 0C-	;Redwall;;;;
 
-299	; 384	; 1C	;Fightclub;fc+,pupu+;;http://www.imdb.com/title/tt0137523/;Free castlerooms available for well-behaving newbies! Inquire within.
+299	; 384	; 1C	;Fightclub;fc+,pupu+,canon+;;http://www.imdb.com/title/tt0137523/;Free castlerooms available for well-behaving newbies! Inquire within.
 298	; 385	; 0C-	;Fightclub;;;;
 299	; 385	; 0C-	;Fightclub;;;;
 300	; 385	; 0C-	;Fightclub;;;;
@@ -246,6 +233,7 @@
 
 502	; 356	; 1C	;Kalia;;;;
 502	; 357	; 0C-	;Kalia;;;;
+501	; 357	; 0C-	;Kalia;;;;
 
 466	; 563	; 0C	;Valhalla;;;;
 467	; 563	; 0C-	;Valhalla;;;;
@@ -260,10 +248,12 @@
 311	; 441	; 0C	;Neverness;sforce+,casual+;;;
 311	; 442	; 0C-	;Neverness;;;;
 312	; 442	; 0C-	;Neverness;;;;
+310	; 442	; 0C-	;Neverness;;06.04.2010;;
 
 335	; 513	; 1C	;Nightfall;rogue+;;;
 336	; 513	; 0C-	;Nightfall;;;;
 336	; 512	; 0C-	;Nightfall;;;;
+336	; 514	; 0C-	;Nightfall;;04.07.2008;;
 
 614	; 424	; 0C-	;Melusine;;;;
 615	; 424	; 0C-	;Melusine;;;;
@@ -275,17 +265,67 @@
 615	; 426	; 0C-	;Melusine;;;;
 616	; 426	; 0C-	;Melusine;;;;
 
+510	; 431	; 1C	;Tormentia;;29.06.2011;;
+509	; 431	; 0C-	;Tormentia;;08.08.2011;;
+
+512	; 396	; 1C	;Garden;;08.09.2011;;
+513	; 396	; 0C-	;Garden;;;;
+
+613	; 390	; 1C	;Darkness;;08.09.2011;;
+613	; 389	; 0C-	;Darkness;;23.10.2011;;
+612	; 389	; 0C-	;Darkness;;19.10.2012;;
+
+540	; 496	; 0C-	;Hamppukaupunki;;25.11.2010;;
+539	; 496	; 1C	;Hamppukaupunki;;19.04.2012;;
+539	; 497	; 0C-	;Hamppukaupunki;;19.04.2012;;
+
+630	; 752	; 0C	;Manhole;;20.10.2014;;
+630	; 751	; 0C-	;Manhole;;07.12.2014;;
+629	; 752	; 0C-	;Manhole;;07.12.2014;;
+629	; 751	; 0C-	;Manhole;;08.02.2015;;
+628	; 751	; 0C-	;Manhole;;30.09.2015;;
+628	; 752	; 0C-	;Manhole;;11.09.2015;;
+
+305	; 345	; 0C-	;Void;;03.09.2012;;
+305	; 344	; 0C	;Void;;;;
+304	; 344	; 0C-	;Void;;07.12.2014;;
+
+426	; 301	; 3C	;Lapland;;14.04.2008;;
+427	; 301	; 0C-	;Lapland;;31.10.2008;;
+428	; 301	; 0C-	;Lapland;;01.01.2015;;
+
+453	; 305	; 2C	;Eternia;;20.01.2013;;
+454	; 305	; 0C-	;Eternia;;20.01.2013;;
+
+534	; 418	; 0C-	;Bat-suburb;heart;;;
+535	; 418	; 3C	;Bat-suburb;heart+;;;
+
+587	; 405	; 2C	;Cloudcastle;blop+,retarded+;;;
+587	; 404	; 0C-	;Cloudcastle;;02.04.2013;;
+
+595	; 492	; 0C	;Desolation;;14.08.2014;;
+596	; 492	; 0C-	;Desolation;;28.08.2014;;
+
+298	; 406	; 3C	;Gothamcity;;;;
+299	; 406	; 0C-	;Gothamcity;;25.01.2015;;
+
+572	; 426	; 0C	;Transylvania;;24.03.2015;;
+572	; 427	; 0C-	;Transylvania;;24.03.2015;;
+
+624	; 382	; 1C	;Mistfall;;16.09.2011;;
+624	; 381	; 0C-	;Mistfall;;11.09.2015;;
+
+443	; 518	; 0C-	;Ankh-morpork;;10.12.2015;;
+444	; 518	; 3C	;Ankh-morpork;;29.04.2016;;
+
 
 481	; 469	; 1C	;Dionysus;travel+;;;
 482	; 455	; 1C	;Demonia;kooma+;;;
 508	; 380	; 1C	;Windspyre;;;;
 475	; 307	; 2C	;Downunder;aussie+;;;
-535	; 418	; 3C	;Bat-suburb;heart+;;;
-587	; 405	; 2C	;Cloudcastle;blop+,retarded+;;;
 519	; 432	; 3C	;Sumucity;;;;
 456	; 568	; 1C	;Twilight;twilight+;;;
 312	; 365	; 3C	;Macedonia;mace+;;;
-298	; 406	; 3C	;Gothamcity;;;;
 581	; 499	; 1C	;Tardis;;;;
 560	; 517	; 2C	;Shadarii;;;;
 313	; 451	; 2C	;Nightshelter;;;;
@@ -294,11 +334,23 @@
 604	; 122	; 2C	;Mielenrauha;;;;
 444	; 295	; 1C	;Evergreen;;;;
 299	; 397	; 0?P	;Suicidal+|Safe haven of suicidals|@Suicidal+ ss;Baltzebub,Geryon,Tomba;;;Was the first 'new' type of player guild/secret society to have been created.
-426	; 301	; 3C	;Lapland;;14.04.2008;;
-427	; 301	; 0C-	;Lapland;;31.10.2008;;
-336	; 514	; 0C-	;Nightfall;;04.07.2008;;
-310	; 442	; 0C-	;Neverness;;06.04.2010;;
 533	; 601	; 1C	;Laiduin;zoo+;06.04.2010;;
-540	; 496	; 0C	;Hamppukaupunki;;25.11.2010;;
 304	; 420	; 0C	;Isca;;27.11.2010;;
 498	; 443	; 0C	;Graveyard;;25.02.2011;;
+284	; 407	; 2C	;Chairman;;16.03.2011;;
+390	; 542	; 0C	;Texas;primate+;26.07.2011;;
+454	; 516	; 1C	;Sacred-gardens;;20.06.2012;;
+380	; 538	; 0C	;Smithville;;;;
+362	; 122	; 1C	;Dragonbane;;;;
+454	; 504	; 3C	;Odessa;;24.01.2013;;
+529	; 551	; 3C	;Orathdur;;22.02.2013;;
+467	; 599	; 0C	;Absolon;;21.04.2013;;
+582	; 213	; 0C	;Unconcerned;;23.06.2013;;
+464	; 301	; 0C	;Farmville;;29.07.2013;;
+481	; 344	; 0C	;Onyx-citadel;;18.08.2013;;
+318	; 393	; 0C	;Kapilavastu;;23.09.2013;;
+442	; 507	; 1C	;Innsmouth;;05.07.2014;;
+569	; 670	; 1C	;Whitehall;;14.08.2014;;
+261	; 435	; 0C	;Joensuu;;03.06.2015;;
+478	; 497	; 1C	;Heaven;;20.01.2017;;
+502	; 367	; 1C	;Friday;;20.05.2017;;

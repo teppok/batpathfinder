@@ -71,9 +71,6 @@ public class AreaContainer {
 	private String baseDir;
 
 	private final Area[] areas;
-//	private final Tradelanes tradeLanes;
-	
-//	String[][] continentChange;
 	
 	private final NameLocation exitNodes[][];
 
@@ -139,20 +136,6 @@ public class AreaContainer {
 					tradelaneminy, tradelanemaxy, tradelanefixx, tradelanefixy);
 			loadContinent(contname, i, tl, c, sizex, sizey);
 			i++;
-
-/*		
-		Tradelanes tl1 = new Tradelanes(baseDir + "/tradelane.txt", 4000, 5000, 4000, 5000, -4097, -4097);
-		load("laenor", CONT_LAENOR, tl1, c, 827, 781);
-		Tradelanes tl2 = new Tradelanes(baseDir + "/tradelane.txt", 2900, 3600, 4900, 5500, -4097+1211, -4097-819);
-		load("deso", CONT_DESO, tl2, c, 540, 530);
-		Tradelanes tl3 = new Tradelanes(baseDir + "/tradelane.txt", 3400, 4500, 6400, 7000, -4097-1211, -4097-1155);
-		load("furn", CONT_FURN, tl3, c, 440, 480);
-		Tradelanes tl4 = new Tradelanes(baseDir + "/tradelane.txt", 5300, 5600, 5000, 6000, -4097+634, -4097-2345);
-		load("luc", CONT_LUC, tl4, c, 700, 500);
-		Tradelanes tl5 = new Tradelanes(baseDir + "/tradelane.txt", 5300, 6000, 2800, 3300, -4097-1311, -4097+1255);
-		load("roth", CONT_ROTH, tl5, c, 480, 480);
-*/
-
 		}
 
 
@@ -173,9 +156,9 @@ public class AreaContainer {
 	private void loadContinent(String continent, int contNum, Tradelanes tl, Costs c, int sx, int sy) throws IOException, BPFException {
 		areas[contNum] = new Area(tl, c, sx, sy, baseDir + "/" + continent + ".map");
 		
-		loadLocations(baseDir + "/" + continent + ".loc", contNum, true);
-		loadLocations(baseDir + "/" + continent + ".loc.extra", contNum, false);
-		loadLocations(baseDir + "/" + continent + ".loc.private", contNum, false);
+		loadLocations(baseDir + "/" + continent + ".loc", contNum);
+		loadLocations(baseDir + "/" + continent + ".loc.extra", contNum);
+		loadLocations(baseDir + "/" + continent + ".loc.private", contNum);
 		loadExtraEdges(baseDir + "/" + continent + ".nodes", false);
 		loadExtraEdges(baseDir + "/" + continent + ".nodes.private", false);
 	}
@@ -191,75 +174,32 @@ public class AreaContainer {
 	 * @throws BPFException
 	 */
 	
-	private void loadLocations(String fileName, int cont, boolean fix) throws IOException, BPFException {
-		List<String> contents = InputLoader.loadInput(fileName, true);
-		if (contents == null) return;
-	
-		for (String line : contents) {
-			line = line.replaceAll("@", "");
-			String parts[] = line.split(";");
-			int locX = Integer.parseInt(parts[0].trim());
-			int locY = Integer.parseInt(parts[1].trim());
-			// Have to fix locations from Ggr repository, but not from local locations.
-			if (fix) {
-				locX = locX - 1;
-				locY = locY - 1;
-			}
-			String flags = parts[2].trim();
-//					bp.error(locX + "--" + locY);
-			if (flags.contains("c")) {
-//						length() >= 2 && ( flags.(1) == 'c' ||
-//					}
-//							flags.charAt(1) == 'C' )) {
-				// clear city locations
-//						data[cont][locX][locY] = 0;
-//						if (flags.charAt(1) == 'c') { data[cont][locX][locY] = 'c'; }
-//						if (flags.charAt(1) == 'C') { data[cont][locX][locY] = 'C'; }
-//						data[cont][locX][locY] = 'c';
-			} else if (flags.contains("C")) {
-//						data[cont][locX][locY] = 'C';
-			} else {
-/*
-						if (flags.contains("F")) {
-								data[cont][locX][locY] = '?';
-						}
-						if (flags.contains("G")) {
-							data[cont][locX][locY] = '?';
-						}
-						if (flags.contains("S")) {
-							data[cont][locX][locY] = '%';
-						}
-						if (flags.contains("?")) {
-							data[cont][locX][locY] = '?';
-						}
-						if (flags.contains("%")) {
-							data[cont][locX][locY] = '%';
-						}
-*/
-				
-				if (areas[cont].getData(locX, locY) == 0) {
-				//	if (plane[cont][locX-4][locY] != null) System.out.print(plane[cont][locX-4][locY].data);
-				//	if (plane[cont][locX-3][locY] != null) System.out.print(plane[cont][locX-3][locY].data);
-				//	if (plane[cont][locX-2][locY] != null) System.out.print(plane[cont][locX-2][locY].data);
-				//	if (plane[cont][locX-1][locY] != null) bp.error(plane[cont][locX-1][locY].data);
-				//	if (plane[cont][locX+1][locY] != null) bp.error(plane[cont][locX+1][locY].data);
-					throw new IOException("Strange coordinates " + locX + " " + locY);
-				}
-				
-				String nameTmp = parts[3].trim();
-				String name = nameTmp;
-				if (nameTmp.contains("|")) {
-					String nameTmp2[] = nameTmp.split("\\|");
-					name = nameTmp2[0];
-				}
-				if ("".equals(name) || " ".equals(name)) { System.err.println("x"+name+"x"); }
-				addLocation(locX, locY, cont, name);
-				if (name.contains(" ")) {
-					addLocation(locX, locY, cont, name.replace(" ",""));
-					addLocation(locX, locY, cont, name.replace(" ","_"));
-				}
-			}
-		}
+	private void loadLocations(String fileName, int cont) throws IOException, BPFException {
+            File f = new File(fileName);
+            if(!f.exists()) {
+                return;
+            }
+            LocFile lf = new LocFile(f);
+            lf.load();
+            
+            for(LocFile.LocFileRecord r : lf.getRecords()) {
+                if (areas[cont].getData(r.getX(), r.getY()) == 0) {
+                    throw new BPFException("Strange coordinates " + r.getX() + " " + r.getY());
+                }
+                if(r.getFlags().contains("C")) {
+                    areas[cont].setRoom(r.getX(), r.getY(), 'C');
+                }
+                else if(r.getFlags().contains("c")) {
+                    areas[cont].setRoom(r.getX(), r.getY(), 'c');
+                }
+                else {
+                    addLocation(r.getX(), r.getY(), cont, r.getPrettyname());
+                    for(String name : r.getNames()) {
+                        String finalName = name.toLowerCase();
+                        addLocation(r.getX(), r.getY(), cont, finalName);
+                    }
+                }
+            }
 	}
 
 	
@@ -275,24 +215,23 @@ public class AreaContainer {
 	 */
 	
 	private void addLocation(int locX, int locY, int cont, String name) throws BPFException {
-			NameLocation nl_orig = allNames.get(name.toLowerCase());
-			if (nl_orig != null) {
-				throw new BPFException("Location " + name + " already exists.");
-			}
-			if (! areas[cont].isValidLocation(locX, locY)) {
-				return;
-			}
-			PlaneLocation pl = new PlaneLocation(locX, locY, cont);
-			NameLocation nl = new NameLocation(name, pl, true);
-			
-			List<NameLocation> namesList = plAdjacentNames.get(pl);
-			if (namesList == null) {
-				namesList = new ArrayList<>(2);
-				plAdjacentNames.put(pl, namesList);
-			}
-			namesList.add(nl);
-			allNames.put(name.toLowerCase(), nl);
-	}
+            if(name == null || name.equals("")) {
+                return;
+            }
+            if (! areas[cont].isValidLocation(locX, locY)) {
+                    return;
+            }
+            PlaneLocation pl = new PlaneLocation(locX, locY, cont);
+            NameLocation nl = new NameLocation(name, pl, true);
+
+            List<NameLocation> namesList = plAdjacentNames.get(pl);
+            if (namesList == null) {
+                    namesList = new ArrayList<>(2);
+                    plAdjacentNames.put(pl, namesList);
+            }
+            namesList.add(nl);
+            allNames.put(name.toLowerCase(), nl);
+        }
 
 	/**
 	 * Load a list of extra nodes and edges that will be used to construct
@@ -309,54 +248,45 @@ public class AreaContainer {
 	 */
 	
 	private void loadExtraEdges(String fileName, boolean nav) throws IOException, BPFException {
-		List<String> contents = InputLoader.loadInput(fileName, true);
-		if (contents == null) return;
-		
-		for (String line : contents) {
-			if (line.startsWith("!")) {
-				String[] parts = line.split(" ");
-				NameLocation node = allNames.get(parts[1]);
-				NameLocation planeNode = allNames.get(parts[2]);
-				
-	//						int newCont = cont;
-	//						if (parts.length > 2 && parts[3] != null) {
-	//							newCont = Integer.parseInt(parts[3]);
-	//						}
-	//						bp.error(parts[1] + " " + parts[2]);
-				if (node != null) {
-					throw new BPFException("Error, redefined node " + parts[1] + ", " + node);
-				}
-				if (planeNode == null) {
-					throw new BPFException("Error, unknown plane node " + parts[2]);
-				}
-				if (planeNode.getPlaneLocation() == null) {
-					throw new BPFException("Error, supposed plane node not on a plane, " + node + " " + planeNode);
-				}
-				
-				node = new NameLocation(parts[1], planeNode.getPlaneLocation(), false);
-				allNames.put(parts[1].toLowerCase(), node);
-			} else {
-				String leftright[] = line.split("::");
-				String left[] = leftright[0].split(" ");
-	//						bp.error(left[0] + "--" + left[1]);
-	//						if (leftright.length > 1) { bp.error("--"+leftright[1]); }
-				NameLocation startCity = allNames.get(left[0]);
-				NameLocation endCity = allNames.get(left[1]);
-				if (startCity == null) {
-					throw new BPFException("Malformed input, " + left[0] + " not found.");
-				}
-				if (endCity == null) {
-					throw new BPFException("Malformed input, " + left[1] + " not found.");
-				}
-				if (leftright.length == 1) {
-					startCity.addNeighbor(new Link(endCity, "", 5, nav));
-				}
-				if (leftright.length == 2) {
-	//								System.out.println("Added link from " + startCity + " to " + endCity + " " + leftright[1]);
-					startCity.addNeighbor(new Link(endCity, leftright[1], nav));
-				}
-			}
-		}
+            List<String> contents = InputLoader.loadInput(fileName, true);
+            if (contents == null) return;
+
+            for (String line : contents) {
+                if (line.startsWith("!")) {
+                    String[] parts = line.split(" ");
+                    NameLocation node = allNames.get(parts[1]);
+                    NameLocation planeNode = allNames.get(parts[2]);
+                    if (node != null) {
+                        throw new BPFException("Error, redefined node " + parts[1] + ", " + node);
+                    }
+                    if (planeNode == null) {
+                        throw new BPFException("Error, unknown plane node " + parts[2]);
+                    }
+                    if (planeNode.getPlaneLocation() == null) {
+                        throw new BPFException("Error, supposed plane node not on a plane, " + node + " " + planeNode);
+                    }
+
+                    node = new NameLocation(parts[1], planeNode.getPlaneLocation(), false);
+                    allNames.put(parts[1].toLowerCase(), node);
+                } else {
+                    String leftright[] = line.split("::");
+                    String left[] = leftright[0].split(" ");
+                    NameLocation startCity = allNames.get(left[0]);
+                    NameLocation endCity = allNames.get(left[1]);
+                    if (startCity == null) {
+                            throw new BPFException("Malformed input, " + left[0] + " not found.");
+                    }
+                    if (endCity == null) {
+                            throw new BPFException("Malformed input, " + left[1] + " not found.");
+                    }
+                    if (leftright.length == 1) {
+                            startCity.addNeighbor(new Link(endCity, "", 5, nav));
+                    }
+                    if (leftright.length == 2) {
+                            startCity.addNeighbor(new Link(endCity, leftright[1], nav));
+                    }
+                }
+            }
 	}
 
 	/**

@@ -32,17 +32,17 @@ class Area {
 	 * @param fileName File name containing the map data as a character array.
 	 * @throws IOException When file loading fails.
 	 */
-	Area(Tradelanes tl, Costs costs, int sx, int sy, String fileName) throws IOException {
+	Area(Tradelanes tl, Costs costs, int sx, int sy, String fileName) throws BPFException, IOException  {
 		
-		if (tl == null) throw new IOException("Null tradelanes");
-		if (costs == null) throw new IOException("Null costs");
-		if (fileName == null) throw new IOException("Null filename");
-		if (sx < 0 || sy < 0) throw new IOException("Bad parameters");
+		if (tl == null) throw new BPFException("Null tradelanes");
+		if (costs == null) throw new BPFException("Null costs");
+		if (fileName == null) throw new BPFException("Null filename");
+		if (sx < 0 || sy < 0) throw new BPFException("Bad parameters");
 		
 		tradeLanes = tl;
 		sizex = sx;
 		sizey = sy;
-		data = new char[sizex][sizey];
+		data = new char[sizex+1][sizey+1];
 		this.costs = costs;
 
 		loadContinent(fileName);
@@ -97,7 +97,7 @@ class Area {
 					} catch (IndexOutOfBoundsException e) {
 						throw new IOException("Premature end of file.");
 					}
-					data[j][i] = c;
+					data[j+1][i+1] = c;
 				}
 			}
 		}
@@ -297,4 +297,7 @@ class Area {
 		return diff2;
 	}
 
+        void setRoom(int x, int y, char type) {
+            this.data[x][y] = type;
+        }
 }
